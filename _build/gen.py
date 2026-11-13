@@ -1,0 +1,311 @@
+import json, os, sys, html, shutil, datetime
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from data import *
+from data import HROOMS, XMAS_LIST, TG_LIST, HAL_LIST
+from guides import GUIDES
+from seo import GUIDE_SEO
+
+OUT = sys.argv[1] if len(sys.argv) > 1 else "out"
+SITE = "https://theelevatedcart.com"
+NAME = "The Elevated Cart"
+TODAY = datetime.date.today().isoformat()
+PIN = "https://pin.it/2X4nS1eGx"
+VERIFY = '<meta name="p:domain_verify" content="c5fe63e05fdcd9f3ea4e04e5fee37d6a"/>'
+E = html.escape
+X = 'target="_blank" rel="noopener sponsored nofollow"'
+
+def plink(a): return f"https://www.amazon.com/dp/{a}?tag={TAG}"
+
+# alt text for local (non-room) images
+LOCAL_ALT = {
+ "entryway-drop-zone": "Entryway drop zone with a wood bench, shoes tucked underneath, wall hooks with coats and bags, and labeled woven baskets on a shelf above",
+ "neutral-winter-mantel": "Neutral winter mantel with a large landscape painting, cream candlesticks, a rustic wood beam and a basket of firewood beside a white fireplace",
+ "designer-christmas-tree": "Full Christmas tree with warm lights tucked deep inside, cream ribbon cascades and ornaments in three sizes beside a cozy armchair",
+ "tree-base-styling": "Christmas tree base hidden by a large woven collar, with gifts wrapped in kraft paper and burgundy and green velvet ribbon",
+ "cozy-christmas-bedroom": "Cozy Christmas bedroom with plaid pillows, a cream faux fur throw, a small wreath above the upholstered headboard and a lit mini tree",
+ "christmas-eve-living-room": "Christmas Eve living room with a lit tree, knit stockings on the mantel, a glowing fire, plaid throw and mugs of cocoa on the coffee table",
+ "christmas-breakfast-table": "Christmas morning breakfast table with pancakes and berries, plaid napkins, woven placemats, greenery and a hurricane candle",
+ "coffee-cocoa-station": "Hot cocoa station on a marble counter with a wood tray, stoneware mugs, cinnamon sticks and jars of marshmallows",
+ "christmas-pillows": "Stack of Christmas throw pillows on a window seat: a holly wreath pillow, a brown textured pillow, a red poinsettia pillow, a cream tartan plaid and a red plaid faux fur pillow",
+ "thanksgiving-turkey-table": "Thanksgiving table set with green plaid linens, vintage turkey plates on woven chargers, a glass pumpkin dome with cookies, amber glasses and gold flatware",
+ "halloween-haunted-manor": "Halloween dining table with a cream runner printed with a black haunted mansion, black taper candles, bats and black dinner plates",
+}
+
+def room_alt(r):  # r = ROOMS tuple
+    return f"{r[1].replace('The ', '', 1)} recreated with Amazon finds. {r[3]}"
+
+def imginfo(ref):
+    k, v = ref.split(":", 1)
+    if k == "room":
+        r = ROOMS[int(v)]; return CDN + r[4], room_alt(r)
+    if k == "cdn": return CDN + v, None
+    return f"/images/{v}.jpg", LOCAL_ALT.get(v, "")
+
+# ---------- models ----------
+rooms = []
+for r in ROOMS:
+    rooms.append(dict(slug=r[0], title=r[1], cat=r[2], blurb=r[3], img=CDN + r[4], alt=room_alt(r),
+                      shop=PHOTO + r[5] + f"?tag={TAG}", items=[(P[a], plink(a)) for a in r[6]],
+                      url=f"/rooms/{r[0]}/", kind="room"))
+roomby = {r["slug"]: r for r in rooms}
+hrooms = []
+for h in HROOMS:
+    img, alt = imginfo(h[4])
+    if h[6] is not None:
+        base = ROOMS[h[6]]; items = [(P[a], plink(a)) for a in base[6]]; shop = PHOTO + base[5] + f"?tag={TAG}"; exact = True
+    else:
+        items = [(P[a], plink(a)) for a in h[5]]; shop = h[7]; exact = h[0] == "christmas-tablescape"
+    if not alt: alt = f"{h[1].replace('The ', '', 1)}. {h[3]}"
+    hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat=h[2].capitalize(), blurb=h[3], img=img, alt=alt,
+                       items=items, shop=shop, exact=exact, url=f"/holiday/{h[0]}/", kind="hroom"))
+guides = []
+for g in GUIDES:
+    img, alt = imginfo(g[4])
+    guides.append(dict(slug=g[0], title=g[1], cat=g[2], hol=g[3], img=img, alt=alt, dek=g[5], body=g[6],
+                       items=[(P[a], plink(a)) for a in g[7]],
+                       room=(roomby[ROOMS[g[8]][0]] if g[8] is not None else None),
+                       url=f"/guides/{g[0]}/", kind="guide", seo=GUIDE_SEO[g[0]]))
+
+# ---------- shared pieces ----------
+css = open("base.css").read() + open("extra.css").read() + """
+a.tile{color:inherit}
+.crumbs{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:22px}
+.crumbs a{text-decoration:none;color:var(--soft)}.crumbs a:hover{color:var(--ink)}
+.answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
+.answer h2{font-size:22px!important;margin:0 0 8px!important}
+.answer p{margin:0!important}
+.faq h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:22px;margin:22px 0 6px}
+.more{margin-top:56px}
+.more h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:32px;margin-bottom:22px}
+.tile[hidden]{display:none}
+.pillars h3.pt{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;margin:0 0 6px}
+"""
+
+def head(title, desc, path, img, alt="", otype="website", ld=None):
+    full = title if title.endswith(NAME) else f"{title} | {NAME}"
+    imgabs = img if img.startswith("http") else SITE + img
+    lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{E(full)}</title>
+<meta name="description" content="{E(desc)}">
+<link rel="canonical" href="{SITE}{path}">
+{VERIFY}
+<meta property="og:site_name" content="{NAME}">
+<meta property="og:type" content="{otype}">
+<meta property="og:title" content="{E(title)}">
+<meta property="og:description" content="{E(desc)}">
+<meta property="og:url" content="{SITE}{path}">
+<meta property="og:image" content="{E(imgabs)}">
+<meta property="og:image:alt" content="{E(alt)}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/images/mark.svg">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+{lds}
+</head>
+<body>
+<header><div class="wrap nav">
+ <a class="brand" href="/"><img src="/images/mark.svg" alt="" width="46" height="46"><span>The Elevated Cart</span></a>
+ <nav class="links" aria-label="Main">{{NAV}}</nav>
+</div></header>
+<main>
+"""
+
+def nav(active):
+    items = [("rooms", "/rooms/", '<span class="f">Recreated </span>Rooms'), ("guides", "/guides/", '<span class="f">Style </span>Guides'),
+             ("holiday", "/holiday/", "Holiday"), ("about", "/about/", "About")]
+    s = "".join(f'<a href="{u}" class="{"on" if k == active else ""}">{t}</a>' for k, u, t in items)
+    return s + f'<a class="shop-tab" href="{STORE}" {X}>Shop</a>'
+
+FOOT = f"""</main>
+<footer><div class="wrap">
+ <div class="foot">
+  <div><a class="brand foot-brand" href="/"><img src="/images/mark.svg" alt="" width="52" height="52"><span>The Elevated Cart</span></a><p style="margin-top:14px;max-width:320px">Recreated rooms, styling guides and honest finds for a warm, layered home.</p></div>
+  <nav aria-label="Site"><a href="/rooms/">Recreated Rooms</a><a href="/guides/">Style Guides</a><a href="/holiday/">Holiday</a><a href="/about/">About</a><a href="/disclosure/">Affiliate Disclosure</a></nav>
+  <nav aria-label="Social"><a href="{PIN}" target="_blank" rel="noopener">Pinterest</a><a href="https://www.instagram.com/theelevatedcart" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@theelevatedcart" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/share/1FT9NSP1ji/" target="_blank" rel="noopener">Facebook</a><a href="{STORE}" {X}>Amazon Storefront</a></nav>
+ </div>
+ <div class="fine">As an Amazon Associate I earn from qualifying purchases. © 2026 The Elevated Cart</div>
+</div></footer>
+"""
+FILTER_JS = """<script>
+document.querySelectorAll('.chips').forEach(function(c){var g=document.getElementById(c.dataset.grid);
+c.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;c.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+var v=b.dataset.c;g.querySelectorAll('.tile').forEach(function(t){t.hidden=!(v==='All'||t.dataset.cat===v)})});
+var h=(location.hash||'').slice(1);if(h){var b=c.querySelector('[data-c="'+h+'"]');if(b)b.click()}});
+</script>"""
+
+def page(path, active, title, desc, img, body, alt="", otype="website", ld=None, js=""):
+    s = head(title, desc, path, img, alt, otype, ld).replace("{NAV}", nav(active)) + body + FOOT + js + "</body>\n</html>\n"
+    p = os.path.join(OUT, path.strip("/"), "index.html") if path != "/" else os.path.join(OUT, "index.html")
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    open(p, "w").write(s)
+    PAGES.append(path)
+
+PAGES = []
+def label(o):
+    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o["cat"]}[o["kind"]]
+def tile(o, h="h3"):
+    return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
+def grid(items, gid="", rooms_cls=True):
+    return f'<div class="grid" id="{gid}">' + "".join(tile(o) for o in items) + "</div>"
+def chips(cats, gid):
+    return f'<div class="chips" data-grid="{gid}">' + "".join(f'<button class="chip {"on" if i == 0 else ""}" data-c="{c}">{c}</button>' for i, c in enumerate(cats)) + "</div>"
+DISC = '<div class="disc">This post contains affiliate links. As an Amazon Associate I earn from qualifying purchases. <a href="/disclosure/">Learn more</a></div>'
+def plist(items, head_, note):
+    if not items: return ""
+    return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
+            f'<p style="font-size:14px;color:var(--soft);margin-bottom:8px">{note}</p>'
+            + "".join(f'<div class="item"><div><b>{E(n)}</b></div><a href="{u}" {X}>Shop on Amazon</a></div>' for n, u in items) + "</section>")
+def crumbs(trail):
+    html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
+    ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, **({"item": SITE + u} if u else {})} for i, (n, u) in enumerate(trail)]}
+    return f'<nav class="crumbs" aria-label="Breadcrumb">{html_}</nav>', ld
+def itemlist(name, items):
+    return {"@context": "https://schema.org", "@type": "ItemList", "name": name,
+            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "url": u} for i, (n, u) in enumerate(items)]}
+ORG = {"@context": "https://schema.org", "@type": "Organization", "name": NAME, "url": SITE, "logo": SITE + "/images/mark.svg",
+       "sameAs": ["https://www.instagram.com/theelevatedcart", "https://www.tiktok.com/@theelevatedcart"]}
+AUTHOR = {"@type": "Organization", "name": NAME, "url": SITE}
+
+# ---------- home ----------
+H = {h["slug"]: h for h in hrooms}
+home = f"""<div class="wrap"><div class="hero">
+ <div><div class="eyebrow">Home styling, made simple</div>
+ <h1>The designer look, <em>without</em> the designer price.</h1>
+ <p>Designer rooms recreated with Amazon finds, plus styling guides for a warm, layered home. Every look is shoppable.</p>
+ <div class="btns"><a class="btn dark" href="/rooms/">Shop the rooms</a><a class="btn" href="/guides/">Read the guides</a></div></div>
+ <div class="hero-imgs"><img src="{E(rooms[0]['img'])}" alt="{E(rooms[0]['alt'])}"><img src="{E(rooms[9]['img'])}" alt="{E(rooms[9]['alt'])}"></div>
+</div></div>
+<section class="block"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">The best part</div><h2>Recreated rooms</h2></div><a class="back" href="/rooms/">See all rooms →</a></div>{grid([rooms[0], rooms[1], rooms[5]])}</div></section>
+<section class="block holiday"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Holiday at home</div><h2>Holiday rooms</h2></div><a class="back" href="/holiday/">All holiday rooms →</a></div>{grid([H['christmas-tablescape'], H['christmas-pillows'], H['thanksgiving-turkey-table']])}</div></section>
+<section class="block"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Style guides</div><h2>Style, simplified</h2></div><a class="back" href="/guides/">View all →</a></div>{grid([g for g in guides if not g['hol']][:3])}</div></section>
+<section class="block promise"><div class="wrap">
+ <div class="sec-head" style="justify-content:center;text-align:center"><div><div class="eyebrow">The Elevated Cart promise</div><h2>How every find is chosen</h2></div></div>
+ <div class="pillars"><div><h3 class="pt">Looks like the inspiration</h3><p>Matched on shape, material and finish, not just category.</p></div>
+ <div><h3 class="pt">Checked before it's shared</h3><p>Every product is a live listing, reviewed before it goes up.</p></div>
+ <div><h3 class="pt">Styling first</h3><p>The how-to comes free. The shopping list is there if you want it.</p></div></div>
+</div></section>"""
+slugmap = {o["slug"]: o["url"] for o in rooms + guides}
+slugmap.update({"holiday-" + h["slug"]: h["url"] for h in hrooms})
+slugmap.update({k: f"/{k}/" for k in ["rooms", "guides", "holiday", "about", "disclosure"]})
+redirect_js = f"""<script>(function(){{var m={json.dumps(slugmap)};var h=(location.hash||'').slice(1);if(m[h])location.replace(m[h]);}})();</script>"""
+page("/", "", NAME, "Designer rooms recreated with Amazon finds, plus styling guides for a warm, layered home. Pottery Barn style looks without the designer price.",
+     rooms[0]["img"], home, rooms[0]["alt"],
+     ld=[ORG, {"@context": "https://schema.org", "@type": "WebSite", "name": NAME, "url": SITE}], js=redirect_js)
+
+# ---------- rooms ----------
+body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Recreated rooms</div>
+<h1 class="vh">Designer rooms, recreated with Amazon finds</h1>
+<p class="sub">Each room is fully shoppable. Tap a room to see the key pieces, or shop every item in the photo on my storefront.</p>
+{chips(['All', 'Living Room', 'Dining', 'Bedroom'], 'g-rooms')}{grid(rooms, 'g-rooms')}
+<div class="btns" style="margin-top:40px"><a class="btn dark" href="{ROOMS_STORE}" {X}>Shop all rooms on Amazon</a></div></div>"""
+page("/rooms/", "rooms", "Recreated Rooms: Designer Looks with Amazon Finds", "Pottery Barn, Arhaus and Nancy Meyers inspired living rooms, dining rooms and bedrooms recreated with Amazon furniture and decor. Every piece is shoppable.",
+     rooms[0]["img"], body, rooms[0]["alt"], ld=[itemlist("Recreated rooms", [(r["title"], SITE + r["url"]) for r in rooms])], js=FILTER_JS)
+
+def related(pool, me, n=3):
+    same = [o for o in pool if o is not me and o.get("cat") == me.get("cat")]
+    other = [o for o in pool if o is not me and o not in same]
+    return (same + other)[:n]
+
+for r in rooms:
+    cr, crld = crumbs([("Home", "/"), ("Recreated Rooms", "/rooms/"), (r["title"], None)])
+    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Recreated room · {E(r['cat'])}</div><h1>{E(r['title'])}</h1><p class="dek">{E(r['blurb'])}</p>{DISC}
+<img class="room-hero" src="{E(r['img'])}" alt="{E(r['alt'])}">
+<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{r['shop']}" {X}>Shop every piece in this photo</a></div>
+{plist(r['items'], 'The key pieces in this room', 'Direct links to the main pieces in this room. Each link is for the single item named.')}
+<div class="more"><h2>More recreated rooms</h2>{grid(related(rooms, r))}</div></article></div>"""
+    desc = f"{r['title'].replace('The ', '', 1)} recreated with Amazon finds: {r['blurb']} Shop every piece."
+    page(r["url"], "rooms", r["title"] + " (Shop the Look)", desc[:300], r["img"], body, r["alt"], "article",
+         ld=[crld, itemlist(r["title"] + " shopping list", r["items"]),
+             {"@context": "https://schema.org", "@type": "Article", "headline": r["title"], "description": r["blurb"], "image": r["img"],
+              "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + r["url"]}])
+
+# ---------- guides ----------
+body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Style guides</div>
+<h1 class="vh">Style, simplified</h1>
+<p class="sub">The how-to behind every look, with a shopping list at the end of each guide.</p>
+{chips(['All', 'Living Room', 'Dining', 'Bedroom', 'Entryway', 'Holiday'], 'g-guides')}{grid(guides, 'g-guides')}</div>"""
+page("/guides/", "guides", "Home Styling Guides: Measurements, Formulas and How-Tos", "Simple home styling guides: how high to hang art, what size rug you need, how to layer a bed, style a coffee table and decorate for the holidays.",
+     guides[0]["img"], body, guides[0]["alt"], ld=[itemlist("Style guides", [(g["title"], SITE + g["url"]) for g in guides])], js=FILTER_JS)
+
+for g in guides:
+    q, a, faqs = g["seo"]
+    cr, crld = crumbs([("Home", "/"), ("Style Guides", "/guides/"), (g["title"], None)])
+    roombox = ""
+    if g["room"]:
+        rr = g["room"]
+        roombox = f'<section class="shop"><div class="eyebrow">Shop the photo</div><h2 style="font-size:26px;margin:0 0 6px">{E(rr["title"])}</h2><p style="font-size:14px;color:var(--soft);margin-bottom:14px">Every piece in this room is tagged on my Amazon storefront.</p><a class="btn dark" href="{rr["shop"]}" {X}>Shop the room</a> <a class="btn" href="{rr["url"]}">See the room</a></section>'
+    elif not g["items"]:
+        roombox = f'<section class="shop"><div class="eyebrow">Get the look</div><h2 style="font-size:26px;margin:0 0 6px">Shop my holiday picks</h2><p style="font-size:14px;color:var(--soft);margin-bottom:14px">Find my current favorites in my Amazon storefront.</p><a class="btn dark" href="{XMAS_LIST}" {X}>Shop on Amazon</a></section>'
+    faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(fq)}</h3><p>{E(fa)}</p>" for fq, fa in faqs) + "</section>"
+    pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]
+    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">{E(g['cat'])}</div><h1>{E(g['title'])}</h1><p class="dek">{E(g['dek'])}</p>{DISC}
+<div class="answer"><h2>{E(q)}</h2><p>{E(a)}</p></div>
+<img class="room-hero" src="{E(g['img'])}" alt="{E(g['alt'])}">{g['body']}
+{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}
+{roombox}{faqhtml}
+<div class="more"><h2>More guides</h2>{grid(related(pool, g))}</div></article></div>"""
+    page(g["url"], "guides", g["title"], f"{a}"[:300], g["img"], body, g["alt"], "article",
+         ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": g["title"], "description": g["dek"], "image": g["img"] if g["img"].startswith("http") else SITE + g["img"],
+                    "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + g["url"]},
+             {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": fq, "acceptedAnswer": {"@type": "Answer", "text": fa}} for fq, fa in [(q, a)] + faqs]}]
+            + ([itemlist(g["title"] + " shopping list", g["items"])] if g["items"] else []))
+
+# ---------- holiday ----------
+body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Holiday at home</div>
+<h1 class="vh">Holiday rooms, recreated with Amazon finds</h1>
+<p class="sub">Every holiday look is shoppable. Tap a room to see the pieces. Looking for how-tos? <a href="/guides/#Holiday" style="color:var(--oak)">Jump to the holiday guides →</a></p>
+{chips(['All', 'Christmas', 'Thanksgiving', 'Halloween'], 'g-hol')}{grid(hrooms, 'g-hol')}</div>"""
+page("/holiday/", "holiday", "Holiday Rooms: Christmas, Thanksgiving and Halloween Looks for Less", "Christmas tablescapes, Thanksgiving tables, holiday pillows and Halloween decor recreated with Amazon finds. Shop every holiday look.",
+     hrooms[0]["img"], body, hrooms[0]["alt"], ld=[itemlist("Holiday rooms", [(h["title"], SITE + h["url"]) for h in hrooms])], js=FILTER_JS)
+LISTS = {"christmas": XMAS_LIST, "thanksgiving": TG_LIST, "halloween": HAL_LIST}
+for h in hrooms:
+    cr, crld = crumbs([("Home", "/"), ("Holiday", "/holiday/"), (h["title"], None)])
+    lst = LISTS[h["hol"]]
+    btn = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{h["shop"]}" {X}>{"Shop every piece in this photo" if h["exact"] else "Shop the look on Amazon"}</a></div>' if h["shop"] else ""
+    extra = f'<a class="btn" href="{lst}" {X}>Shop all {h["cat"]} decor</a>' if h["shop"] != lst else ""
+    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Holiday · {E(h['cat'])}</div><h1>{E(h['title'])}</h1><p class="dek">{E(h['blurb'])}</p>{DISC}
+<img class="room-hero" src="{E(h['img'])}" alt="{E(h['alt'])}">{btn}
+{plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}
+<div class="btns"><a class="btn" href="/holiday/">More holiday rooms</a>{extra}</div>
+<div class="more"><h2>More holiday rooms</h2>{grid(related(hrooms, h))}</div></article></div>"""
+    page(h["url"], "holiday", h["title"] + " (Shop the Look)", f"{h['blurb']} Shop the {h['cat']} look with Amazon finds."[:300], h["img"], body, h["alt"], "article",
+         ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": h["title"], "description": h["blurb"], "image": h["img"] if h["img"].startswith("http") else SITE + h["img"],
+                    "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + h["url"]}]
+            + ([itemlist(h["title"] + " shopping list", h["items"])] if h["items"] else []))
+
+# ---------- about / disclosure / 404 ----------
+about = f"""<div class="wrap page" style="max-width:960px"><div class="about-grid"><div>
+ <div class="eyebrow">About</div><h1>Hi, I'm Clare. Welcome to The Elevated Cart.</h1>
+ <p>This is where the ideas from my Pinterest boards get the full story: the recreated rooms, the measurements, the layering order and the small details that make a room feel finished.</p>
+ <p>I love the look of Pottery Barn, Arhaus and those warm, lived-in Nancy Meyers kitchens. I don't love paying for it. So I recreate those rooms with pieces that genuinely match the inspiration in shape, material and finish, and I only share ones I've checked.</p>
+ <p>Every guide works without buying a thing. If you'd like the exact pieces, every room and guide links straight to them.</p>
+ <p class="serif" style="font-size:24px;font-style:italic;color:var(--oak)">Thanks for being here.</p>
+ <div class="btns"><a class="btn dark" href="/rooms/">Shop the rooms</a><a class="btn" href="/disclosure/">Affiliate disclosure</a></div>
+</div><img src="/images/about.jpg" alt="Clare, founder of The Elevated Cart"></div></div>"""
+page("/about/", "about", "About The Elevated Cart", "Designer-inspired rooms recreated with Amazon finds, chosen to match the inspiration in shape, material and finish.", "/images/about.jpg", about, "Clare, founder of The Elevated Cart")
+disc = """<div class="wrap page"><div class="eyebrow">Disclosure</div><h1>Affiliate disclosure</h1>
+ <p>The Elevated Cart is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.</p>
+ <p>As an Amazon Associate I earn from qualifying purchases. Links to Amazon on this site are affiliate links, which means I may earn a small commission if you buy through them, at no extra cost to you.</p>
+ <p>Each shopping list names exactly what a link is for. Styling props in a photo are only included where they're listed. Prices and availability change, so please check the listing before you buy.</p>
+ <p>Some images on this site are styled renderings created to show how pieces can work together in a room.</p></div>"""
+page("/disclosure/", "", "Affiliate Disclosure", "The Elevated Cart affiliate disclosure for the Amazon Services LLC Associates Program.", rooms[0]["img"], disc, rooms[0]["alt"])
+os.makedirs(OUT, exist_ok=True)
+nf = head("Page not found", "This page could not be found.", "/404.html", rooms[0]["img"]).replace("{NAV}", nav("")) + \
+     '<div class="wrap page"><h1>That page has moved.</h1><p>Try the <a href="/rooms/">recreated rooms</a>, the <a href="/guides/">style guides</a> or the <a href="/holiday/">holiday rooms</a>.</p></div>' + FOOT + "</body></html>"
+open(os.path.join(OUT, "404.html"), "w").write(nf.replace('<link rel="canonical" href="https://theelevatedcart.com/404.html">', '<meta name="robots" content="noindex">'))
+
+# ---------- assets, sitemap, robots ----------
+os.makedirs(os.path.join(OUT, "assets"), exist_ok=True)
+open(os.path.join(OUT, "assets", "site.css"), "w").write(css)
+sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
+     "".join(f"<url><loc>{SITE}{p}</loc><lastmod>{TODAY}</lastmod></url>\n" for p in PAGES) + "</urlset>\n"
+open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
+open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+print("pages", len(PAGES))

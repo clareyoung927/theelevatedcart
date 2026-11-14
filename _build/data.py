@@ -110,3 +110,5 @@ P.update({"B0GY78DPJR": "47 inch round reclaimed pine pedestal dining table", "B
 BIG |= {"B0GY78DPJR", "B0DMT47JKY", "B0GLGM4DLX", "B0F1ZDBLKM", "B0FBPYM3XD"}
 P.update({"B0C1L968KY": "Woven back counter stool", "B0DWJMTD62": "Beige barrel dining chairs on casters, set of 2"})
 BIG |= {"B0DWJMTD62"}
+P.update({"B0GGQX2LQS": "Rattan headboard queen bed frame", "B0FNCSSGRZ": "Oversized swivel barrel chair, beige chenille"})
+BIG |= {"B0GGQX2LQS", "B0FNCSSGRZ"}

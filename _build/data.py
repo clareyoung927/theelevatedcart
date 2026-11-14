@@ -112,3 +112,6 @@ P.update({"B0C1L968KY": "Woven back counter stool", "B0DWJMTD62": "Beige barrel 
 BIG |= {"B0DWJMTD62"}
 P.update({"B0GGQX2LQS": "Rattan headboard queen bed frame", "B0FNCSSGRZ": "Oversized swivel barrel chair, beige chenille"})
 BIG |= {"B0GGQX2LQS", "B0FNCSSGRZ"}
+
+P.update({"B0CWH5GL6L":"Round fluted drum coffee table, oak","B0HFS1RWTZ":"Cane back dining chairs, set of 2"})
+BIG |= {"B0CWH5GL6L", "B0HFS1RWTZ"}

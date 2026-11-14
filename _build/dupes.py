@@ -210,3 +210,27 @@ DUPES = [
       faq=[("What is a dupe for the Pottery Barn Bedford Harvest platter?","The Spode Woodland nesting trays bring the same turkey motif to the table as a set of three."),("Are Spode Woodland trays food safe?","Yes, Spode Woodland is made for serving; check the listing for dishwasher and microwave care."),("Can I mix patterns on the Thanksgiving table?","Yes. Keep one color family, like browns and creams, and mix motifs within it.")],
       also=[], room=None),
 ]
+
+# Big category and sub category for the /dupes/ filters (Clare, 2026-11-14).
+DUPE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Holiday"]
+DUPE_CATS = {
+    "pottery-barn-effie-arch-floor-mirror-dupe": ("Living Room", "Mirrors"),
+    "pottery-barn-wren-etagere-dupe": ("Living Room", "Bookcases & Shelves"),
+    "pottery-barn-lana-coffee-table-dupe": ("Living Room", "Coffee Tables"),
+    "pottery-barn-coloma-round-coffee-table-dupe": ("Living Room", "Coffee Tables"),
+    "pottery-barn-balboa-swivel-chair-dupe": ("Living Room", "Accent Chairs"),
+    "pottery-barn-banks-round-pedestal-dining-table-dupe": ("Dining & Kitchen", "Dining Tables"),
+    "pottery-barn-fenton-woven-dining-chair-dupe": ("Dining & Kitchen", "Dining Chairs"),
+    "pottery-barn-baldwin-barrel-dining-chair-dupe": ("Dining & Kitchen", "Dining Chairs"),
+    "pottery-barn-monty-cane-dining-chair-dupe": ("Dining & Kitchen", "Dining Chairs"),
+    "pottery-barn-fenton-woven-counter-stool-dupe": ("Dining & Kitchen", "Counter Stools"),
+    "pottery-barn-skylar-counter-stool-dupe": ("Dining & Kitchen", "Counter Stools"),
+    "pottery-barn-sausalito-cane-bed-dupe": ("Bedroom", "Beds"),
+    "pottery-barn-malibu-woven-nightstand-dupe": ("Bedroom", "Nightstands"),
+    "pottery-barn-beachcomber-trunk-dupe": ("Bedroom", "Storage"),
+    "pottery-barn-modern-farmhouse-cane-entry-cabinet-dupe": ("Entryway", "Cabinets & Consoles"),
+    "pottery-barn-glass-pumpkin-cloche-dupe": ("Holiday", "Thanksgiving"),
+    "pottery-barn-bedford-harvest-platter-dupe": ("Holiday", "Thanksgiving"),
+}
+for _d in DUPES:
+    _d["cat"], _d["sub"] = DUPE_CATS.get(_d["slug"], (_d["cat"], _d["cat"]))

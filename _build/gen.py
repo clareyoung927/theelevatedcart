@@ -2,7 +2,7 @@ import json, os, sys, html, shutil, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data import *
 from data import HROOMS, XMAS_LIST, TG_LIST, HAL_LIST, JULY4_LIST, BIG, UNAVAIL
-from dupes import DUPES
+from dupes import DUPES, DUPE_GROUPS
 import urllib.parse
 from guides import GUIDES
 from seo import GUIDE_SEO
@@ -225,9 +225,9 @@ def hero(o):
     return (f'<figure class="pinwrap"><img class="room-hero" src="{E(o["img"])}" alt="{E(o["alt"])}">'
             f'<a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?{E(q)}" target="_blank" rel="noopener" aria-label="Save to Pinterest">Save</a></figure>')
 def label(o):
-    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o["cat"], "dupe": f"Pottery Barn dupe · {o['cat']}"}[o["kind"]]
+    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o["cat"], "dupe": f"Pottery Barn dupe · {o.get('sub', o['cat'])}"}[o["kind"]]
 def tile(o, h="h3"):
-    return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
+    return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"{(' data-sub="' + E(o["sub"]) + '"') if o.get("sub") else ""}><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
 def grid(items, gid="", rooms_cls=True):
     return f'<div class="grid" id="{gid}">' + "".join(tile(o) for o in items) + "</div>"
 def chips(cats, gid):
@@ -387,13 +387,34 @@ for h in hrooms:
             + ([itemlist(h["title"] + " shopping list", h["items"])] if h["items"] else []))
 
 # ---------- dupes ----------
+def dchips(ds):
+    groups = [g for g in DUPE_GROUPS if any(d["cat"] == g for d in ds)]
+    top = '<div class="dchips" id="dtop">' + '<button class="chip on" data-c="All">All</button>' + "".join(f'<button class="chip" data-c="{E(g)}">{E(g)}</button>' for g in groups) + "</div>"
+    subs = ""
+    for g in groups:
+        ss = []
+        for d in ds:
+            if d["cat"] == g and d["sub"] not in ss:
+                ss.append(d["sub"])
+        ss.sort()
+        subs += f'<div class="dsub" data-g="{E(g)}" hidden><button class="chip on" data-s="All">All {E(g)}</button>' + "".join(f'<button class="chip" data-s="{E(x)}">{E(x)}</button>' for x in ss) + "</div>"
+    return top + subs
+DUPE_JS = """<script>
+(function(){var top=document.getElementById('dtop'),g=document.getElementById('g-dupes'),cur='All',sub='All';
+function show(){g.querySelectorAll('.tile').forEach(function(t){t.hidden=!((cur==='All'||t.dataset.cat===cur)&&(sub==='All'||t.dataset.sub===sub))});
+document.querySelectorAll('.dsub').forEach(function(d){d.hidden=d.dataset.g!==cur;d.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.s===sub)})});
+top.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)})}
+top.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;sub='All';show();history.replaceState(null,'',cur==='All'?location.pathname:'#'+encodeURIComponent(cur))});
+document.querySelectorAll('.dsub').forEach(function(d){d.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;sub=b.dataset.s;show();history.replaceState(null,'','#'+encodeURIComponent(cur)+(sub==='All'?'':'/'+encodeURIComponent(sub)))})});
+var h=decodeURIComponent((location.hash||'').slice(1)).split('/');if(h[0]&&top.querySelector('[data-c="'+h[0]+'"]')){cur=h[0];if(h[1])sub=h[1]}show()})();
+</script>"""
 LEGAL = '<p class="legal">Pottery Barn is a trademark of its owner. The Elevated Cart is not affiliated with or endorsed by Pottery Barn. "Dupe" means a similar look at a lower price, not the same product. Pottery Barn prices are list prices noted on the date shown and may change.</p>'
 body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Look for less</div>
 <h1 class="vh">Pottery Barn dupes on Amazon</h1>
 <p class="sub">Pottery Barn pieces matched to Amazon look-alikes on shape, material and finish, with an honest side-by-side of what's the same and what's different.</p>
-{chips(['All'] + sorted(set(d['cat'] for d in dupes)), 'g-dupes')}{grid(dupes, 'g-dupes')}{LEGAL}</div>"""
+{dchips(dupes)}{grid(dupes, 'g-dupes')}{LEGAL}</div>"""
 page("/dupes/", "dupes", "Pottery Barn Dupes on Amazon: Designer Look for Less", "Pottery Barn dupes on Amazon matched on shape, material and finish: floor mirrors, counter stools, dining chairs, bookcases and more, compared side by side.",
-     dupes[0]["img"], body, dupes[0]["alt"], ld=[itemlist("Pottery Barn dupes", [(d["title"], SITE + d["url"]) for d in dupes])], js=FILTER_JS)
+     dupes[0]["img"], body, dupes[0]["alt"], ld=[itemlist("Pottery Barn dupes", [(d["title"], SITE + d["url"]) for d in dupes])], js=DUPE_JS)
 for d in dupes:
     cr, crld = crumbs([("Home", "/"), ("Pottery Barn Dupes", "/dupes/"), (d["title"], None)])
     pbp = f" ({d['pb_price']} as of {d['checked']})" if d["pb_price"] else ""

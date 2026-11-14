@@ -1,7 +1,9 @@
 import json, os, sys, html, shutil, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data import *
-from data import HROOMS, XMAS_LIST, TG_LIST, HAL_LIST
+from data import HROOMS, XMAS_LIST, TG_LIST, HAL_LIST, BIG, UNAVAIL
+from dupes import DUPES
+import urllib.parse
 from guides import GUIDES
 from seo import GUIDE_SEO
 
@@ -15,6 +17,8 @@ E = html.escape
 X = 'target="_blank" rel="noopener sponsored nofollow"'
 
 def plink(a): return f"https://www.amazon.com/dp/{a}?tag={TAG}"
+def cartlink(a): return f"https://www.amazon.com/gp/aws/cart/add.html?ASIN.1={a}&Quantity.1=1&AssociateTag={TAG}"
+def items_of(asins): return [(P[a], plink(a), a) for a in asins if a not in UNAVAIL]
 
 # alt text for local (non-room) images
 LOCAL_ALT = {
@@ -45,16 +49,16 @@ def imginfo(ref):
 rooms = []
 for r in ROOMS:
     rooms.append(dict(slug=r[0], title=r[1], cat=r[2], blurb=r[3], img=CDN + r[4], alt=room_alt(r),
-                      shop=PHOTO + r[5] + f"?tag={TAG}", items=[(P[a], plink(a)) for a in r[6]],
+                      shop=PHOTO + r[5] + f"?tag={TAG}", items=items_of(r[6]),
                       url=f"/rooms/{r[0]}/", kind="room"))
 roomby = {r["slug"]: r for r in rooms}
 hrooms = []
 for h in HROOMS:
     img, alt = imginfo(h[4])
     if h[6] is not None:
-        base = ROOMS[h[6]]; items = [(P[a], plink(a)) for a in base[6]]; shop = PHOTO + base[5] + f"?tag={TAG}"; exact = True
+        base = ROOMS[h[6]]; items = items_of(base[6]); shop = PHOTO + base[5] + f"?tag={TAG}"; exact = True
     else:
-        items = [(P[a], plink(a)) for a in h[5]]; shop = h[7]; exact = h[0] == "christmas-tablescape"
+        items = items_of(h[5]); shop = h[7]; exact = h[0] == "christmas-tablescape"
     if not alt: alt = f"{h[1].replace('The ', '', 1)}. {h[3]}"
     hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat=h[2].capitalize(), blurb=h[3], img=img, alt=alt,
                        items=items, shop=shop, exact=exact, url=f"/holiday/{h[0]}/", kind="hroom"))
@@ -62,9 +66,15 @@ guides = []
 for g in GUIDES:
     img, alt = imginfo(g[4])
     guides.append(dict(slug=g[0], title=g[1], cat=g[2], hol=g[3], img=img, alt=alt, dek=g[5], body=g[6],
-                       items=[(P[a], plink(a)) for a in g[7]],
+                       items=items_of(g[7]),
                        room=(roomby[ROOMS[g[8]][0]] if g[8] is not None else None),
                        url=f"/guides/{g[0]}/", kind="guide", seo=GUIDE_SEO[g[0]]))
+
+dupes = []
+for d in DUPES:
+    o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=f"/images/{d['img']}.jpg",
+                          items=items_of([d["asin"]]), blurb=d["answer"])
+    dupes.append(o)
 
 # ---------- shared pieces ----------
 css = open("base.css").read() + open("extra.css").read() + """
@@ -78,6 +88,23 @@ a.tile{color:inherit}
 .more{margin-top:56px}
 .more h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:32px;margin-bottom:22px}
 .tile[hidden]{display:none}
+.pinwrap{position:relative;margin:24px 0}.pinwrap .room-hero{margin:0}
+.pinbtn{position:absolute;top:14px;right:14px;background:#E60023;color:#fff;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em;padding:9px 16px;border-radius:24px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.pinbtn:hover{background:#ad081b}
+.item .acts{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.item a.cart{border-bottom:1px solid var(--olive);color:var(--olive)}
+.cmp{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:15px}
+.cmp th,.cmp td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp th{font-family:Jost;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);font-weight:500}
+.cmp td:first-child{font-weight:500}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.legal{font-size:12px;color:var(--soft);margin-top:28px}
+.links-page{max-width:520px;margin:0 auto;padding:40px 20px 60px;text-align:center}
+.links-page .lbtn{display:block;padding:16px;margin:12px 0;border:1px solid var(--ink);text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.links-page .lbtn.dark{background:var(--ink);color:var(--cream)}
+.links-page .grid{grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+.links-page .tile-txt h3{font-size:19px}
+@media(max-width:600px){.twocol{grid-template-columns:1fr}.cmp{font-size:14px}}
 .pillars h3.pt{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;margin:0 0 6px}
 """
 
@@ -117,7 +144,7 @@ def head(title, desc, path, img, alt="", otype="website", ld=None):
 """
 
 def nav(active):
-    items = [("rooms", "/rooms/", '<span class="f">Recreated </span>Rooms'), ("guides", "/guides/", '<span class="f">Style </span>Guides'),
+    items = [("rooms", "/rooms/", '<span class="f">Recreated </span>Rooms'), ("dupes", "/dupes/", '<span class="f">PB </span>Dupes'), ("guides", "/guides/", '<span class="f">Style </span>Guides'),
              ("holiday", "/holiday/", "Holiday"), ("about", "/about/", "About")]
     s = "".join(f'<a href="{u}" class="{"on" if k == active else ""}">{t}</a>' for k, u, t in items)
     return s + f'<a class="shop-tab" href="{STORE}" {X}>Shop</a>'
@@ -126,7 +153,7 @@ FOOT = f"""</main>
 <footer><div class="wrap">
  <div class="foot">
   <div><a class="brand foot-brand" href="/"><img src="/images/mark.svg" alt="" width="52" height="52"><span>The Elevated Cart</span></a><p style="margin-top:14px;max-width:320px">Recreated rooms, styling guides and honest finds for a warm, layered home.</p></div>
-  <nav aria-label="Site"><a href="/rooms/">Recreated Rooms</a><a href="/guides/">Style Guides</a><a href="/holiday/">Holiday</a><a href="/about/">About</a><a href="/disclosure/">Affiliate Disclosure</a></nav>
+  <nav aria-label="Site"><a href="/rooms/">Recreated Rooms</a><a href="/dupes/">Pottery Barn Dupes</a><a href="/guides/">Style Guides</a><a href="/holiday/">Holiday</a><a href="/about/">About</a><a href="/disclosure/">Affiliate Disclosure</a></nav>
   <nav aria-label="Social"><a href="{PIN}" target="_blank" rel="noopener">Pinterest</a><a href="https://www.instagram.com/theelevatedcart" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@theelevatedcart" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/share/1FT9NSP1ji/" target="_blank" rel="noopener">Facebook</a><a href="{STORE}" {X}>Amazon Storefront</a></nav>
  </div>
  <div class="fine">As an Amazon Associate I earn from qualifying purchases. © 2026 The Elevated Cart</div>
@@ -147,8 +174,13 @@ def page(path, active, title, desc, img, body, alt="", otype="website", ld=None,
     PAGES.append(path)
 
 PAGES = []
+def absimg(i): return i if i.startswith("http") else SITE + i
+def hero(o):
+    q = urllib.parse.urlencode({"url": SITE + o["url"], "media": absimg(o["img"]), "description": o["title"] + " | The Elevated Cart"})
+    return (f'<figure class="pinwrap"><img class="room-hero" src="{E(o["img"])}" alt="{E(o["alt"])}">'
+            f'<a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?{E(q)}" target="_blank" rel="noopener" aria-label="Save to Pinterest">Save</a></figure>')
 def label(o):
-    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o["cat"]}[o["kind"]]
+    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o["cat"], "dupe": f"Pottery Barn dupe · {o['cat']}"}[o["kind"]]
 def tile(o, h="h3"):
     return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
 def grid(items, gid="", rooms_cls=True):
@@ -160,7 +192,7 @@ def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
             f'<p style="font-size:14px;color:var(--soft);margin-bottom:8px">{note}</p>'
-            + "".join(f'<div class="item"><div><b>{E(n)}</b></div><a href="{u}" {X}>Shop on Amazon</a></div>' for n, u in items) + "</section>")
+            + "".join(f'<div class="item"><div><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + (f'<a class="cart" href="{cartlink(a)}" {X}>Add to cart</a>' if a in BIG else "") + '</div></div>' for n, u, a in items) + "</section>")
 def crumbs(trail):
     html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -168,7 +200,7 @@ def crumbs(trail):
     return f'<nav class="crumbs" aria-label="Breadcrumb">{html_}</nav>', ld
 def itemlist(name, items):
     return {"@context": "https://schema.org", "@type": "ItemList", "name": name,
-            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "url": u} for i, (n, u) in enumerate(items)]}
+            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it[0], "url": it[1]} for i, it in enumerate(items)]}
 ORG = {"@context": "https://schema.org", "@type": "Organization", "name": NAME, "url": SITE, "logo": SITE + "/images/mark.svg",
        "sameAs": ["https://www.instagram.com/theelevatedcart", "https://www.tiktok.com/@theelevatedcart"]}
 AUTHOR = {"@type": "Organization", "name": NAME, "url": SITE}
@@ -183,6 +215,7 @@ home = f"""<div class="wrap"><div class="hero">
  <div class="hero-imgs"><img src="{E(rooms[0]['img'])}" alt="{E(rooms[0]['alt'])}"><img src="{E(rooms[9]['img'])}" alt="{E(rooms[9]['alt'])}"></div>
 </div></div>
 <section class="block"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">The best part</div><h2>Recreated rooms</h2></div><a class="back" href="/rooms/">See all rooms →</a></div>{grid([rooms[0], rooms[1], rooms[5]])}</div></section>
+<section class="block"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Look for less</div><h2>Pottery Barn dupes</h2></div><a class="back" href="/dupes/">See all dupes →</a></div>{grid(dupes[:3])}</div></section>
 <section class="block holiday"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Holiday at home</div><h2>Holiday rooms</h2></div><a class="back" href="/holiday/">All holiday rooms →</a></div>{grid([H['christmas-tablescape'], H['christmas-pillows'], H['thanksgiving-turkey-table']])}</div></section>
 <section class="block"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">Style guides</div><h2>Style, simplified</h2></div><a class="back" href="/guides/">View all →</a></div>{grid([g for g in guides if not g['hol']][:3])}</div></section>
 <section class="block promise"><div class="wrap">
@@ -216,7 +249,7 @@ def related(pool, me, n=3):
 for r in rooms:
     cr, crld = crumbs([("Home", "/"), ("Recreated Rooms", "/rooms/"), (r["title"], None)])
     body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Recreated room · {E(r['cat'])}</div><h1>{E(r['title'])}</h1><p class="dek">{E(r['blurb'])}</p>{DISC}
-<img class="room-hero" src="{E(r['img'])}" alt="{E(r['alt'])}">
+{hero(r)}
 <div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{r['shop']}" {X}>Shop every piece in this photo</a></div>
 {plist(r['items'], 'The key pieces in this room', 'Direct links to the main pieces in this room. Each link is for the single item named.')}
 <div class="more"><h2>More recreated rooms</h2>{grid(related(rooms, r))}</div></article></div>"""
@@ -247,7 +280,7 @@ for g in guides:
     pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]
     body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">{E(g['cat'])}</div><h1>{E(g['title'])}</h1><p class="dek">{E(g['dek'])}</p>{DISC}
 <div class="answer"><h2>{E(q)}</h2><p>{E(a)}</p></div>
-<img class="room-hero" src="{E(g['img'])}" alt="{E(g['alt'])}">{g['body']}
+{hero(g)}{g['body']}
 {plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}
 {roombox}{faqhtml}
 <div class="more"><h2>More guides</h2>{grid(related(pool, g))}</div></article></div>"""
@@ -271,7 +304,7 @@ for h in hrooms:
     btn = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{h["shop"]}" {X}>{"Shop every piece in this photo" if h["exact"] else "Shop the look on Amazon"}</a></div>' if h["shop"] else ""
     extra = f'<a class="btn" href="{lst}" {X}>Shop all {h["cat"]} decor</a>' if h["shop"] != lst else ""
     body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Holiday · {E(h['cat'])}</div><h1>{E(h['title'])}</h1><p class="dek">{E(h['blurb'])}</p>{DISC}
-<img class="room-hero" src="{E(h['img'])}" alt="{E(h['alt'])}">{btn}
+{hero(h)}{btn}
 {plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}
 <div class="btns"><a class="btn" href="/holiday/">More holiday rooms</a>{extra}</div>
 <div class="more"><h2>More holiday rooms</h2>{grid(related(hrooms, h))}</div></article></div>"""
@@ -279,6 +312,46 @@ for h in hrooms:
          ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": h["title"], "description": h["blurb"], "image": h["img"] if h["img"].startswith("http") else SITE + h["img"],
                     "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + h["url"]}]
             + ([itemlist(h["title"] + " shopping list", h["items"])] if h["items"] else []))
+
+# ---------- dupes ----------
+LEGAL = '<p class="legal">Pottery Barn is a trademark of its owner. The Elevated Cart is not affiliated with or endorsed by Pottery Barn. "Dupe" means a similar look at a lower price, not the same product. Pottery Barn prices are list prices noted on the date shown and may change.</p>'
+body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Look for less</div>
+<h1 class="vh">Pottery Barn dupes on Amazon</h1>
+<p class="sub">Pottery Barn pieces matched to Amazon look-alikes on shape, material and finish, with an honest side-by-side of what's the same and what's different.</p>
+{chips(['All'] + sorted(set(d['cat'] for d in dupes)), 'g-dupes')}{grid(dupes, 'g-dupes')}{LEGAL}</div>"""
+page("/dupes/", "dupes", "Pottery Barn Dupes on Amazon: Designer Look for Less", "Pottery Barn dupes on Amazon matched on shape, material and finish: floor mirrors, counter stools, dining chairs, bookcases and more, compared side by side.",
+     dupes[0]["img"], body, dupes[0]["alt"], ld=[itemlist("Pottery Barn dupes", [(d["title"], SITE + d["url"]) for d in dupes])], js=FILTER_JS)
+for d in dupes:
+    cr, crld = crumbs([("Home", "/"), ("Pottery Barn Dupes", "/dupes/"), (d["title"], None)])
+    pbp = f" ({d['pb_price']} as of {d['checked']})" if d["pb_price"] else ""
+    rows = "".join(f"<tr><td>{E(a)}</td><td>{E(b)}</td><td>{E(c)}</td></tr>" for a, b, c in d["rows"])
+    a0 = d["asin"]
+    buy = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{plink(a0)}" {X}>See it on Amazon</a>' + (f'<a class="btn" href="{cartlink(a0)}" {X}>Add to cart</a>' if a0 in BIG else "") + "</div>"
+    faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
+    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Pottery Barn dupe · {E(d['cat'])}</div><h1>{E(d['title'])}</h1>
+<p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>{DISC}
+<div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
+{hero(d)}{buy}
+<h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>
+<div class="twocol"><div><h2>What's the same</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['same'])}</ul></div><div><h2>What's different</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['diff'])}</ul></div></div>
+<h2>How to style it</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['tips'])}</ul>
+{plist(d['items'], 'Shop the dupe', "Amazon prices change often, so check today's price on the listing.")}
+{faqhtml}{LEGAL}
+<div class="more"><h2>More Pottery Barn dupes</h2>{grid(related(dupes, d))}</div></article></div>"""
+    page(d["url"], "dupes", d["title"], d["answer"][:300], d["img"], body, d["alt"], "article",
+         ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": d["title"], "description": d["answer"], "image": SITE + d["img"],
+                    "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + d["url"]},
+             {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in [(f"What is the best {d['pb']} dupe?", d["answer"])] + d["faq"]]},
+             itemlist(d["title"], d["items"])])
+
+# ---------- links (bio link page) ----------
+latest = [H['christmas-tablescape'], dupes[0], H['christmas-pillows'], rooms[-1], dupes[1], H['thanksgiving-turkey-table']]
+body = f"""<div class="links-page"><img src="/images/mark.svg" alt="" width="84" height="84"><h1 class="serif" style="font-weight:400;font-size:32px;margin:10px 0 4px">The Elevated Cart</h1>
+<p style="color:var(--soft);margin-bottom:18px">Designer looks, attainable finds. Tap any look to shop it.</p>
+<a class="lbtn dark" href="{STORE}" {X}>Shop my Amazon storefront</a>
+<a class="lbtn" href="/holiday/">Holiday rooms</a><a class="lbtn" href="/dupes/">Pottery Barn dupes</a><a class="lbtn" href="/rooms/">Recreated rooms</a>
+<h2 class="serif" style="font-weight:400;font-size:26px;margin:28px 0 14px">Latest looks</h2>{grid(latest)}</div>"""
+page("/links/", "", "The Elevated Cart Links", "Shop The Elevated Cart: latest recreated rooms, holiday looks, Pottery Barn dupes and my Amazon storefront.", rooms[0]["img"], body, rooms[0]["alt"])
 
 # ---------- about / disclosure / 404 ----------
 about = f"""<div class="wrap page" style="max-width:960px"><div class="about-grid"><div>

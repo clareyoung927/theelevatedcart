@@ -142,4 +142,21 @@ a.tile{color:inherit}
 .more{margin-top:56px}
 .more h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:32px;margin-bottom:22px}
 .tile[hidden]{display:none}
+.pinwrap{position:relative;margin:24px 0}.pinwrap .room-hero{margin:0}
+.pinbtn{position:absolute;top:14px;right:14px;background:#E60023;color:#fff;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em;padding:9px 16px;border-radius:24px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.pinbtn:hover{background:#ad081b}
+.item .acts{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.item a.cart{border-bottom:1px solid var(--olive);color:var(--olive)}
+.cmp{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:15px}
+.cmp th,.cmp td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp th{font-family:Jost;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);font-weight:500}
+.cmp td:first-child{font-weight:500}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.legal{font-size:12px;color:var(--soft);margin-top:28px}
+.links-page{max-width:520px;margin:0 auto;padding:40px 20px 60px;text-align:center}
+.links-page .lbtn{display:block;padding:16px;margin:12px 0;border:1px solid var(--ink);text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.links-page .lbtn.dark{background:var(--ink);color:var(--cream)}
+.links-page .grid{grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+.links-page .tile-txt h3{font-size:19px}
+@media(max-width:600px){.twocol{grid-template-columns:1fr}.cmp{font-size:14px}}
 .pillars h3.pt{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;margin:0 0 6px}

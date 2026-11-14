@@ -84,3 +84,9 @@ HROOMS=[
  ("fall-living-room","The Fall Living Room","thanksgiving","Paneled walls, gold frames and warm fall pillows. Cozy from October through Thanksgiving.","room:11",None,11,None),
  ("haunted-manor-table","The Haunted Manor Halloween Table","halloween","A haunted house runner, black taper candles and moody dinnerware for a chic Halloween table.","img:halloween-haunted-manor",["B0H836ZTQN"],None,HAL_LIST),
 ]
+
+P.update({"B0DJVV3GMP":"Easly 77\" x 38\" arched floor mirror, gold","B0CT9WGRDY":"Nathan James Beacon woven counter stools, set of 2","B0GN9QJ47W":"Woven rope-back dining chairs, set of 2","B0HB497V91":"Nathan James Syd arched bookcase"})
+# Prices checked 2026-11-13. BIG = $100+ pieces that get an "Add to cart" button (longer Amazon credit window).
+BIG = set("""B01L8BZIMO B06XVSZVN1 B08BJD4Y9P B0897VQ1LD B07G1B6WT9 B08Z8HVLFL B09FFMWXKG B0B74T71ND B0B9HH5TCG B0BVXHZBXD B0BFVHZRSF B0BS75H57L B0C6LHK6LG B0C4C3VPPL B0CLSY54SD B0CW8YJXG2 B0CW4CYY2C B0D1LP2K5Z B0CT9WGRDY B0D2Y8HJMR B0DBM3BJL6 B0D7ZWDTJG B0DJVV3GMP B0DNCQQ4J8 B0DQ5SBW2Y B0DN4THDYH B0DM9NFVRK B0F13RH2CM B0F1FJSXHM B0F1M3HK7H B0F8Z7R7JT B0F6YD9Y22 B0FCS74KXG B0FGPG2Q4H B0FHHB3ZNN B0FL1NRT5W B0FPF2FQV4 B0FSKL5257 B0FVSD1WCV B0G1H15JY6 B0FX9ZWF9V B0G1Y736R6 B0GCMCB67M B0GBVC9WWB B0GN9QJ47W B0GLZ4QM5Z B0GR4PYCW7 B0GTMQQFYZ B0GS1CBJR1 B0GVS552M5 B0GYT15MS2 B0GZ4HRGNZ B0H1L29HKW B0H2TYNT31 B0H5CKFVYT B0H5HX75HQ B0H8N3G5LW B0HB497V91 B0HDRPY4N4""".split())
+# Showing as unavailable on Amazon on 2026-11-13: hidden from shopping lists until back in stock or replaced.
+UNAVAIL = set("""B095Z3LWCB B08BZBHLBR B0D2116SPT B0FGMPKWSL B0GMVJ32ZJ B0GRTZS1B9 B0H6Q8DBSP B0H8XV2KJH""".split())

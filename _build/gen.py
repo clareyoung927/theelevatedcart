@@ -240,7 +240,7 @@ def thumb(a, n=""):
 def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
-            + "".join(f'<div class="item{" hasimg" if a in AMZIMG else ""}">{thumb(a, n)}<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
+            + "".join(f'<div class="item{" hasimg" if a in AMZIMG else ""}">' + (f'<a href="{u}" {X}>{thumb(a, n)}</a>' if a in AMZIMG else "") + f'<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
 def crumbs(trail):
     html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [

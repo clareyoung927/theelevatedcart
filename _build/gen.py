@@ -96,7 +96,7 @@ a.tile{color:inherit}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
 .buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
-.article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}
+.article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .disc{margin:0 0 16px;font-size:12px;padding:8px 12px}.dupe .shop{margin-top:0}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}
 @media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
 .faq h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:22px;margin:22px 0 6px}
 .more{margin-top:56px}
@@ -215,7 +215,7 @@ def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
             f'<p style="font-size:14px;color:var(--soft);margin-bottom:8px">{note}</p>'
-            + "".join(f'<div class="item"><div><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + (f'<a class="cart" href="{cartlink(a)}" {X}>Add to cart</a>' if a in BIG else "") + '</div></div>' for n, u, a in items) + "</section>")
+            + "".join(f'<div class="item"><div><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
 def crumbs(trail):
     html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -272,9 +272,9 @@ def related(pool, me, n=3):
 for r in rooms:
     cr, crld = crumbs([("Home", "/"), ("Recreated Rooms", "/rooms/"), (r["title"], None)])
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(r['title'])}</h1>
-{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}
-<p class="dek">{E(r['blurb'])}</p>{DISC}
-{plist(r['items'], 'The key pieces in this room', 'Direct links to the main pieces in this room. Each link is for the single item named.')}
+{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}{DISC}
+{plist(r['items'], 'The key pieces', 'Each link is for the single item named.')}
+<p class="dek">{E(r['blurb'])}</p>
 <div class="more"><h2>More recreated rooms</h2>{grid(related(rooms, r))}</div></article></div>"""
     desc = f"{r['title'].replace('The ', '', 1)} recreated with Amazon finds: {r['blurb']} Shop every piece."
     page(r["url"], "rooms", r["title"] + " (Shop the Look)", desc[:300], r["img"], body, r["alt"], "article",
@@ -294,18 +294,21 @@ for g in guides:
     q, a, faqs = g["seo"]
     cr, crld = crumbs([("Home", "/"), ("Style Guides", "/guides/"), (g["title"], None)])
     roombox = ""
-    if g["room"]:
+    if g["room"] and not g["items"]:
         rr = g["room"]
         roombox = f'<section class="shop"><div class="eyebrow">Shop the photo</div><h2 style="font-size:26px;margin:0 0 6px">{E(rr["title"])}</h2><p style="font-size:14px;color:var(--soft);margin-bottom:14px">Every piece in this room is tagged on my Amazon storefront.</p><a class="btn dark" href="{rr["shop"]}" {X}>Shop the room</a> <a class="btn" href="{rr["url"]}">See the room</a></section>'
     elif not g["items"]:
         roombox = f'<section class="shop"><div class="eyebrow">Get the look</div><h2 style="font-size:26px;margin:0 0 6px">Shop my holiday picks</h2><p style="font-size:14px;color:var(--soft);margin-bottom:14px">Find my current favorites in my Amazon storefront.</p><a class="btn dark" href="{XMAS_LIST}" {X}>Shop on Amazon</a></section>'
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(fq)}</h3><p>{E(fa)}</p>" for fq, fa in faqs) + "</section>"
+    gbuy = buybar(g["room"]["shop"], "Shop this photo", g["items"]) if g["room"] else (buybar(STORE, "Shop on Amazon", g["items"]) if g["items"] else "")
     pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]
-    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">{E(g['cat'])}</div><h1>{E(g['title'])}</h1><p class="dek">{E(g['dek'])}</p>{DISC}
+    body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(g['title'])}</h1>
+{hero(g)}{gbuy}{DISC}
+{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}{roombox}
+<p class="dek">{E(g['dek'])}</p>
 <div class="answer"><h2>{E(q)}</h2><p>{E(a)}</p></div>
-{hero(g)}{g['body']}
-{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}
-{roombox}{faqhtml}
+{g['body']}
+{faqhtml}
 <div class="more"><h2>More guides</h2>{grid(related(pool, g))}</div></article></div>"""
     page(g["url"], "guides", g["title"], f"{a}"[:300], g["img"], body, g["alt"], "article",
          ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": g["title"], "description": g["dek"], "image": g["img"] if g["img"].startswith("http") else SITE + g["img"],
@@ -327,9 +330,9 @@ for h in hrooms:
     btn = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{h["shop"]}" {X}>{"Shop every piece in this photo" if h["exact"] else "Shop the look on Amazon"}</a></div>' if h["shop"] else ""
     extra = f'<a class="btn" href="{lst}" {X}>Shop all {h["cat"]} decor</a>' if h["shop"] != lst else ""
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(h['title'])}</h1>
-{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}
-<p class="dek">{E(h['blurb'])}</p>{DISC}
+{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}{DISC}
 {plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}
+<p class="dek">{E(h['blurb'])}</p>
 <div class="btns"><a class="btn" href="/holiday/">More holiday rooms</a>{extra}</div>
 <div class="more"><h2>More holiday rooms</h2>{grid(related(hrooms, h))}</div></article></div>"""
     page(h["url"], "holiday", h["title"] + " (Shop the Look)", f"{h['blurb']} Shop the {h['cat']} look with Amazon finds."[:300], h["img"], body, h["alt"], "article",
@@ -354,13 +357,13 @@ for d in dupes:
 
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(d['title'])}</h1>
-{hero(d)}{buy}
-<p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>{DISC}
+{hero(d)}{buy}{DISC}
+{plist(d['items'], 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}
+<p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>
 <div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
 <h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>
 <div class="twocol"><div><h2>What's the same</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['same'])}</ul></div><div><h2>What's different</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['diff'])}</ul></div></div>
 <h2>How to style it</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['tips'])}</ul>
-{plist(d['items'], 'Shop the dupe', "Amazon prices change often, so check today's price on the listing.")}
 {faqhtml}{LEGAL}
 <div class="more"><h2>More Pottery Barn dupes</h2>{grid(related(dupes, d))}</div></article></div>"""
     page(d["url"], "dupes", d["title"], d["answer"][:300], d["img"], body, d["alt"], "article",

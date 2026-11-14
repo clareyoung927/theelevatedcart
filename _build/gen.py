@@ -225,7 +225,7 @@ def page(path, active, title, desc, img, body, alt="", otype="website", ld=None,
 PAGES = []
 # Section tracking IDs: product, cart, shoppable-photo and list links on these pages use the section ID.
 # Header/footer storefront links, the home page and /links/ keep the main website ID (TAG).
-SECTION_TAGS = {"/rooms/": "theelevatedcartwebrooms-20", "/holiday/": "theelevatedcartwebholidays-20",
+SECTION_TAGS = {"/black-friday-home-decor/": "theelevatedcartwebholidays-20", "/rooms/": "theelevatedcartwebrooms-20", "/holiday/": "theelevatedcartwebholidays-20",
                 "/dupes/": "theelevatedcartwebdupes-20", "/guides/": "theelevatedcartwebguides-20"}
 def absimg(i): return i if i.startswith("http") else SITE + i
 def hero(o):
@@ -276,7 +276,7 @@ mstart = [("Recreated rooms", "Fully shoppable", "/rooms/", rooms[0]),
 mobile_home = f"""<div class="m-only mhome"><div class="wrap">
 <p class="mhero">The designer look, <em>without</em> the designer price.</p>
 <p class="msub">Designer rooms recreated with Amazon finds. Tap a section to start shopping.</p>
-<div class="mstart">""" + "".join(f'<a class="mtile" href="{u}"><img src="{E(o["img"])}" alt="{E(o["alt"])}"><span class="mtx"><span class="mt">{t}</span><span class="ms">{sub}</span></span></a>' for t, sub, u, o in mstart) + f"""</div>
+<a class="btn dark mshop" href="/black-friday-home-decor/" style="margin:0 0 14px">Black Friday home wish list</a><div class="mstart">""" + "".join(f'<a class="mtile" href="{u}"><img src="{E(o["img"])}" alt="{E(o["alt"])}"><span class="mtx"><span class="mt">{t}</span><span class="ms">{sub}</span></span></a>' for t, sub, u, o in mstart) + f"""</div>
 <div class="mhead"><h2>Latest rooms</h2><a href="/rooms/">See all</a></div>{mrow(rooms[:8])}
 <div class="mhead"><h2>Pottery Barn dupes</h2><a href="/dupes/">See all</a></div>{mrow(dupes)}
 <div class="mhead"><h2>Holiday looks</h2><a href="/holiday/">See all</a></div>{mrow(hrooms[:8])}
@@ -288,7 +288,7 @@ home = mobile_home + f"""<div class="d-only"><div class="wrap"><div class="hero"
  <div><div class="eyebrow">Home styling, made simple</div>
  <h1>The designer look, <em>without</em> the designer price.</h1>
  <p>Designer rooms recreated with Amazon finds, plus styling guides for a warm, layered home. Every look is shoppable.</p>
- <div class="btns"><a class="btn dark" href="/rooms/">Shop the rooms</a><a class="btn" href="/guides/">Read the guides</a></div></div>
+ <div class="btns"><a class="btn dark" href="/black-friday-home-decor/">Black Friday wish list</a><a class="btn" href="/rooms/">Shop the rooms</a><a class="btn" href="/guides/">Read the guides</a></div></div>
  <div class="hero-imgs"><img src="{E(rooms[0]['img'])}" alt="{E(rooms[0]['alt'])}"><img src="{E(rooms[9]['img'])}" alt="{E(rooms[9]['alt'])}"></div>
 </div></div>
 <section class="block"><div class="wrap"><div class="sec-head"><div><div class="eyebrow">The best part</div><h2>Recreated rooms</h2></div><a class="back" href="/rooms/">See all rooms →</a></div>{grid([rooms[0], rooms[1], rooms[5]])}</div></section>
@@ -396,7 +396,7 @@ for g in guides:
 # ---------- holiday ----------
 body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Holiday at home</div>
 <h1 class="vh">Holiday rooms, recreated with Amazon finds</h1>
-<p class="sub">Every holiday look is shoppable. Tap a room to see the pieces. Looking for how-tos? <a href="/guides/#Holiday" style="color:var(--oak)">Jump to the holiday guides →</a></p>
+<p class="sub"><a href="/black-friday-home-decor/" style="color:var(--oak)"><b>New: my Black Friday home wish list →</b></a></p>\n<p class="sub">Every holiday look is shoppable. Tap a room to see the pieces. Looking for how-tos? <a href="/guides/#Holiday" style="color:var(--oak)">Jump to the holiday guides →</a></p>
 {chips(['All', 'Christmas', 'Thanksgiving', 'Halloween', '4th of July'], 'g-hol')}{grid(hrooms, 'g-hol')}</div>"""
 page("/holiday/", "holiday", "Holiday Rooms: Christmas, Thanksgiving, Halloween and 4th of July Looks", "Christmas tablescapes, Thanksgiving tables, holiday pillows, Halloween decor and Fourth of July patio looks recreated with Amazon finds. Shop every holiday look.",
      hrooms[0]["img"], body, hrooms[0]["alt"], ld=[itemlist("Holiday rooms", [(h["title"], SITE + h["url"]) for h in hrooms])], js=FILTER_JS)
@@ -455,6 +455,7 @@ latest = [H['christmas-tablescape'], dupes[0], H['christmas-pillows'], rooms[-1]
 body = f"""<div class="links-page"><img src="/images/mark.svg" alt="" width="84" height="84"><h1 class="serif" style="font-weight:400;font-size:32px;margin:10px 0 4px">The Elevated Cart</h1>
 <p style="color:var(--soft);margin-bottom:18px">Designer looks, attainable finds. Tap any look to shop it.</p>
 <a class="lbtn dark" href="{STORE}" {X}>Shop my Amazon storefront</a>
+<a class="lbtn dark" href="/black-friday-home-decor/">Black Friday home wish list</a>
 <a class="lbtn" href="/holiday/">Holiday rooms</a><a class="lbtn" href="/dupes/">Pottery Barn dupes</a><a class="lbtn" href="/rooms/">Recreated rooms</a>
 <h2 class="serif" style="font-weight:400;font-size:26px;margin:28px 0 14px">Latest looks</h2>{grid(latest)}</div>"""
 page("/links/", "", "The Elevated Cart Links", "Shop The Elevated Cart: latest recreated rooms, holiday looks, Pottery Barn dupes and my Amazon storefront.", rooms[0]["img"], body, rooms[0]["alt"])
@@ -483,6 +484,38 @@ open(os.path.join(OUT, "404.html"), "w").write(nf.replace('<link rel="canonical"
 # ---------- assets, sitemap, robots ----------
 os.makedirs(os.path.join(OUT, "assets"), exist_ok=True)
 open(os.path.join(OUT, "assets", "site.css"), "w").write(css)
+
+# ---------- black friday ----------
+from bf import *
+_dmap = {d["slug"]: d for d in dupes}
+_bfd = [_dmap[x] for x in BF_DUPES if x in _dmap]
+_bfo = dict(url=BF_SLUG, img=BF_IMG, alt=BF_ALT, title=BF_TITLE)
+def _bflist(key, head_, note, asins):
+    its = items_of(asins)
+    h = plist(its, head_, note).replace('aria-labelledby="shoplist"', f'aria-labelledby="bf-{key}"').replace('id="shoplist"', f'id="bf-{key}"')
+    h = h.replace('<div class="eyebrow">Get the look</div>', '<div class="eyebrow">Black Friday wish list</div>', 1).replace('</h2>', f'</h2><p style="font-size:14px;color:var(--soft);margin:0 0 12px">{E(note)}</p>', 1)
+    return h, its
+_secs = [_bflist(*l) for l in BF_LISTS]
+_all = [i for _, its in _secs for i in its]
+_jump = '<p class="sub" style="margin:14px 0">' + " · ".join(f'<a href="#bf-{k}" style="color:var(--oak)">{E(h)}</a>' for k, h, _, _ in BF_LISTS) + "</p>"
+cr, crld = crumbs([("Home", "/"), ("Holiday", "/holiday/"), ("Black Friday", None)])
+faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in BF_FAQ) + "</section>"
+body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(BF_TITLE)}</h1>
+{hero(_bfo)}{DISC}
+<p class="dek">{E(BF_DEK)}</p>
+<div class="answer"><h2>{E(BF_Q)}</h2><p>{E(BF_A)}</p></div>
+{_jump}
+<h2>The Pottery Barn dupes on my list</h2>{grid(_bfd)}
+{"".join(h for h, _ in _secs)}
+{BF_BODY}
+{faqhtml}
+<div class="more"><h2>Shop the holiday rooms</h2>{grid([H['christmas-tablescape'], H['christmas-pillows'], H['thanksgiving-turkey-table']])}</div></article></div>"""
+page(BF_SLUG, "holiday", BF_TITLE, (BF_DEK + " " + BF_A)[:300], BF_IMG, body, BF_ALT, "article",
+     ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": BF_TITLE, "description": BF_DEK, "image": SITE + BF_IMG,
+                "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-14", "dateModified": TODAY, "mainEntityOfPage": SITE + BF_SLUG},
+         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in [(BF_Q, BF_A)] + BF_FAQ]},
+         itemlist("Black Friday home wish list", _all)])
+
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
      "".join(f"<url><loc>{SITE}{p}</loc><lastmod>{TODAY}</lastmod></url>\n" for p in PAGES) + "</urlset>\n"
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)

@@ -95,7 +95,7 @@ a.tile{color:inherit}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
-.item .pthumb{width:72px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
+.item span.pthumb{display:block;background:var(--linen)}.item .pthumb{width:72px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
 .buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
 .article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .disc{margin:0 0 16px;font-size:12px;padding:8px 12px}.dupe .shop{margin-top:0}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}
 @media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
@@ -218,7 +218,7 @@ except Exception:
     AMZIMG = {}
 def thumb(a):
     im = AMZIMG.get(a)
-    return f'<img class="pthumb" src="{E(im["url"])}" alt="" loading="lazy">' if im else ""
+    return f'<img class="pthumb" src="{E(im["url"])}" alt="" loading="lazy">' if im else '<span class="pthumb"></span>'
 def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'

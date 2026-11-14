@@ -89,6 +89,9 @@ a.tile{color:inherit}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
+.buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 10px}
+.dupe .pinwrap{margin:0 0 12px}.dupe .room-hero{max-height:62vh}
+@media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
 .faq h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:22px;margin:22px 0 6px}
 .more{margin-top:56px}
 .more h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:32px;margin-bottom:22px}
@@ -340,12 +343,13 @@ for d in dupes:
     pbp = f" ({d['pb_price']} as of {d['checked']})" if d["pb_price"] else ""
     rows = "".join(f"<tr><td>{E(a)}</td><td>{E(b)}</td><td>{E(c)}</td></tr>" for a, b, c in d["rows"])
     a0 = d["asin"]
-    buy = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{plink(a0)}" {X}>See it on Amazon</a>' + (f'<a class="btn" href="{cartlink(a0)}" {X}>Add to cart</a>' if a0 in BIG else "") + "</div>"
+    buy = f'<div class="buybar"><a class="btn dark" href="{plink(a0)}" {X}>View on Amazon</a><a class="btn" href="{cartlink(a0)}" {X}>Add to cart</a></div>'
+
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
-    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Pottery Barn dupe · {E(d['cat'])}</div><h1>{E(d['title'])}</h1>
+    body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(d['title'])}</h1>
+{hero(d)}{buy}
 <p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>{DISC}
 <div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
-{hero(d)}{buy}
 <h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>
 <div class="twocol"><div><h2>What's the same</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['same'])}</ul></div><div><h2>What's different</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['diff'])}</ul></div></div>
 <h2>How to style it</h2><ul>{"".join(f"<li>{E(x)}</li>" for x in d['tips'])}</ul>

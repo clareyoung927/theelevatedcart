@@ -138,6 +138,9 @@ a.tile{color:inherit}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
+.buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 10px}
+.dupe .pinwrap{margin:0 0 12px}.dupe .room-hero{max-height:62vh}
+@media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
 .faq h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:22px;margin:22px 0 6px}
 .more{margin-top:56px}
 .more h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:32px;margin-bottom:22px}

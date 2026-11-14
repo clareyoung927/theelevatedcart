@@ -170,12 +170,19 @@ var h=(location.hash||'').slice(1);if(h){var b=c.querySelector('[data-c="'+h+'"]
 
 def page(path, active, title, desc, img, body, alt="", otype="website", ld=None, js=""):
     s = head(title, desc, path, img, alt, otype, ld).replace("{NAV}", nav(active)) + body + FOOT + js + "</body>\n</html>\n"
+    sec = next((v for k, v in SECTION_TAGS.items() if path.startswith(k)), None)
+    if sec:
+        s = s.replace(STORE, "@@STORE@@").replace(f"tag={TAG}", f"tag={sec}").replace(f"AssociateTag={TAG}", f"AssociateTag={sec}").replace("@@STORE@@", STORE)
     p = os.path.join(OUT, path.strip("/"), "index.html") if path != "/" else os.path.join(OUT, "index.html")
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w").write(s)
     PAGES.append(path)
 
 PAGES = []
+# Section tracking IDs: product, cart, shoppable-photo and list links on these pages use the section ID.
+# Header/footer storefront links, the home page and /links/ keep the main website ID (TAG).
+SECTION_TAGS = {"/rooms/": "theelevatedcartwebrooms-20", "/holiday/": "theelevatedcartwebholidays-20",
+                "/dupes/": "theelevatedcartwebdupes-20", "/guides/": "theelevatedcartwebguides-20"}
 def absimg(i): return i if i.startswith("http") else SITE + i
 def hero(o):
     q = urllib.parse.urlencode({"url": SITE + o["url"], "media": absimg(o["img"]), "description": o["title"] + " | The Elevated Cart"})

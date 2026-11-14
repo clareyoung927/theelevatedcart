@@ -115,3 +115,5 @@ BIG |= {"B0GGQX2LQS", "B0FNCSSGRZ"}
 
 P.update({"B0CWH5GL6L":"Round fluted drum coffee table, oak","B0HFS1RWTZ":"Cane back dining chairs, set of 2"})
 BIG |= {"B0CWH5GL6L", "B0HFS1RWTZ"}
+P.update({"B0DNT1GDW7":"White cotton quilt set, king"})
+BIG |= {"B0DNT1GDW7"}

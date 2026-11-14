@@ -209,6 +209,30 @@ DUPES = [
       tips=["Use the largest tray for sliced turkey and the small ones for butter and cranberry sauce.","Lean the turkey tray on a small brass stand on the sideboard between uses.","Pair with green plaid napkins and amber glasses."],
       faq=[("What is a dupe for the Pottery Barn Bedford Harvest platter?","The Spode Woodland nesting trays bring the same turkey motif to the table as a set of three."),("Are Spode Woodland trays food safe?","Yes, Spode Woodland is made for serving; check the listing for dishwasher and microwave care."),("Can I mix patterns on the Thanksgiving table?","Yes. Keep one color family, like browns and creams, and mix motifs within it.")],
       also=[], room=None),
+    dict(slug="pottery-barn-faux-fur-pumpkin-pillow-dupe", cat="Holiday", pb="Pottery Barn Faux Fur Pumpkin Shaped Pillow",
+      pb_price="$39.50", checked="November 2026", asin="B0B7DKVC9Z",
+      amazon="YRXRUS Teddy Fleece Pumpkin Shaped Pillow, Large",
+      title="Pottery Barn Faux Fur Pumpkin Pillow Dupe on Amazon", img="dupe-pumpkin-pillow",
+      alt="Plush rust brown pumpkin shaped pillow with a green stem on a cream sofa beside a plaid pillow, a chunky knit throw and a lit candle",
+      answer="A great Amazon look for less for the Pottery Barn Faux Fur Pumpkin Shaped Pillow is the YRXRUS teddy fleece pumpkin pillow. It has the same plump, segmented pumpkin shape with a soft stem, in a cozy textured fleece.",
+      rows=[("Shape","Segmented pumpkin","Segmented pumpkin"),("Stem","Wrapped stem","Soft fabric stem"),("Fabric","Faux fur","Teddy fleece"),("Colors","Camel","Brown, off white, green and more"),("Care","Spot clean","Machine washable"),("Price","$39.50","Check today's price")],
+      same=["Plump segmented pumpkin shape","Soft, touchable texture","Cozy fall accent for a sofa or bed"],
+      diff=["Teddy fleece instead of faux fur","The large size is about 12 inches across, so it may be smaller","Shown in brown; an off white option is closest to the Pottery Barn camel"],
+      tips=["Tuck it in front of a square plaid or linen pillow.","Group two colors, like brown and off white, on a bench or bed.","Keep it out through Thanksgiving, then swap in a knit throw for winter."],
+      faq=[("What is a dupe for the Pottery Barn faux fur pumpkin pillow?","The YRXRUS teddy fleece pumpkin pillow has the same plump pumpkin shape in a soft textured fabric."),("Can you wash a pumpkin pillow?","The YRXRUS pillow is machine washable on a cold, delicate cycle."),("What size is it?","The large size is about 12 inches across and 6 inches tall; there is also a small size.")],
+      also=[], room=None),
+    dict(slug="pottery-barn-cloud-quilt-dupe", cat="Bedroom", pb="Pottery Barn Cloud Quilt",
+      pb_price="$299 (King, quilt only)", checked="November 2026", asin="B0DNT1GDW7",
+      amazon="Brandream White Cotton Quilt Set, King, with 2 Shams",
+      title="Pottery Barn Cloud Quilt Dupe on Amazon", img="dupe-white-wavy-quilt",
+      alt="White cotton quilt with soft wavy channel stitching and matching shams on a light oak bed in a sunny neutral bedroom",
+      answer="A great Amazon look for less for the Pottery Barn Cloud Quilt is the Brandream white cotton quilt set. It has the same soft, wavy hand-quilted look in crisp white, and the king set includes two matching shams.",
+      rows=[("Stitching","Wavy, organic channels","Wavy, organic channels"),("Fabric","Cotton linen blend","100% cotton"),("Color","White and other colors","White"),("King set","Quilt only; shams extra","Quilt plus 2 king shams"),("Size","King/Cal. King","About 106 x 96 inches"),("Price","$299 king quilt","Check today's price")],
+      same=["Soft wavy quilting with a relaxed, lived-in look","Light, breathable layer for year round","Crisp white that works with any bedding"],
+      diff=["All cotton instead of a cotton linen blend","Comes with 2 shams, which Pottery Barn sells separately","White only in this listing"],
+      tips=["Fold it at the foot of the bed over a white duvet for hotel-style layers.","Pair with linen sheets and a jute rug for a relaxed look.","Use it alone as a summer blanket on warm nights."],
+      faq=[("What is a dupe for the Pottery Barn Cloud Quilt?","The Brandream white cotton quilt set has the same wavy quilted look and includes 2 shams."),("Is the Amazon quilt oversized?","Yes, the king is about 106 x 96 inches, enough to cover a king or a tall queen mattress."),("Should I wash a new quilt before using it?","Yes, a cold gentle wash softens cotton quilts and brings out the crinkled texture.")],
+      also=[], room=None),
 ]
 
 # Big category and sub category for the /dupes/ filters (Clare, 2026-11-14).
@@ -229,8 +253,10 @@ DUPE_CATS = {
     "pottery-barn-malibu-woven-nightstand-dupe": ("Bedroom", "Nightstands"),
     "pottery-barn-beachcomber-trunk-dupe": ("Bedroom", "Storage"),
     "pottery-barn-modern-farmhouse-cane-entry-cabinet-dupe": ("Entryway", "Cabinets & Consoles"),
-    "pottery-barn-glass-pumpkin-cloche-dupe": ("Holiday", "Thanksgiving"),
-    "pottery-barn-bedford-harvest-platter-dupe": ("Holiday", "Thanksgiving"),
+    "pottery-barn-glass-pumpkin-cloche-dupe": ("Holiday", "Fall & Thanksgiving"),
+    "pottery-barn-faux-fur-pumpkin-pillow-dupe": ("Holiday", "Fall & Thanksgiving"),
+    "pottery-barn-cloud-quilt-dupe": ("Bedroom", "Bedding"),
+    "pottery-barn-bedford-harvest-platter-dupe": ("Holiday", "Fall & Thanksgiving"),
 }
 for _d in DUPES:
     _d["cat"], _d["sub"] = DUPE_CATS.get(_d["slug"], (_d["cat"], _d["cat"]))

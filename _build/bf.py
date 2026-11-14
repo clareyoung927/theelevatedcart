@@ -7,7 +7,7 @@ BF_DEK = "The Pottery Barn look for less, worth watching during Amazon's Black F
 BF_DUPES = ["pottery-barn-washington-spruce-christmas-tree-dupe", "pottery-barn-effie-arch-floor-mirror-dupe", "pottery-barn-coloma-round-coffee-table-dupe",
             "pottery-barn-cloud-quilt-dupe", "pottery-barn-sausalito-cane-bed-dupe", "pottery-barn-banks-round-pedestal-dining-table-dupe"]
 BF_LISTS = [
-    ("big", "The big pieces", "Furniture, rugs and lighting. These are the buys where a sale saves the most.",
+    ("big", "The big pieces", "Furniture, rugs and lighting. A sale on a big piece can save more dollars than one on a small accent.",
      ["B0FSKL5257", "B0C4C3VPPL", "B09GV787WM", "B0DNLRK1Y6", "B0GR4PYCW7", "B0BFVHZRSF", "B0CLSY54SD", "B0GGR888HN"]),
     ("cozy", "Cozy for winter", "Soft layers for the bed and the sofa.",
      ["B0CF173VLZ", "B0H3DZV4RP", "B07YXTZ33Z", "B0HBBVZDM2"]),
@@ -19,7 +19,7 @@ BF_LISTS = [
 BF_Q = "When is Amazon Black Friday 2026?"
 BF_A = "Amazon's Black Friday Week runs from Thursday, November 19 through Cyber Monday, November 30, 2026. Black Friday itself is November 27. Deals rotate during the week and popular items can sell out, so add the pieces you want to your cart early."
 BF_BODY = """<h2>How I shop Black Friday for my home</h2><ol>
-<li><b>Big pieces first.</b> A sale on a sideboard or rug saves far more than a sale on a candle. Start with the furniture you already planned to buy.</li>
+<li><b>Big pieces first.</b> A sale on a sideboard or rug can save far more dollars than a sale on a candle. Start with the furniture you already planned to buy.</li>
 <li><b>Measure before you buy.</b> Check the size against your room so you are not returning a rug in January. My <a href="/guides/rug-size-guide/">rug size guide</a> and <a href="/guides/art-above-sofa/">art above the sofa guide</a> help.</li>
 <li><b>Check the deal badge and the price.</b> Amazon marks deal prices on the listing. Prices change during the week, so compare before you check out.</li>
 <li><b>Order Christmas pieces early.</b> Trees, ornaments and ribbon are the first to sell out.</li></ol>"""

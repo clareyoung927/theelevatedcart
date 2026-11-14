@@ -6,7 +6,7 @@ PHOTO = "https://www.amazon.com/shop/thecareermo0c/photo/amzn1.shoppablemedia.v1
 
 # short product names keyed by ASIN
 P = {
- "B0GTMQQFYZ":"Oversized modular cloud sectional, beige","B0C4C3VPPL":"Loloi Darby hand-knotted rug, sand","B0H9XJPPK9":"Round light oak coffee table","B0G8H85L4T":"Stone-look table lamps, set of 2","B07GSBW1RK":"Kate and Laurel gold frame set of 3","B0DBM3BJL6":"Half-round rattan pendant",
+ "B0GTMQQFYZ":"Oversized modular cloud sectional, beige","B0C4C3VPPL":"Loloi Darby rug, sand and dark gray","B0H9XJPPK9":"Round light oak coffee table","B0G8H85L4T":"Stone-look table lamps, set of 2","B07GSBW1RK":"Kate and Laurel gold frame set of 3","B0DBM3BJL6":"Half-round rattan pendant",
  "B0897VQ1LD":"Safavieh Kazumi rattan accent chair","B07MGKF9WB":"Chinoiserie ceramic urn","B0GS1CBJR1":"88\" slipcovered down-filled sofa","B07BF3F6B6":"Ginger jar table lamp","B09FFMWXKG":"Henn&Hart rectangular coffee table","B0D9T475X9":"Blue floral pillow cover",
  "B08Z8HVLFL":"Safavieh Metro wool rug, beige","B0H5CKFVYT":"89\" farmhouse fabric sofa","B0B9S3LNCQ":"Boucle swivel barrel chair","B0F6YD9Y22":"Round nesting coffee tables, set of 2","B07TR3N7ZW":"Gold arc floor lamp","B0DK525FFP":"Black boho lumbar pillow covers",
  "B0CW8YJXG2":"Expandable round dining table","B0F8Z7R7JT":"Upholstered dining chairs, set of 2","B0BVXHZBXD":"Hand-knotted area rug","B0DCB8L72X":"Woven rattan placemats, set of 12","B0BSF54KPS":"Fringe cloth napkins, set of 12","B07BF1TF54":"Classic ceramic urn lamp",

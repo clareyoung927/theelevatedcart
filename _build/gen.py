@@ -95,6 +95,23 @@ a.tile{color:inherit}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
+.m-only{display:none}
+@media(max-width:700px){.m-only{display:block}.d-only{display:none}
+.mhome{padding:18px 0 40px}.mhero{font-family:"Cormorant Garamond",serif;font-size:31px;line-height:1.08;margin:0 0 8px}.mhero em{color:var(--oak)}
+.msub{font-size:14px;color:var(--soft);margin:0 0 16px}
+.mstart{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.mtile{position:relative;display:block;aspect-ratio:1/1.05;overflow:hidden;text-decoration:none;color:#fff;background:var(--linen)}
+.mtile img{width:100%;height:100%;object-fit:cover;display:block}
+.mtile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(30,24,18,.72))}
+.mtile .mt{position:absolute;left:12px;right:10px;bottom:28px;z-index:1;font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.05}
+.mtile .ms{position:absolute;left:12px;right:10px;bottom:10px;z-index:1;font-size:11px;opacity:.9}
+.mhead{display:flex;justify-content:space-between;align-items:baseline;margin:26px 0 10px}.mhead h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:24px;margin:0}
+.mhead a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oak);text-decoration:none}
+.mrow{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.mrow::-webkit-scrollbar{display:none}
+.mcard{flex:0 0 62%;scroll-snap-align:start;text-decoration:none;color:var(--ink)}
+.mcard img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--linen)}
+.mcard span{display:block;font-size:14px;line-height:1.3;margin-top:7px}
+.mshop{display:block;text-align:center;margin-top:32px}}
 .item span.pthumb{display:block;background:var(--linen)}.item .pthumb{width:72px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
 .buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
 .article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .disc{margin:0 0 16px;font-size:12px;padding:8px 12px}.dupe .shop{margin-top:0}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}
@@ -222,7 +239,6 @@ def thumb(a):
 def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
-            f'<p style="font-size:14px;color:var(--soft);margin-bottom:8px">{note}</p>'
             + "".join(f'<div class="item">{thumb(a)}<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
 def crumbs(trail):
     html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
@@ -238,7 +254,25 @@ AUTHOR = {"@type": "Organization", "name": NAME, "url": SITE}
 
 # ---------- home ----------
 H = {h["slug"]: h for h in hrooms}
-home = f"""<div class="wrap"><div class="hero">
+def mrow(items):
+    return '<div class="mrow">' + "".join(f'<a class="mcard" href="{o["url"]}"><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><span>{E(o["title"])}</span></a>' for o in items) + "</div>"
+_gimg = [g for g in guides if not g['hol']][0]
+mstart = [("Recreated rooms", "Designer rooms, fully shoppable", "/rooms/", rooms[0]),
+          ("Pottery Barn dupes", "The look for less", "/dupes/", dupes[0]),
+          ("Holiday", "Christmas, Thanksgiving and more", "/holiday/", H['christmas-tablescape']),
+          ("Style guides", "Simple how-tos", "/guides/", _gimg)]
+mobile_home = f"""<div class="m-only mhome"><div class="wrap">
+<p class="mhero">The designer look, <em>without</em> the designer price.</p>
+<p class="msub">Designer rooms recreated with Amazon finds. Tap a section to start shopping.</p>
+<div class="mstart">""" + "".join(f'<a class="mtile" href="{u}"><img src="{E(o["img"])}" alt="{E(o["alt"])}"><span class="mt">{t}</span><span class="ms">{sub}</span></a>' for t, sub, u, o in mstart) + f"""</div>
+<div class="mhead"><h2>Latest rooms</h2><a href="/rooms/">See all</a></div>{mrow(rooms[:8])}
+<div class="mhead"><h2>Pottery Barn dupes</h2><a href="/dupes/">See all</a></div>{mrow(dupes)}
+<div class="mhead"><h2>Holiday looks</h2><a href="/holiday/">See all</a></div>{mrow(hrooms[:8])}
+<div class="mhead"><h2>Style guides</h2><a href="/guides/">See all</a></div>{mrow([g for g in guides if not g['hol']][:8])}
+<a class="btn dark mshop" href="{STORE}" {X}>Shop my Amazon storefront</a>
+</div></div>
+"""
+home = mobile_home + f"""<div class="d-only"><div class="wrap"><div class="hero">
  <div><div class="eyebrow">Home styling, made simple</div>
  <h1>The designer look, <em>without</em> the designer price.</h1>
  <p>Designer rooms recreated with Amazon finds, plus styling guides for a warm, layered home. Every look is shoppable.</p>
@@ -254,7 +288,7 @@ home = f"""<div class="wrap"><div class="hero">
  <div class="pillars"><div><h3 class="pt">Looks like the inspiration</h3><p>Matched on shape, material and finish, not just category.</p></div>
  <div><h3 class="pt">Checked before it's shared</h3><p>Every product is a live listing, reviewed before it goes up.</p></div>
  <div><h3 class="pt">Styling first</h3><p>The how-to comes free. The shopping list is there if you want it.</p></div></div>
-</div></section>"""
+</div></section></div>"""
 slugmap = {o["slug"]: o["url"] for o in rooms + guides}
 slugmap.update({"holiday-" + h["slug"]: h["url"] for h in hrooms})
 slugmap.update({k: f"/{k}/" for k in ["rooms", "guides", "holiday", "about", "disclosure"]})
@@ -280,8 +314,8 @@ def related(pool, me, n=3):
 for r in rooms:
     cr, crld = crumbs([("Home", "/"), ("Recreated Rooms", "/rooms/"), (r["title"], None)])
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(r['title'])}</h1>
-{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}{DISC}
-{plist(r['items'], 'The key pieces', 'Each link is for the single item named.')}
+{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}
+{plist(r['items'], 'The key pieces', 'Each link is for the single item named.')}{DISC}
 <p class="dek">{E(r['blurb'])}</p>
 <div class="more"><h2>More recreated rooms</h2>{grid(related(rooms, r))}</div></article></div>"""
     desc = f"{r['title'].replace('The ', '', 1)} recreated with Amazon finds: {r['blurb']} Shop every piece."
@@ -311,8 +345,8 @@ for g in guides:
     gbuy = buybar(g["room"]["shop"], "Shop this photo", g["items"]) if g["room"] else (buybar(STORE, "Shop on Amazon", g["items"]) if g["items"] else "")
     pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(g['title'])}</h1>
-{hero(g)}{gbuy}{DISC}
-{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}{roombox}
+{hero(g)}{gbuy}
+{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}{DISC}{roombox}
 <p class="dek">{E(g['dek'])}</p>
 <div class="answer"><h2>{E(q)}</h2><p>{E(a)}</p></div>
 {g['body']}
@@ -338,8 +372,8 @@ for h in hrooms:
     btn = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{h["shop"]}" {X}>{"Shop every piece in this photo" if h["exact"] else "Shop the look on Amazon"}</a></div>' if h["shop"] else ""
     extra = f'<a class="btn" href="{lst}" {X}>Shop all {h["cat"]} decor</a>' if h["shop"] != lst else ""
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(h['title'])}</h1>
-{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}{DISC}
-{plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}
+{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}
+{plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}{DISC}
 <p class="dek">{E(h['blurb'])}</p>
 <div class="btns"><a class="btn" href="/holiday/">More holiday rooms</a>{extra}</div>
 <div class="more"><h2>More holiday rooms</h2>{grid(related(hrooms, h))}</div></article></div>"""
@@ -365,8 +399,8 @@ for d in dupes:
 
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(d['title'])}</h1>
-{hero(d)}{buy}{DISC}
-{plist(d['items'], 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}
+{hero(d)}{buy}
+{plist(d['items'], 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}{DISC}
 <p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>
 <div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
 <h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>

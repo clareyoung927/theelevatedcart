@@ -138,6 +138,23 @@ a.tile{color:inherit}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
+.m-only{display:none}
+@media(max-width:700px){.m-only{display:block}.d-only{display:none}
+.mhome{padding:18px 0 40px}.mhero{font-family:"Cormorant Garamond",serif;font-size:31px;line-height:1.08;margin:0 0 8px}.mhero em{color:var(--oak)}
+.msub{font-size:14px;color:var(--soft);margin:0 0 16px}
+.mstart{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.mtile{position:relative;display:block;aspect-ratio:1/1.05;overflow:hidden;text-decoration:none;color:#fff;background:var(--linen)}
+.mtile img{width:100%;height:100%;object-fit:cover;display:block}
+.mtile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(30,24,18,.72))}
+.mtile .mt{position:absolute;left:12px;right:10px;bottom:28px;z-index:1;font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.05}
+.mtile .ms{position:absolute;left:12px;right:10px;bottom:10px;z-index:1;font-size:11px;opacity:.9}
+.mhead{display:flex;justify-content:space-between;align-items:baseline;margin:26px 0 10px}.mhead h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:24px;margin:0}
+.mhead a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oak);text-decoration:none}
+.mrow{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.mrow::-webkit-scrollbar{display:none}
+.mcard{flex:0 0 62%;scroll-snap-align:start;text-decoration:none;color:var(--ink)}
+.mcard img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--linen)}
+.mcard span{display:block;font-size:14px;line-height:1.3;margin-top:7px}
+.mshop{display:block;text-align:center;margin-top:32px}}
 .item span.pthumb{display:block;background:var(--linen)}.item .pthumb{width:72px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
 .buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
 .article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .disc{margin:0 0 16px;font-size:12px;padding:8px 12px}.dupe .shop{margin-top:0}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}

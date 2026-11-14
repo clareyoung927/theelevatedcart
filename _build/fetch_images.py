@@ -18,8 +18,13 @@ tok = post("https://api.amazon.com/auth/o2/token", {"grant_type": "client_creden
 asins = sorted(set(list(P)) | {d["asin"] for d in DUPES})
 asins = [a for a in asins if a not in UNAVAIL]
 out, errs = {}, []
-for i in range(0, len(asins), 10):
-    chunk = asins[i:i + 10]
+err = ''
+batches = [asins[i:i + 10] for i in range(0, len(asins), 10)]
+def run(batches):
+  for chunk in batches:
+    _one(chunk)
+def _one(chunk):
+    global err
     r = None
     for attempt in range(5):
         time.sleep(1.5 * (attempt + 1))
@@ -32,7 +37,7 @@ for i in range(0, len(asins), 10):
         except Exception as e:
             err = f"{chunk[0]}: {e}"
     if r is None:
-        errs.append(err); continue
+        errs.append(err); return
     items = (r.get("itemsResult") or r.get("ItemsResult") or {}).get("items") or (r.get("ItemsResult") or {}).get("Items") or []
     for it in items:
         a = it.get("asin") or it.get("ASIN")
@@ -41,6 +46,11 @@ for i in range(0, len(asins), 10):
         u = m.get("url") or m.get("URL")
         if a and u:
             out[a] = {"url": u, "w": m.get("width") or m.get("Width"), "h": m.get("height") or m.get("Height")}
+run(batches)
+missing = [a for a in asins if a not in out]
+if missing:
+    print(f"retrying {len(missing)} one by one")
+    run([[a] for a in missing])
 here = os.path.dirname(os.path.abspath(__file__))
 json.dump({"fetched": datetime.datetime.utcnow().isoformat(timespec="minutes") + "Z", "images": out},
           open(os.path.join(here, "amz_images.json"), "w"), indent=0, sort_keys=True)

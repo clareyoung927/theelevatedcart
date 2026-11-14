@@ -1,7 +1,7 @@
 """Daily: pull product images from Amazon Creators API into amz_images.json.
 Runs in GitHub Actions with secrets AMZ_CLIENT_ID and AMZ_CLIENT_SECRET.
 Images are Amazon-hosted URLs returned by the API (never downloaded or re-hosted)."""
-import json, os, sys, urllib.request, datetime
+import json, os, sys, urllib.request, datetime, time
 sys.path.insert(0, os.path.dirname(__file__))
 from data import P, UNAVAIL
 from dupes import DUPES
@@ -20,18 +20,24 @@ asins = [a for a in asins if a not in UNAVAIL]
 out, errs = {}, []
 for i in range(0, len(asins), 10):
     chunk = asins[i:i + 10]
-    try:
-        r = post("https://creatorsapi.amazon/catalog/v1/getItems",
-                 {"itemIds": chunk, "itemIdType": "ASIN", "marketplace": "www.amazon.com", "partnerTag": TAG,
-                  "partnerType": "Associates", "resources": ["images.primary.medium"]},
-                 {"Authorization": "Bearer " + tok, "x-marketplace": "www.amazon.com"})
-    except Exception as e:
-        errs.append(f"{chunk[0]}: {e}"); continue
+    r = None
+    for attempt in range(5):
+        time.sleep(1.5 * (attempt + 1))
+        try:
+            r = post("https://creatorsapi.amazon/catalog/v1/getItems",
+                     {"itemIds": chunk, "itemIdType": "ASIN", "marketplace": "www.amazon.com", "partnerTag": TAG,
+                      "partnerType": "Associates", "resources": ["images.primary.large"]},
+                     {"Authorization": "Bearer " + tok, "x-marketplace": "www.amazon.com"})
+            break
+        except Exception as e:
+            err = f"{chunk[0]}: {e}"
+    if r is None:
+        errs.append(err); continue
     items = (r.get("itemsResult") or r.get("ItemsResult") or {}).get("items") or (r.get("ItemsResult") or {}).get("Items") or []
     for it in items:
         a = it.get("asin") or it.get("ASIN")
         im = (it.get("images") or it.get("Images") or {}).get("primary") or (it.get("Images") or {}).get("Primary") or {}
-        m = im.get("medium") or im.get("Medium") or {}
+        m = im.get("large") or im.get("Large") or im.get("medium") or {}
         u = m.get("url") or m.get("URL")
         if a and u:
             out[a] = {"url": u, "w": m.get("width") or m.get("Width"), "h": m.get("height") or m.get("Height")}

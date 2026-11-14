@@ -113,7 +113,7 @@ a.tile{color:inherit}
 .mcard img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--linen)}
 .mcard span{display:block;font-size:14px;line-height:1.3;margin-top:7px}
 .mshop{display:block;text-align:center;margin-top:32px}}
-.item span.pthumb{display:block;background:var(--linen)}.item .pthumb{width:72px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
+.item.hasimg .iname{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.item .pthumb{width:110px;height:110px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
 .buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
 .article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .disc{margin:0 0 16px;font-size:12px;padding:8px 12px}.dupe .shop{margin-top:0}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}
 @media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
@@ -234,13 +234,13 @@ try:
     AMZIMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "amz_images.json")))["images"]
 except Exception:
     AMZIMG = {}
-def thumb(a):
+def thumb(a, n=""):
     im = AMZIMG.get(a)
-    return f'<img class="pthumb" src="{E(im["url"])}" alt="" loading="lazy">' if im else '<span class="pthumb"></span>'
+    return f'<img class="pthumb" src="{E(im["url"])}" alt="{E(n)}" loading="lazy">' if im else ""
 def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
-            + "".join(f'<div class="item">{thumb(a)}<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
+            + "".join(f'<div class="item{" hasimg" if a in AMZIMG else ""}">{thumb(a, n)}<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
 def crumbs(trail):
     html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [

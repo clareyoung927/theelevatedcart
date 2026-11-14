@@ -233,6 +233,18 @@ DUPES = [
       tips=["Fold it at the foot of the bed over a white duvet for hotel-style layers.","Pair with linen sheets and a jute rug for a relaxed look.","Use it alone as a summer blanket on warm nights."],
       faq=[("What is a dupe for the Pottery Barn Cloud Quilt?","The Brandream white cotton quilt set has the same wavy quilted look and includes 2 shams."),("Is the Amazon quilt oversized?","Yes, the king is about 106 x 96 inches, enough to cover a king or a tall queen mattress."),("Should I wash a new quilt before using it?","Yes, a cold gentle wash softens cotton quilts and brings out the crinkled texture.")],
       also=[], room=None),
+    dict(slug="pottery-barn-washington-spruce-christmas-tree-dupe", cat="Holiday", pb="Pottery Barn Lit Washington Spruce Faux Christmas Tree",
+      pb_price="$599 (8 ft)", checked="November 2026", asin="B0HHN5J6SR",
+      amazon="Goplus 8 ft Pre-Lit Aspen Christmas Tree, Warm White LED",
+      title="Pottery Barn Washington Spruce Christmas Tree Dupe on Amazon", img="dupe-prelit-christmas-tree",
+      alt="Tall full pre-lit artificial Christmas tree glowing with warm white lights and cream and gold ornaments in a white paneled living room with a woven tree collar and wrapped gifts",
+      answer="A great Amazon look for less for the Pottery Barn Lit Washington Spruce Faux Christmas Tree is the Goplus 8 ft pre-lit aspen tree. It has the same full, natural silhouette with soft two-tone green tips and warm white lights already strung, at the same 8 ft height.",
+      rows=[("Height","8 ft","8 ft"),("Shape","Full natural spruce","Full aspen silhouette"),("Branch tips","Realistic spruce tips","1,349 two-tone PE tips"),("Lights","Pre-lit warm white","630 warm white LEDs"),("Setup","Hinged branches","Hinged branches"),("Price","$599 (8 ft)","Check today's price")],
+      same=["Tall, full shape that fills a corner","Warm white lights already strung","Soft, realistic two-tone needles"],
+      diff=["Aspen silhouette, slightly slimmer at the top than a spruce","Fewer lights than some premium trees, so add a strand if you like a brighter glow","Other heights available, from 4.5 to 8 ft"],
+      tips=["Fluff every branch tip up and out before you decorate; it doubles the fullness.","Hang large ornaments deep inside, medium ones in the middle and small ones on the tips.","Finish the base with a woven tree collar instead of a skirt."],
+      faq=[("What is a dupe for the Pottery Barn Washington Spruce tree?","The Goplus 8 ft pre-lit aspen tree has a similar full, natural shape with warm white lights and two-tone tips."),("How tall a tree do I need?","Leave about 6 to 12 inches between the top of the tree and the ceiling, plus room for a topper."),("How do I make an artificial tree look real?","Fluff every tip, tuck lights deep along the branches and add a few real cedar sprigs or a pine-scented candle nearby.")],
+      also=[], room=None),
 ]
 
 # Big category and sub category for the /dupes/ filters (Clare, 2026-11-14).
@@ -256,6 +268,7 @@ DUPE_CATS = {
     "pottery-barn-glass-pumpkin-cloche-dupe": ("Holiday", "Fall & Thanksgiving"),
     "pottery-barn-faux-fur-pumpkin-pillow-dupe": ("Holiday", "Fall & Thanksgiving"),
     "pottery-barn-cloud-quilt-dupe": ("Bedroom", "Bedding"),
+    "pottery-barn-washington-spruce-christmas-tree-dupe": ("Holiday", "Christmas"),
     "pottery-barn-bedford-harvest-platter-dupe": ("Holiday", "Fall & Thanksgiving"),
 }
 for _d in DUPES:

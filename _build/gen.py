@@ -74,6 +74,7 @@ for h in HROOMS:
     hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat={'fourth': '4th of July'}.get(h[2], h[2].capitalize()), blurb=h[3], img=img, alt=alt,
                        items=items, shop=shop, exact=exact, url=f"/holiday/{h[0]}/", kind="hroom"))
 guides = []
+GUIDE_LIST = {"art-above-sofa": "https://www.amazon.com/shop/thecareermo0c/list/1FS3KE9511B4M?tag=theelevatedcartweb-20"}
 GUIDE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Holiday"]
 GUIDE_SUB = {"art-above-sofa": "Art & Walls", "rug-size-guide": "Rugs", "coffee-table-formula": "Coffee Tables", "throw-pillow-formula": "Pillows",
              "layered-neutral-bed": "Bedding", "nightstand-styling": "Nightstands", "dining-chandelier-size": "Lighting", "sideboard-styling": "Sideboards & Buffets",
@@ -375,6 +376,8 @@ for g in guides:
         roombox = f'<section class="shop"><div class="eyebrow">Get the look</div><h2 style="font-size:26px;margin:0 0 6px">Shop my holiday picks</h2><p style="font-size:14px;color:var(--soft);margin-bottom:14px">Find my current favorites in my Amazon storefront.</p><a class="btn dark" href="{XMAS_LIST}" {X}>Shop on Amazon</a></section>'
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(fq)}</h3><p>{E(fa)}</p>" for fq, fa in faqs) + "</section>"
     gbuy = buybar(g["room"]["shop"], "Shop this photo", g["items"]) if g["room"] else (buybar(STORE, "Shop on Amazon", g["items"]) if g["items"] else "")
+    if g["slug"] in GUIDE_LIST and gbuy:
+        gbuy = gbuy[:-6] + f'<a class="btn" href="{GUIDE_LIST[g["slug"]]}" {X}>Shop the full list</a></div>'
     pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(g['title'])}</h1>
 {hero(g)}{gbuy}{DISC}

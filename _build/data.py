@@ -121,3 +121,11 @@ P.update({"B09LDG97WH":"Meridian Oakhill solid mango fluted coffee table, 36\""}
 BIG |= {"B09LDG97WH"}
 P.update({"B0HHN5J6SR":"8 ft pre-lit Christmas tree, warm white"})
 BIG |= {"B0HHN5J6SR"}
+P.update({"B09GV787WM":"Loloi Amber Lewis Billie rug","B0C5RK3BD5":"Upholstered farmhouse dining bench","B0DNLRK1Y6":"Linen dining chairs, set of 2","B0DVBL912R":"Thanksgiving table find",
+"B08GL2W6WY":"Modway Draper tufted headboard","B0DJQGG3XS":"Framed vintage landscape print set","B0C2P87NY8":"Vintage print set, 9 pieces","B0GN27H1WW":"Tribesigns rectangular coffee table","B0H6LVKTR4":"63\" solid wood shoe storage bench",
+"B0H8J573ZN":"Woven rattan tree collar, 28\"","B0D76DXNM9":"Champagne shatterproof ornaments, 32 ct","B09CMDR2D6":"Champagne sparkly ornaments","B0GZNYDS7D":"Neutral ornament set, 48 pc","B0D4Q1J7PP":"Champagne gold velvet ribbon",
+"B0H3DZV4RP":"Sherpa queen bedding set","B07YXTZ33Z":"Cotton flannel sheet set","B0CF173VLZ":"Bedsure faux fur sherpa blanket","B0HH8Y296B":"Plaid pillow covers, 18x18",
+"B0HBBVZDM2":"Plaid brushed throw, 60x80","B0HBBVWCVG":"Plaid faux fur throw","B0B6G99NZV":"Red tartan linen napkins, set of 4","B0D8JG8T7R":"White stripe linen napkins, set of 4","B0DRBMWKM4":"Round woven placemats, set of 6",
+"B0GSZPQFHH":"Rustic ceramic vase with handles","B0GRNDLFKZ":"Gold framed landscape painting","B0DSW7XDT9":"Antique brass candlesticks","B0BCKSFQWK":"Wicker firewood basket","B0DPC5KD18":"Dried flower bouquet","B0D8HSSLZH":"Faux leather book boxes, set of 3","B08ZCZXFRB":"Arched 3 panel fireplace screen",
+"B0F42DJ5RD":"Stoneware mugs, set of 4","B0GR6BC7VZ":"Sage green mug set of 6","B01F53TT8A":"Carved wood tray with handles","B01EIJ0P6W":"Anchor Hocking 1 gallon glass jars, set of 2","B0B28VPQCY":"Glass clamp lid jar","B00266UIP8":"Vintage stripe dish towels, set of 3","B0F8Q4KKZG":"Small faux potted plant"})
+BIG |= {"B09GV787WM","B0C5RK3BD5","B0DNLRK1Y6","B08GL2W6WY","B0GN27H1WW","B0H6LVKTR4","B0BCKSFQWK"}

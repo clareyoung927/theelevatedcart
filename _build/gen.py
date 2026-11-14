@@ -18,6 +18,12 @@ X = 'target="_blank" rel="noopener sponsored nofollow"'
 
 def plink(a): return f"https://www.amazon.com/dp/{a}?tag={TAG}"
 def cartlink(a): return f"https://www.amazon.com/gp/aws/cart/add.html?ASIN.1={a}&Quantity.1=1&AssociateTag={TAG}"
+def cartall(items):
+    q = "&".join(f"ASIN.{i}={a}&Quantity.{i}=1" for i, (_, _, a) in enumerate(items, 1))
+    return f"https://www.amazon.com/gp/aws/cart/add.html?{q}&AssociateTag={TAG}"
+def buybar(shop, label, items):
+    c = f'<a class="btn" href="{cartall(items)}" {X}>Add all to cart</a>' if items else ""
+    return f'<div class="buybar"><a class="btn dark" href="{shop}" {X}>{label}</a>{c}</div>'
 def items_of(asins): return [(P[a], plink(a), a) for a in asins if a not in UNAVAIL]
 
 # alt text for local (non-room) images
@@ -89,7 +95,7 @@ a.tile{color:inherit}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
 .answer h2{font-size:22px!important;margin:0 0 8px!important}
 .answer p{margin:0!important}
-.buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 10px}
+.buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
 .dupe .pinwrap{margin:0 0 12px}.dupe .room-hero{max-height:62vh}
 @media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
 .faq h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:22px;margin:22px 0 6px}
@@ -265,9 +271,9 @@ def related(pool, me, n=3):
 
 for r in rooms:
     cr, crld = crumbs([("Home", "/"), ("Recreated Rooms", "/rooms/"), (r["title"], None)])
-    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Recreated room · {E(r['cat'])}</div><h1>{E(r['title'])}</h1><p class="dek">{E(r['blurb'])}</p>{DISC}
-{hero(r)}
-<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{r['shop']}" {X}>Shop every piece in this photo</a></div>
+    body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(r['title'])}</h1>
+{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}
+<p class="dek">{E(r['blurb'])}</p>{DISC}
 {plist(r['items'], 'The key pieces in this room', 'Direct links to the main pieces in this room. Each link is for the single item named.')}
 <div class="more"><h2>More recreated rooms</h2>{grid(related(rooms, r))}</div></article></div>"""
     desc = f"{r['title'].replace('The ', '', 1)} recreated with Amazon finds: {r['blurb']} Shop every piece."
@@ -320,8 +326,9 @@ for h in hrooms:
     lst = LISTS[h["hol"]]
     btn = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{h["shop"]}" {X}>{"Shop every piece in this photo" if h["exact"] else "Shop the look on Amazon"}</a></div>' if h["shop"] else ""
     extra = f'<a class="btn" href="{lst}" {X}>Shop all {h["cat"]} decor</a>' if h["shop"] != lst else ""
-    body = f"""<div class="wrap"><article class="article">{cr}<div class="eyebrow">Holiday · {E(h['cat'])}</div><h1>{E(h['title'])}</h1><p class="dek">{E(h['blurb'])}</p>{DISC}
-{hero(h)}{btn}
+    body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(h['title'])}</h1>
+{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}
+<p class="dek">{E(h['blurb'])}</p>{DISC}
 {plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}
 <div class="btns"><a class="btn" href="/holiday/">More holiday rooms</a>{extra}</div>
 <div class="more"><h2>More holiday rooms</h2>{grid(related(hrooms, h))}</div></article></div>"""

@@ -108,6 +108,8 @@ a.tile{color:inherit}
 .pillars h3.pt{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;margin:0 0 6px}
 """
 
+import hashlib
+CSSV = hashlib.md5(css.encode()).hexdigest()[:8]
 def head(title, desc, path, img, alt="", otype="website", ld=None):
     full = title if title.endswith(NAME) else f"{title} | {NAME}"
     imgabs = img if img.startswith("http") else SITE + img
@@ -132,7 +134,7 @@ def head(title, desc, path, img, alt="", otype="website", ld=None):
 <link rel="icon" type="image/svg+xml" href="/images/mark.svg">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v={CSSV}">
 {lds}
 </head>
 <body>

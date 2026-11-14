@@ -1,7 +1,7 @@
 import json, os, sys, html, shutil, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data import *
-from data import HROOMS, XMAS_LIST, TG_LIST, HAL_LIST, BIG, UNAVAIL
+from data import HROOMS, XMAS_LIST, TG_LIST, HAL_LIST, JULY4_LIST, BIG, UNAVAIL
 from dupes import DUPES
 import urllib.parse
 from guides import GUIDES
@@ -32,6 +32,11 @@ LOCAL_ALT = {
  "coffee-cocoa-station": "Hot cocoa station on a marble counter with a wood tray, stoneware mugs, cinnamon sticks and jars of marshmallows",
  "christmas-pillows": "Stack of Christmas throw pillows on a window seat: a holly wreath pillow, a brown textured pillow, a red poinsettia pillow, a cream tartan plaid and a red plaid faux fur pillow",
  "thanksgiving-turkey-table": "Thanksgiving table set with green plaid linens, vintage turkey plates on woven chargers, a glass pumpkin dome with cookies, amber glasses and gold flatware",
+ "july4-poolside-patio": "Poolside patio set for the Fourth of July with rattan chairs, navy star pillows, a red white and blue striped runner, stars plates and a pitcher of blue hydrangeas",
+ "july4-americana-patio-table": "Outdoor wood dining table with a red white and blue stripe runner, woven placemats, Americana plates and white and blue hydrangeas, with an American flag behind",
+ "july4-red-white-blue-tablescape": "Long outdoor teak table with a red striped linen tablecloth, red and white plates on woven placemats, hydrangeas and small flags beside a lit outdoor fireplace",
+ "july4-americana-dinnerware": "Collage of stars and stripes dinnerware: patterned plates, a blue stars pitcher with hydrangeas, a woven tray and stacked blue bowls",
+ "july4-americana-porch": "Covered porch set for the Fourth of July with an American flag, blue striped runner, patriotic pillows, lanterns, flag string lights and hydrangeas",
  "halloween-haunted-manor": "Halloween dining table with a cream runner printed with a black haunted mansion, black taper candles, bats and black dinner plates",
 }
 
@@ -60,7 +65,7 @@ for h in HROOMS:
     else:
         items = items_of(h[5]); shop = h[7]; exact = h[0] == "christmas-tablescape"
     if not alt: alt = f"{h[1].replace('The ', '', 1)}. {h[3]}"
-    hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat=h[2].capitalize(), blurb=h[3], img=img, alt=alt,
+    hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat={'fourth': '4th of July'}.get(h[2], h[2].capitalize()), blurb=h[3], img=img, alt=alt,
                        items=items, shop=shop, exact=exact, url=f"/holiday/{h[0]}/", kind="hroom"))
 guides = []
 for g in GUIDES:
@@ -303,10 +308,10 @@ for g in guides:
 body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Holiday at home</div>
 <h1 class="vh">Holiday rooms, recreated with Amazon finds</h1>
 <p class="sub">Every holiday look is shoppable. Tap a room to see the pieces. Looking for how-tos? <a href="/guides/#Holiday" style="color:var(--oak)">Jump to the holiday guides →</a></p>
-{chips(['All', 'Christmas', 'Thanksgiving', 'Halloween'], 'g-hol')}{grid(hrooms, 'g-hol')}</div>"""
-page("/holiday/", "holiday", "Holiday Rooms: Christmas, Thanksgiving and Halloween Looks for Less", "Christmas tablescapes, Thanksgiving tables, holiday pillows and Halloween decor recreated with Amazon finds. Shop every holiday look.",
+{chips(['All', 'Christmas', 'Thanksgiving', 'Halloween', '4th of July'], 'g-hol')}{grid(hrooms, 'g-hol')}</div>"""
+page("/holiday/", "holiday", "Holiday Rooms: Christmas, Thanksgiving, Halloween and 4th of July Looks", "Christmas tablescapes, Thanksgiving tables, holiday pillows, Halloween decor and Fourth of July patio looks recreated with Amazon finds. Shop every holiday look.",
      hrooms[0]["img"], body, hrooms[0]["alt"], ld=[itemlist("Holiday rooms", [(h["title"], SITE + h["url"]) for h in hrooms])], js=FILTER_JS)
-LISTS = {"christmas": XMAS_LIST, "thanksgiving": TG_LIST, "halloween": HAL_LIST}
+LISTS = {"christmas": XMAS_LIST, "thanksgiving": TG_LIST, "halloween": HAL_LIST, "fourth": JULY4_LIST}
 for h in hrooms:
     cr, crld = crumbs([("Home", "/"), ("Holiday", "/holiday/"), (h["title"], None)])
     lst = LISTS[h["hol"]]

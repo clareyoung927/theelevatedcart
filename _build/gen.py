@@ -49,17 +49,21 @@ LOCAL_ALT = {
 def room_alt(r):  # r = ROOMS tuple
     return f"{r[1].replace('The ', '', 1)} recreated with Amazon finds. {r[3]}"
 
+def room_img(r):
+    p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "images", "room-" + r[0] + ".jpg")
+    return f"/images/room-{r[0]}.jpg" if os.path.exists(p) else CDN + r[4]
+
 def imginfo(ref):
     k, v = ref.split(":", 1)
     if k == "room":
-        r = ROOMS[int(v)]; return CDN + r[4], room_alt(r)
+        r = ROOMS[int(v)]; return room_img(r), room_alt(r)
     if k == "cdn": return CDN + v, None
     return f"/images/{v}.jpg", LOCAL_ALT.get(v, "")
 
 # ---------- models ----------
 rooms = []
 for r in ROOMS:
-    rooms.append(dict(slug=r[0], title=r[1], cat=r[2], blurb=r[3], img=CDN + r[4], alt=room_alt(r),
+    rooms.append(dict(slug=r[0], title=r[1], cat=r[2], blurb=r[3], img=room_img(r), alt=room_alt(r),
                       shop=PHOTO + r[5] + f"?tag={TAG}", items=items_of(r[6]),
                       url=f"/rooms/{r[0]}/", kind="room"))
 roomby = {r["slug"]: r for r in rooms}

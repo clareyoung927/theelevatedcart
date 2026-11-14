@@ -104,3 +104,7 @@ HROOMS += [
  ("july4-americana-dinnerware","Vintage Americana Dinnerware","fourth","Mix-and-match stars and stripes plates, pitchers and serveware that feel timeless from Memorial Day through Labor Day.","img:july4-americana-dinnerware",["B0GXGVNP9S","B0GXGRZT6C","B0GXGS4JKQ","B0GXGWNXBH","B0GXH1LB6G","B002S0RX1O","B0GW1KTZ4Y"],None,JULY4_LIST),
  ("july4-americana-porch","The Classic Americana Porch","fourth","A flag on the porch, patriotic pillows, flag string lights and a stars tablecloth for Fourth of July hosting.","img:july4-americana-porch",["B0GVT6NNNY","B0D1GBYSKB","B088FLY7S8","B0GSHPSNK1","B0BW229LQ6","B0DZP1K85Z"],None,JULY4_LIST),
 ]
+P.update({"B0GY78DPJR": "47 inch round reclaimed pine pedestal dining table", "B0DMT47JKY": "Rattan door entry cabinet, light oak",
+          "B0GLGM4DLX": "42 inch water hyacinth storage trunk", "B0F1ZDBLKM": "Square glass top coffee table with rattan shelf",
+          "B0FBPYM3XD": "22 inch rattan 3 tier nightstand"})
+BIG |= {"B0GY78DPJR", "B0DMT47JKY", "B0GLGM4DLX", "B0F1ZDBLKM", "B0FBPYM3XD"}

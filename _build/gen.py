@@ -117,9 +117,9 @@ a.tile{color:inherit}
 .mcard span{display:block;font-size:14px;line-height:1.3;margin-top:7px}
 .mshop{display:block;text-align:center;margin-top:32px}}
 .item.hasimg .iname{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.item .pthumb{width:110px;height:110px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none;margin-right:14px}.item .iname{flex:1}
-.buybar{display:flex;gap:10px;margin:0 0 18px}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
+.buybar{display:flex;gap:10px;margin:0 0 6px}.disc1{font-size:12px;color:var(--soft);margin:0 0 18px;line-height:1.5}.disc1 a{color:inherit;text-decoration:underline}.buybar .btn{flex:1;text-align:center;padding:15px 8px;letter-spacing:.12em;white-space:nowrap}
 .article.dupe{padding-top:22px}.dupe .crumbs{margin-bottom:10px}.dupe h1{font-size:clamp(26px,3vw,36px)!important;margin:4px 0 14px!important}.dupe .pinwrap{margin:0 0 12px}.dupe .disc{margin:0 0 16px;font-size:12px;padding:8px 12px}.dupe .shop{margin-top:0}.dupe .room-hero{max-height:calc(100vh - 310px);min-height:260px}
-@media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 14px}}
+@media(max-width:700px){.article.dupe{padding-top:14px}.dupe .crumbs{display:none}.dupe h1{font-size:25px!important;margin:4px 0 12px!important}.dupe .room-hero{max-height:52vh}.buybar{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:10px 0;margin:0 0 4px}}
 .faq h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:22px;margin:22px 0 6px}
 .more{margin-top:56px}
 .more h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:32px;margin-bottom:22px}
@@ -232,7 +232,7 @@ def grid(items, gid="", rooms_cls=True):
     return f'<div class="grid" id="{gid}">' + "".join(tile(o) for o in items) + "</div>"
 def chips(cats, gid):
     return f'<div class="chips" data-grid="{gid}">' + "".join(f'<button class="chip {"on" if i == 0 else ""}" data-c="{c}">{c}</button>' for i, c in enumerate(cats)) + "</div>"
-DISC = '<div class="disc">This post contains affiliate links. As an Amazon Associate I earn from qualifying purchases. <a href="/disclosure/">Learn more</a></div>'
+DISC = '<p class="disc1">Affiliate links: as an Amazon Associate I earn from qualifying purchases. <a href="/disclosure/">Learn more</a></p>'
 try:
     AMZIMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "amz_images.json")))["images"]
 except Exception:
@@ -318,8 +318,8 @@ def related(pool, me, n=3):
 for r in rooms:
     cr, crld = crumbs([("Home", "/"), ("Recreated Rooms", "/rooms/"), (r["title"], None)])
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(r['title'])}</h1>
-{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}
-{plist(r['items'], 'The key pieces', 'Each link is for the single item named.')}{DISC}
+{hero(r)}{buybar(r['shop'], 'Shop this photo', r['items'])}{DISC}
+{plist(r['items'], 'The key pieces', 'Each link is for the single item named.')}
 <p class="dek">{E(r['blurb'])}</p>
 <div class="more"><h2>More recreated rooms</h2>{grid(related(rooms, r))}</div></article></div>"""
     desc = f"{r['title'].replace('The ', '', 1)} recreated with Amazon finds: {r['blurb']} Shop every piece."
@@ -349,8 +349,8 @@ for g in guides:
     gbuy = buybar(g["room"]["shop"], "Shop this photo", g["items"]) if g["room"] else (buybar(STORE, "Shop on Amazon", g["items"]) if g["items"] else "")
     pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(g['title'])}</h1>
-{hero(g)}{gbuy}
-{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}{DISC}{roombox}
+{hero(g)}{gbuy}{DISC}
+{plist(g['items'], 'The shopping list', 'Each link is for the single item named. Styling props are not included unless listed.')}{roombox}
 <p class="dek">{E(g['dek'])}</p>
 <div class="answer"><h2>{E(q)}</h2><p>{E(a)}</p></div>
 {g['body']}
@@ -376,8 +376,8 @@ for h in hrooms:
     btn = f'<div class="btns" style="margin:0 0 8px"><a class="btn dark" href="{h["shop"]}" {X}>{"Shop every piece in this photo" if h["exact"] else "Shop the look on Amazon"}</a></div>' if h["shop"] else ""
     extra = f'<a class="btn" href="{lst}" {X}>Shop all {h["cat"]} decor</a>' if h["shop"] != lst else ""
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(h['title'])}</h1>
-{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}
-{plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}{DISC}
+{hero(h)}{buybar(h['shop'] or lst, 'Shop this photo' if h['exact'] else 'Shop the look', h['items'])}{DISC}
+{plist(h['items'], 'The key pieces', 'Each link is for the single item named.')}
 <p class="dek">{E(h['blurb'])}</p>
 <div class="btns"><a class="btn" href="/holiday/">More holiday rooms</a>{extra}</div>
 <div class="more"><h2>More holiday rooms</h2>{grid(related(hrooms, h))}</div></article></div>"""
@@ -424,8 +424,8 @@ for d in dupes:
 
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(d['title'])}</h1>
-{hero(d)}{buy}
-{plist(d['items'], 'The Amazon finds' if len(d['items']) > 1 else 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}{DISC}
+{hero(d)}{buy}{DISC}
+{plist(d['items'], 'The Amazon finds' if len(d['items']) > 1 else 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}
 <p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>
 <div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
 <h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>

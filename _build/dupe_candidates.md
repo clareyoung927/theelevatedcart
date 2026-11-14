@@ -34,3 +34,12 @@ Idx 0-8, 10, 15, 17, 19-22, 24, 28, 30, 32, 36-38, 41-45, 47, 48, 53-73 (short l
 ## Named pieces from earlier file review
 Cayman nightstand B0GL95WXPG, Banks round pedestal table B0GY78DPJR, Modern Farmhouse Cane entry cabinet B0DMT47JKY,
 Baldwin barrel-back chair, Skylar, Lorraine. On hold: Harper bed, Reeva rug (fidelity).
+
+## TikTok (@theelevatedcart, 23 videos/carousels loaded)
+Mostly multi-product roundups ("Comment CART"). Single-product dupe: the woven swivel chair "that looks designer".
+Pottery Barn-inspired living room, Christmas tablescape, Thanksgiving "looks like Pottery Barn" posts fit rooms/holiday pages.
+
+## Instagram (199 posts; first 24 loaded; has a DUPES story highlight)
+Single-product dupes seen: neutral rug "looks so similar to" a PB rug; wishbone chair with a PB look; an Amazon dresser;
+a dining set "save $3,466". Grid only loads ~24 posts in the browser; the DUPES highlight is the best source for the rest.
+Social images are 4:5 or 9:16; crop to the site's dupe ratio (about 1:1 to 4:5, text removed) before use.

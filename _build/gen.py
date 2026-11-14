@@ -82,7 +82,10 @@ for g in GUIDES:
                        url=f"/guides/{g[0]}/", kind="guide", seo=GUIDE_SEO[g[0]]))
 
 dupes = []
+_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 for d in DUPES:
+    if not os.path.exists(os.path.join(_root, "images", d["img"] + ".jpg")):
+        continue  # page goes live once its photo is added
     o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=f"/images/{d['img']}.jpg",
                           items=items_of([d["asin"]]), blurb=d["answer"])
     dupes.append(o)
@@ -104,8 +107,8 @@ a.tile{color:inherit}
 .mtile img{width:100%;height:100%;object-fit:cover;display:block}
 .mtile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(30,24,18,.72))}
 .mtile .mtx{position:absolute;left:12px;right:10px;bottom:10px;z-index:1;display:flex;flex-direction:column;gap:3px}
-.mtile .mt{font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.05}
-.mtile .ms{font-size:11px;line-height:1.25;opacity:.9}
+.mtile .mt{font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.05;white-space:nowrap}
+.mtile .ms{font-size:11px;line-height:1.25;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mhead{display:flex;justify-content:space-between;align-items:baseline;margin:26px 0 10px}.mhead h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:24px;margin:0}
 .mhead a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oak);text-decoration:none}
 .mrow{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.mrow::-webkit-scrollbar{display:none}
@@ -258,9 +261,9 @@ H = {h["slug"]: h for h in hrooms}
 def mrow(items):
     return '<div class="mrow">' + "".join(f'<a class="mcard" href="{o["url"]}"><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><span>{E(o["title"])}</span></a>' for o in items) + "</div>"
 _gimg = [g for g in guides if not g['hol']][0]
-mstart = [("Recreated rooms", "Designer rooms, fully shoppable", "/rooms/", rooms[0]),
-          ("Pottery Barn dupes", "The look for less", "/dupes/", dupes[0]),
-          ("Holiday", "Christmas, Thanksgiving and more", "/holiday/", H['christmas-tablescape']),
+mstart = [("Recreated rooms", "Fully shoppable", "/rooms/", rooms[0]),
+          ("PB Dupes", "Pottery Barn look for less", "/dupes/", dupes[0]),
+          ("Holiday", "Seasonal looks", "/holiday/", H['christmas-tablescape']),
           ("Style guides", "Simple how-tos", "/guides/", _gimg)]
 mobile_home = f"""<div class="m-only mhome"><div class="wrap">
 <p class="mhero">The designer look, <em>without</em> the designer price.</p>

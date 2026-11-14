@@ -87,7 +87,7 @@ for d in DUPES:
     if not os.path.exists(os.path.join(_root, "images", d["img"] + ".jpg")):
         continue  # page goes live once its photo is added
     o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=f"/images/{d['img']}.jpg",
-                          items=items_of([d["asin"]]), blurb=d["answer"])
+                          items=items_of([d["asin"]] + list(d.get("also") or [])), blurb=d["answer"])
     dupes.append(o)
 
 # ---------- shared pieces ----------
@@ -425,7 +425,7 @@ for d in dupes:
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(d['title'])}</h1>
 {hero(d)}{buy}
-{plist(d['items'], 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}{DISC}
+{plist(d['items'], 'The Amazon finds' if len(d['items']) > 1 else 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}{DISC}
 <p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>
 <div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
 <h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>

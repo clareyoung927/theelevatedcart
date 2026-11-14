@@ -103,8 +103,9 @@ a.tile{color:inherit}
 .mtile{position:relative;display:block;aspect-ratio:1/1.05;overflow:hidden;text-decoration:none;color:#fff;background:var(--linen)}
 .mtile img{width:100%;height:100%;object-fit:cover;display:block}
 .mtile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(30,24,18,.72))}
-.mtile .mt{position:absolute;left:12px;right:10px;bottom:28px;z-index:1;font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.05}
-.mtile .ms{position:absolute;left:12px;right:10px;bottom:10px;z-index:1;font-size:11px;opacity:.9}
+.mtile .mtx{position:absolute;left:12px;right:10px;bottom:10px;z-index:1;display:flex;flex-direction:column;gap:3px}
+.mtile .mt{font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.05}
+.mtile .ms{font-size:11px;line-height:1.25;opacity:.9}
 .mhead{display:flex;justify-content:space-between;align-items:baseline;margin:26px 0 10px}.mhead h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:24px;margin:0}
 .mhead a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oak);text-decoration:none}
 .mrow{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.mrow::-webkit-scrollbar{display:none}
@@ -264,7 +265,7 @@ mstart = [("Recreated rooms", "Designer rooms, fully shoppable", "/rooms/", room
 mobile_home = f"""<div class="m-only mhome"><div class="wrap">
 <p class="mhero">The designer look, <em>without</em> the designer price.</p>
 <p class="msub">Designer rooms recreated with Amazon finds. Tap a section to start shopping.</p>
-<div class="mstart">""" + "".join(f'<a class="mtile" href="{u}"><img src="{E(o["img"])}" alt="{E(o["alt"])}"><span class="mt">{t}</span><span class="ms">{sub}</span></a>' for t, sub, u, o in mstart) + f"""</div>
+<div class="mstart">""" + "".join(f'<a class="mtile" href="{u}"><img src="{E(o["img"])}" alt="{E(o["alt"])}"><span class="mtx"><span class="mt">{t}</span><span class="ms">{sub}</span></span></a>' for t, sub, u, o in mstart) + f"""</div>
 <div class="mhead"><h2>Latest rooms</h2><a href="/rooms/">See all</a></div>{mrow(rooms[:8])}
 <div class="mhead"><h2>Pottery Barn dupes</h2><a href="/dupes/">See all</a></div>{mrow(dupes)}
 <div class="mhead"><h2>Holiday looks</h2><a href="/holiday/">See all</a></div>{mrow(hrooms[:8])}

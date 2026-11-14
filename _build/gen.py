@@ -74,12 +74,19 @@ for h in HROOMS:
     hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat={'fourth': '4th of July'}.get(h[2], h[2].capitalize()), blurb=h[3], img=img, alt=alt,
                        items=items, shop=shop, exact=exact, url=f"/holiday/{h[0]}/", kind="hroom"))
 guides = []
+GUIDE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Holiday"]
+GUIDE_SUB = {"art-above-sofa": "Art & Walls", "rug-size-guide": "Rugs", "coffee-table-formula": "Coffee Tables", "throw-pillow-formula": "Pillows",
+             "layered-neutral-bed": "Bedding", "nightstand-styling": "Nightstands", "dining-chandelier-size": "Lighting", "sideboard-styling": "Sideboards & Buffets",
+             "entryway-drop-zone": "Drop Zones"}
 for g in GUIDES:
     img, alt = imginfo(g[4])
     guides.append(dict(slug=g[0], title=g[1], cat=g[2], hol=g[3], img=img, alt=alt, dek=g[5], body=g[6],
                        items=items_of(g[7]),
                        room=(roomby[ROOMS[g[8]][0]] if g[8] is not None else None),
                        url=f"/guides/{g[0]}/", kind="guide", seo=GUIDE_SEO[g[0]]))
+    _g = guides[-1]
+    _g["cat"] = "Dining & Kitchen" if g[2] == "Dining" else g[2]
+    _g["sub"] = GUIDE_SUB.get(g[0]) or ((g[3] or "").title() if g[3] else _g["cat"])
 
 dupes = []
 _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -225,7 +232,7 @@ def hero(o):
     return (f'<figure class="pinwrap"><img class="room-hero" src="{E(o["img"])}" alt="{E(o["alt"])}">'
             f'<a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?{E(q)}" target="_blank" rel="noopener" aria-label="Save to Pinterest">Save</a></figure>')
 def label(o):
-    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o["cat"], "dupe": f"Pottery Barn dupe · {o.get('sub', o['cat'])}"}[o["kind"]]
+    return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o.get("sub", o["cat"]), "dupe": f"Pottery Barn dupe · {o.get('sub', o['cat'])}"}[o["kind"]]
 def tile(o, h="h3"):
     return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"{(' data-sub="' + E(o["sub"]) + '"') if o.get("sub") else ""}><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
 def grid(items, gid="", rooms_cls=True):
@@ -328,13 +335,34 @@ for r in rooms:
              {"@context": "https://schema.org", "@type": "Article", "headline": r["title"], "description": r["blurb"], "image": r["img"],
               "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + r["url"]}])
 
+# ---------- category filters ----------
+def dchips(ds, gid="g-dupes", groups_order=None):
+    order = groups_order or DUPE_GROUPS
+    groups = [g for g in order if any(d["cat"] == g for d in ds)]
+    top = f'<div class="dchips" data-grid="{gid}">' + '<button class="chip on" data-c="All">All</button>' + "".join(f'<button class="chip" data-c="{E(g)}">{E(g)}</button>' for g in groups) + "</div>"
+    subs = ""
+    for g in groups:
+        ss = sorted({d["sub"] for d in ds if d["cat"] == g})
+        subs += f'<div class="dsub" data-grid="{gid}" data-g="{E(g)}" hidden><button class="chip on" data-s="All">All {E(g)}</button>' + "".join(f'<button class="chip" data-s="{E(x)}">{E(x)}</button>' for x in ss) + "</div>"
+    return top + subs
+DUPE_JS = """<script>
+document.querySelectorAll('.dchips').forEach(function(top){var gid=top.dataset.grid,g=document.getElementById(gid),cur='All',sub='All';
+var subs=document.querySelectorAll('.dsub[data-grid="'+gid+'"]');
+function show(){g.querySelectorAll('.tile').forEach(function(t){t.hidden=!((cur==='All'||t.dataset.cat===cur)&&(sub==='All'||t.dataset.sub===sub))});
+subs.forEach(function(d){d.hidden=d.dataset.g!==cur;d.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.s===sub)})});
+top.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)})}
+top.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;sub='All';show();history.replaceState(null,'',cur==='All'?location.pathname:'#'+encodeURIComponent(cur))});
+subs.forEach(function(d){d.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;sub=b.dataset.s;show();history.replaceState(null,'','#'+encodeURIComponent(cur)+(sub==='All'?'':'/'+encodeURIComponent(sub)))})});
+var h=decodeURIComponent((location.hash||'').slice(1)).split('/');if(h[0]&&top.querySelector('[data-c="'+h[0]+'"]')){cur=h[0];if(h[1])sub=h[1]}show()});
+</script>"""
+
 # ---------- guides ----------
 body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Style guides</div>
 <h1 class="vh">Style, simplified</h1>
 <p class="sub">The how-to behind every look, with a shopping list at the end of each guide.</p>
-{chips(['All', 'Living Room', 'Dining', 'Bedroom', 'Entryway', 'Holiday'], 'g-guides')}{grid(guides, 'g-guides')}</div>"""
+{dchips(guides, 'g-guides', GUIDE_GROUPS)}{grid(guides, 'g-guides')}</div>"""
 page("/guides/", "guides", "Home Styling Guides: Measurements, Formulas and How-Tos", "Simple home styling guides: how high to hang art, what size rug you need, how to layer a bed, style a coffee table and decorate for the holidays.",
-     guides[0]["img"], body, guides[0]["alt"], ld=[itemlist("Style guides", [(g["title"], SITE + g["url"]) for g in guides])], js=FILTER_JS)
+     guides[0]["img"], body, guides[0]["alt"], ld=[itemlist("Style guides", [(g["title"], SITE + g["url"]) for g in guides])], js=DUPE_JS)
 
 for g in guides:
     q, a, faqs = g["seo"]
@@ -387,32 +415,12 @@ for h in hrooms:
             + ([itemlist(h["title"] + " shopping list", h["items"])] if h["items"] else []))
 
 # ---------- dupes ----------
-def dchips(ds):
-    groups = [g for g in DUPE_GROUPS if any(d["cat"] == g for d in ds)]
-    top = '<div class="dchips" id="dtop">' + '<button class="chip on" data-c="All">All</button>' + "".join(f'<button class="chip" data-c="{E(g)}">{E(g)}</button>' for g in groups) + "</div>"
-    subs = ""
-    for g in groups:
-        ss = []
-        for d in ds:
-            if d["cat"] == g and d["sub"] not in ss:
-                ss.append(d["sub"])
-        ss.sort()
-        subs += f'<div class="dsub" data-g="{E(g)}" hidden><button class="chip on" data-s="All">All {E(g)}</button>' + "".join(f'<button class="chip" data-s="{E(x)}">{E(x)}</button>' for x in ss) + "</div>"
-    return top + subs
-DUPE_JS = """<script>
-(function(){var top=document.getElementById('dtop'),g=document.getElementById('g-dupes'),cur='All',sub='All';
-function show(){g.querySelectorAll('.tile').forEach(function(t){t.hidden=!((cur==='All'||t.dataset.cat===cur)&&(sub==='All'||t.dataset.sub===sub))});
-document.querySelectorAll('.dsub').forEach(function(d){d.hidden=d.dataset.g!==cur;d.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.s===sub)})});
-top.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)})}
-top.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;sub='All';show();history.replaceState(null,'',cur==='All'?location.pathname:'#'+encodeURIComponent(cur))});
-document.querySelectorAll('.dsub').forEach(function(d){d.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;sub=b.dataset.s;show();history.replaceState(null,'','#'+encodeURIComponent(cur)+(sub==='All'?'':'/'+encodeURIComponent(sub)))})});
-var h=decodeURIComponent((location.hash||'').slice(1)).split('/');if(h[0]&&top.querySelector('[data-c="'+h[0]+'"]')){cur=h[0];if(h[1])sub=h[1]}show()})();
-</script>"""
+
 LEGAL = '<p class="legal">Pottery Barn is a trademark of its owner. The Elevated Cart is not affiliated with or endorsed by Pottery Barn. "Dupe" means a similar look at a lower price, not the same product. Pottery Barn prices are list prices noted on the date shown and may change.</p>'
 body = f"""<div class="wrap" style="padding:56px 24px 72px"><div class="eyebrow">Look for less</div>
 <h1 class="vh">Pottery Barn dupes on Amazon</h1>
 <p class="sub">Pottery Barn pieces matched to Amazon look-alikes on shape, material and finish, with an honest side-by-side of what's the same and what's different.</p>
-{dchips(dupes)}{grid(dupes, 'g-dupes')}{LEGAL}</div>"""
+{dchips(dupes, 'g-dupes')}{grid(dupes, 'g-dupes')}{LEGAL}</div>"""
 page("/dupes/", "dupes", "Pottery Barn Dupes on Amazon: Designer Look for Less", "Pottery Barn dupes on Amazon matched on shape, material and finish: floor mirrors, counter stools, dining chairs, bookcases and more, compared side by side.",
      dupes[0]["img"], body, dupes[0]["alt"], ld=[itemlist("Pottery Barn dupes", [(d["title"], SITE + d["url"]) for d in dupes])], js=DUPE_JS)
 for d in dupes:

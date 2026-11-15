@@ -45,6 +45,17 @@ LOCAL_ALT = {
  "july4-americana-porch": "Covered porch set for the Fourth of July with an American flag, blue striped runner, patriotic pillows, lanterns, flag string lights and hydrangeas",
  "halloween-haunted-manor": "Halloween dining table with a cream runner printed with a black haunted mansion, black taper candles, bats and black dinner plates",
 }
+LOCAL_ALT.update({
+"christmas-coffee-table-decor":"Christmas coffee table styled with a round wood tray, brass taper candles, a cedar garland, decorative books and bottle brush trees",
+"christmas-entryway-table-decor":"Christmas entryway console with a cedar wreath on a round gold mirror, two brass lamps and a white vase of pine branches",
+"kitchen-christmas-decor-ideas":"White kitchen decorated for Christmas with mini wreaths on the cabinets, red striped towels and a pedestal bowl of red ornaments",
+"christmas-tree-brown-and-gold":"Christmas tree decorated with brown velvet ribbon, champagne mercury glass ornaments and tan velvet bows in a woven tree collar",
+"christmas-tree-red-and-white":"Christmas tree decorated with red and ivory ball ornaments and red and white striped ribbon",
+"christmas-tree-ribbon-garland":"Christmas tree wrapped in camel velvet and champagne ribbon swags",
+"christmas-table-decor-ideas":"Christmas dinner table with round woven placemats, Christmas tree plates, tartan napkins and a cedar garland runner with brass candlesticks",
+"gift-wrapping-ideas-that-look-expensive":"Gifts wrapped in brown kraft paper with burgundy and green velvet ribbon, kraft tags and dried orange slices",
+"hostess-gift-ideas-christmas":"Christmas hostess gifts on a marble island: cloth napkins, cocktail napkins, Spode Christmas Tree trivet and servers, tea towels, a marble wine cooler and Lenox ornaments",
+})
 
 def room_alt(r):  # r = ROOMS tuple
     return f"{r[1].replace('The ', '', 1)} recreated with Amazon finds. {r[3]}"
@@ -493,3 +504,19 @@ sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps
 open(os.path.join(OUT, "sitemap.xml"), "w").write(sm)
 open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 print("pages", len(PAGES))
+
+# ---------- llms.txt (AI-readable summary) ----------
+try:
+    from seo import GUIDE_SEO as _GS
+except Exception:
+    _GS = {}
+_l = [f"# {NAME}", "", "> Recreated designer rooms, styling guides and Pottery Barn look-alikes, all shoppable on Amazon. Every guide gives a short answer, a numbered piece list and styling rules.", ""]
+_l += ["## Style guides", ""]
+for g in guides:
+    qa = _GS.get(g["slug"])
+    _l.append(f"- [{g['title']}]({SITE}{g['url']}): " + (qa[1] if qa else g["dek"]))
+_l += ["", "## Recreated rooms", ""]
+for r in rooms:
+    _l.append(f"- [{r['title']}]({SITE}{r['url']}): {r['blurb']}")
+_l += ["", "## Notes", "", "- Product links are Amazon affiliate links; the site earns a commission on qualifying purchases.", f"- Sitemap: {SITE}/sitemap.xml", ""]
+open(os.path.join(OUT, "llms.txt"), "w").write("\n".join(_l))

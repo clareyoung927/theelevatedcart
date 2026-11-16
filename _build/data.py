@@ -146,3 +146,12 @@ BIG |= {"B002MV54B0"}
 # Christmas pages: fill gaps so each page matches its storefront photo (Clare, 2026-11-15)
 P.update({"B00DPYCM4A":"Peking Handicraft wreath hook pillow"})
 P.update({"B0CH9WLJLQ":"Christmas tree dinner plates, red plaid rim, set of 4"})
+# Traditional needlepoint stocking mantel (Clare's pin image, 2026-11-15). No storefront photo yet, so the shop button opens the Christmas list.
+P.update({"B0DM11F5CT":"Needlepoint personalized stockings, Santa, angel, bear, reindeer","B009ZX5LLQ":"Lillian Vernon personalized heirloom needlepoint stocking",
+ "B0C2H7XJZ9":"Peking Handicraft nutcracker needlepoint stocking","B0B6P231V9":"Pre-lit 9 ft garland with pine cones and berries",
+ "B0HCNJ3MZN":"Large red velvet bows, 12 x 20 in, 2 pack","B0CD2367SW":"Red flameless taper candles with remote, set of 3",
+ "B0F7R3NH3S":"Vintage brass candle lanterns, set of 2","B0H6W2G9SL":"Potted faux poinsettias, set of 2","B0DDXGC2CP":"Stocking holders for the mantel, set of 6",
+ "B0FBL5S26Z":"24 in pre-lit pine wreath with berries and pine cones"})
+HROOMS.insert(1, ("christmas-stockings-mantel","The Traditional Needlepoint Stocking Mantel","christmas","Vintage-inspired needlepoint stockings with red velvet cuffs, a lit pine and berry garland, brass candlesticks with red tapers and a velvet bow wreath.","img:christmas-stockings-mantel",
+ ["B0DM11F5CT","B009ZX5LLQ","B0HKS5M5MP","B0C2H7XJZ9","B0B6P231V9","B0FBL5S26Z","B0HCNJ3MZN","B0DSW7XDT9","B07W554ZNB","B0CD2367SW","B0F7R3NH3S","B0H6W2G9SL","B0DDXGC2CP"],None,XMAS_LIST))
+P.update({"B0H5B23V5R":"Giant velvet tartan plaid bow tree topper","B09337KL6W":"Champagne mercury glass ornaments, set of 8","B07HNJLRGJ":"Red plaid Christmas stockings, 19 in, set of 3","B09F2Z6PLX":"Tartan plaid cotton napkins, 12 pk","B0HGF94N1P":"Cedar garland, 9 ft","B0H9RWQ9WK":"Real touch cedar garland, 6 ft","B0DCMFJJ7D":"Woven rattan tree collar, 28\""})

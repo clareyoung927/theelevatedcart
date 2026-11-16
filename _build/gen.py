@@ -36,6 +36,7 @@ LOCAL_ALT = {
  "christmas-eve-living-room": "Christmas Eve living room with a lit tree, knit stockings on the mantel, a glowing fire, plaid throw and mugs of cocoa on the coffee table",
  "christmas-breakfast-table": "Christmas morning breakfast table with pancakes and berries, plaid napkins, woven placemats, greenery and a hurricane candle",
  "coffee-cocoa-station": "Hot cocoa station on a marble counter with a wood tray, stoneware mugs, cinnamon sticks and jars of marshmallows",
+ "christmas-stockings-mantel": "Five traditional Christmas stockings hang from a white fireplace mantel decorated with evergreen garland, red berries, pinecones, and warm white lights. Each stocking has a red cuff with a name: Mom, Dad, Millie, Joey, and Tess. The stockings feature reindeer, Santa, teddy bear, angel, and nutcracker illustrations. Above them are gold candlesticks with red taper candles and a decorated Christmas wreath. A fire burns below.",
  "christmas-pillows": "Stack of Christmas throw pillows on a window seat: a holly wreath pillow, a brown textured pillow, a red poinsettia pillow, a cream tartan plaid and a red plaid faux fur pillow",
  "thanksgiving-turkey-table": "Thanksgiving table set with green plaid linens, vintage turkey plates on woven chargers, a glass pumpkin dome with cookies, amber glasses and gold flatware",
  "july4-poolside-patio": "Poolside patio set for the Fourth of July with rattan chairs, navy star pillows, a red white and blue striped runner, stars plates and a pitcher of blue hydrangeas",

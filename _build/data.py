@@ -145,3 +145,4 @@ P.update({"B0DCMFJJ7D":"Woven rattan tree collar, 28\"","B002MV54B0":"Safavieh n
 BIG |= {"B002MV54B0"}
 # Christmas pages: fill gaps so each page matches its storefront photo (Clare, 2026-11-15)
 P.update({"B00DPYCM4A":"Peking Handicraft wreath hook pillow"})
+P.update({"B0CH9WLJLQ":"Christmas tree dinner plates, red plaid rim, set of 4"})

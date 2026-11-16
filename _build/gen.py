@@ -110,15 +110,21 @@ for g in GUIDES:
 dupes = []
 _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 for d in DUPES:
-    if not os.path.exists(os.path.join(_root, "images", d["img"] + ".jpg")):
+    cdn = d["img"].startswith("cdn:")
+    if not cdn and not os.path.exists(os.path.join(_root, "images", d["img"] + ".jpg")):
         continue  # page goes live once its photo is added
-    o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=f"/images/{d['img']}.jpg",
-                          items=items_of([d["asin"]] + list(d.get("also") or [])), blurb=d["answer"])
+    _all = [d["asin"]] + list(d.get("also") or [])
+    if d.get("groups"):  # shop list grouped under headings (Clare, 2026-11-15)
+        _all = [a for _, g in d["groups"] for a in g]
+    o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=(CDN + d["img"][4:]) if cdn else f"/images/{d['img']}.jpg",
+                          items=items_of(list(dict.fromkeys(_all))), blurb=d["answer"],
+                          gitems=[(h, items_of(g)) for h, g in d.get("groups") or []])
     dupes.append(o)
 
 # ---------- shared pieces ----------
 css = open("base.css").read() + open("extra.css").read() + """
 a.tile{color:inherit}
+.shop h3.shopgrp{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);font-weight:500;margin:22px 0 4px}
 .crumbs{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:22px}
 .crumbs a{text-decoration:none;color:var(--soft)}.crumbs a:hover{color:var(--ink)}
 .answer{background:#FBF8F3;border:1px solid var(--line);border-left:3px solid var(--oak);padding:22px 24px;margin:28px 0}
@@ -270,6 +276,12 @@ def plist(items, head_, note):
     if not items: return ""
     return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
             + "".join(f'<div class="item{" hasimg" if a in AMZIMG else ""}">' + (f'<a href="{u}" {X}>{thumb(a, n)}</a>' if a in AMZIMG else "") + f'<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>' for n, u, a in items) + "</section>")
+def plist_groups(groups, head_):
+    groups = [(h, it) for h, it in groups if it]
+    if not groups: return ""
+    row = lambda n, u, a: f'<div class="item{" hasimg" if a in AMZIMG else ""}">' + (f'<a href="{u}" {X}>{thumb(a, n)}</a>' if a in AMZIMG else "") + f'<div class="iname"><b>{E(n)}</b></div><div class="acts"><a href="{u}" {X}>Shop on Amazon</a>' + '</div></div>'
+    return (f'<section class="shop" aria-labelledby="shoplist"><div class="eyebrow">Get the look</div><h2 id="shoplist" style="font-size:26px;margin:0 0 6px">{head_}</h2>'
+            + "".join(f'<h3 class="shopgrp">{E(h)}</h3>' + "".join(row(*x) for x in it) for h, it in groups) + "</section>")
 def crumbs(trail):
     html_ = " / ".join(f'<a href="{u}">{E(n)}</a>' if u else E(n) for n, u in trail)
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -454,7 +466,7 @@ for d in dupes:
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in d["faq"]) + "</section>"
     body = f"""<div class="wrap"><article class="article dupe">{cr}<h1>{E(d['title'])}</h1>
 {hero(d)}{buy}{DISC}
-{plist(d['items'], 'The Amazon finds' if len(d['items']) > 1 else 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}
+{plist_groups(d['gitems'], 'The Amazon finds') if d.get('gitems') else plist(d['items'], 'The Amazon finds' if len(d['items']) > 1 else 'The Amazon find', "Amazon prices change often, so check today's price on the listing.")}
 <p class="dek">The {E(d['pb'])}{E(pbp)} look, matched to an Amazon find.</p>
 <div class="answer"><h2>What is the best {E(d['pb'])} dupe?</h2><p>{E(d['answer'])}</p></div>
 <h2>Side by side</h2><table class="cmp"><thead><tr><th></th><th>{E(d['pb'].replace('Pottery Barn ', 'Pottery Barn '))}</th><th>Amazon find</th></tr></thead><tbody>{rows}</tbody></table>
@@ -463,7 +475,7 @@ for d in dupes:
 {faqhtml}{LEGAL}
 <div class="more"><h2>More Pottery Barn dupes</h2>{grid(related(dupes, d))}</div></article></div>"""
     page(d["url"], "dupes", d["title"], d["answer"][:300], d["img"], body, d["alt"], "article",
-         ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": d["title"], "description": d["answer"], "image": SITE + d["img"],
+         ld=[crld, {"@context": "https://schema.org", "@type": "Article", "headline": d["title"], "description": d["answer"], "image": absimg(d["img"]),
                     "author": AUTHOR, "publisher": AUTHOR, "datePublished": "2026-11-13", "dateModified": TODAY, "mainEntityOfPage": SITE + d["url"]},
              {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in [(f"What is the best {d['pb']} dupe?", d["answer"])] + d["faq"]]},
              itemlist(d["title"], d["items"])])

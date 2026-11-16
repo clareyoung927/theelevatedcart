@@ -244,11 +244,47 @@ DUPES = [
       diff=["Aspen silhouette, slightly slimmer at the top than a spruce","Fewer lights than some premium trees, so add a strand if you like a brighter glow","Other heights are available if 8 ft is too tall"],
       tips=["Fluff every branch tip up and out before you decorate for a fuller look.","Hang large ornaments deep inside, medium ones in the middle and small ones on the tips.","Finish the base with a woven tree collar instead of a skirt."],
       faq=[("What is a dupe for the Pottery Barn Washington Spruce tree?","The Goplus 8 ft pre-lit aspen tree has a similar full, natural shape with warm white lights and two-tone tips."),("How tall a tree do I need?","Leave about 6 to 12 inches between the top of the tree and the ceiling, plus room for a topper."),("How do I make an artificial tree look real?","Fluff every tip, tuck lights deep along the branches and add a few real cedar sprigs or a pine-scented candle nearby.")],
-      also=["B0DCMFJJ7D","B002MV54B0","B0CN8ZL7JS","B0GWZ2R6YN","B0DCMN576S","B09BFJ286Y","B0DJ55WG8F","B0FP1CFZTK","B0CJDQP8CT","B0H7CFDNBS","B0H5B23V5R","B0H73JDXHS","B0H99B5MYL","B0HFMZQ7J8","B0HJWP67SM","B0H4L1FNVD","B0HGQR31VZ","B0HCV5NBLK","B0H6P97KM1","B0FHJ2XM6K","B0H36TVLG9","B0HKS5M5MP","B0H8X1K7WB","B08JPS1LK8","B0725FZMLQ","B0F2JNT1BV","B07M9ZL1WF","B0HBC6NN18","B0HBC2BM37","B00DPYCM4A","B0HH8Y296B","B0HGF94N1P","B0GRNM5P7K","B0CH9Z8DXC","B0H8DMZC1D","B0H5QX71X8","B0GZ5LFN4M","B08LR4GFMX","B0HGR6ZR73","B0H97XDCTN","B081CS1RGG","B0CH6LK53Y"], room=None),
+      also=[], groups=[
+        ("The tree", ["B0HHN5J6SR"]),
+        ("Around the tree", ["B0DCMFJJ7D", "B002MV54B0", "B0CN8ZL7JS"]),
+        ("Ornaments", ["B0GWZ2R6YN", "B0DCMN576S", "B09BFJ286Y", "B0DJ55WG8F"]),
+        ("Bows, ribbon and gift wrap", ["B0FP1CFZTK", "B0CJDQP8CT", "B0H7CFDNBS"])],
+      room=None),
+    dict(slug="pottery-barn-nostalgic-wreath-pillow-dupe", cat="Christmas", pb="Pottery Barn Nostalgic Wreath Pillow Cover",
+      pb_price="$89.50 (20 inch cover only)", checked="November 2026", asin="B0725FZMLQ",
+      amazon="SARO Lifestyle Holly Wreath Throw Pillow, 16 inch",
+      title="Pottery Barn Nostalgic Wreath Pillow Dupe on Amazon", img="dupe-holly-wreath-pillow",
+      alt="Christmas pillows stacked on a window seat: a cream holly wreath pillow in front of a brown textured pillow, a red poinsettia pillow and tartan plaid faux fur pillows",
+      answer="A great Amazon look for less for the Pottery Barn Nostalgic Wreath Pillow Cover is the SARO Lifestyle holly wreath pillow. It has the same oatmeal linen-look background with a full green holly wreath, red berries and pinecones, and it comes with the insert.",
+      rows=[("Background","Natural linen look","Natural linen look"),("Design","Embroidered green wreath with red accents","Holly wreath with red berries and pinecones"),("Size","20 inch","16 inch"),("Insert","Cover only","Insert included"),("Edge","Plain","Red piped edge"),("Price","$89.50 cover only","Check today's price")],
+      same=["Classic green wreath centered on a natural linen background","Red berry accents that tie into plaid and poinsettia pillows","Traditional look that comes out every year"],
+      diff=["Smaller, 16 inches instead of 20","Printed and embellished design rather than Pottery Barn's embroidery","Spot clean only"],
+      tips=["Put the wreath pillow in front and back it with a larger plaid or solid pillow.","Mix one pattern, one texture and one solid so the stack doesn't feel busy.","Repeat the red with a poinsettia pillow or a red plaid throw nearby."],
+      faq=[("What is a dupe for the Pottery Barn Nostalgic Wreath pillow?","The SARO Lifestyle holly wreath pillow has a similar green wreath with red berries on a linen-look background."),("Does the Amazon wreath pillow come with an insert?","Yes. It comes filled, while the Pottery Barn pillow is sold as a cover only."),("How many Christmas pillows should go on a sofa?","Three to five on a standard sofa: two larger plaid or solid pillows at the ends and one or two patterned pillows in front.")],
+      also=[], groups=[
+        ("The wreath pillow", ["B0725FZMLQ", "B00DPYCM4A"]),
+        ("Plaid pillows", ["B0HBC2BM37", "B0HBC6NN18", "B0HH8Y296B"]),
+        ("More pillows in the photo", ["B07M9ZL1WF", "B0F2JNT1BV"])], room=None),
+    dict(slug="pottery-barn-stewart-plaid-dinner-plates-dupe", cat="Christmas", pb="Pottery Barn Stewart Plaid Stoneware Dinner Plates",
+      pb_price="$69.50 (set of 4)", checked="November 2026", asin="B0CH9WLJLQ",
+      amazon="Homlouue Ceramic Christmas Tree Dinner Plates, Red Plaid, Set of 4",
+      title="Pottery Barn Stewart Plaid Dinner Plates Dupe on Amazon", img="cdn:a460a3e3-1e90-4df1-933e-c47d95b5862c/47d09-7de8-419d-8867-305059399._AC_._SX1200_SCLZZZZZZZ_.png",
+      alt="Christmas dining table set with red tartan rimmed Christmas tree plates on gold beaded chargers, ruby goblets, a cedar garland on a red linen runner, gold mushroom lamps and red amaryllis",
+      answer="A great Amazon look for less for the Pottery Barn Stewart Plaid Stoneware Dinner Plates is the Homlouue red plaid Christmas tree dinner plate set. It has the same red tartan rim around a white center, adds a classic decorated Christmas tree in the middle, and comes as a set of 4.",
+      rows=[("Rim","Red Stewart tartan","Red tartan plaid"),("Center","White","White with a decorated Christmas tree"),("Material","Stoneware","Ceramic"),("Set","4 dinner plates","4 dinner plates, 10.5 inch"),("Price","$69.50 set of 4","Check today's price")],
+      same=["Red tartan border that reads instantly as Christmas","Crisp white center that makes food look good","Sold as a set of 4"],
+      diff=["Adds a Christmas tree in the center, while Pottery Barn's center is plain","Ceramic rather than stoneware","A green plaid version is also available"],
+      tips=["Layer each plate on a gold beaded charger for a dressed-up table.","Run a cedar garland down a linen runner so the plaid doesn't compete with a busy centerpiece.","Add ruby glasses to pull the red from the rim up the table."],
+      faq=[("What is a dupe for Pottery Barn Stewart Plaid dinner plates?","The Homlouue red plaid Christmas tree dinner plates have a similar red tartan rim and white center, sold as a set of 4."),("Are the Amazon plates the same as the Pottery Barn plates?","No. The rim pattern is similar, but the Amazon plates have a Christmas tree in the center and are ceramic rather than stoneware."),("How do you set a Christmas table with plaid plates?","Keep the rest simple: a gold or neutral charger, white or cream napkins, greenery down the center and one accent color like ruby red glassware.")],
+      also=[], groups=[
+        ("The plates", ["B0CH9WLJLQ", "B0CH9Z8DXC", "B0H8DMZC1D"]),
+        ("Chargers and glassware", ["B0H5QX71X8", "B0GZ5LFN4M", "B08LR4GFMX"]),
+        ("Runner, garland and napkins", ["B0GRNM5P7K", "B0HGF94N1P", "B0H97XDCTN", "B081CS1RGG"]),
+        ("Lamps and accents", ["B0CH6LK53Y", "B0HGR6ZR73"])], room=None),
 ]
 
 # Big category and sub category for the /dupes/ filters (Clare, 2026-11-14).
-DUPE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Holiday"]
+DUPE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Christmas", "Holiday"]
 DUPE_CATS = {
     "pottery-barn-effie-arch-floor-mirror-dupe": ("Living Room", "Mirrors"),
     "pottery-barn-wren-etagere-dupe": ("Living Room", "Bookcases & Shelves"),
@@ -268,7 +304,9 @@ DUPE_CATS = {
     "pottery-barn-glass-pumpkin-cloche-dupe": ("Holiday", "Fall & Thanksgiving"),
     "pottery-barn-faux-fur-pumpkin-pillow-dupe": ("Holiday", "Fall & Thanksgiving"),
     "pottery-barn-cloud-quilt-dupe": ("Bedroom", "Bedding"),
-    "pottery-barn-washington-spruce-christmas-tree-dupe": ("Holiday", "Christmas"),
+    "pottery-barn-washington-spruce-christmas-tree-dupe": ("Christmas", "Trees"),
+    "pottery-barn-nostalgic-wreath-pillow-dupe": ("Christmas", "Pillows"),
+    "pottery-barn-stewart-plaid-dinner-plates-dupe": ("Christmas", "Christmas Table"),
     "pottery-barn-bedford-harvest-platter-dupe": ("Holiday", "Fall & Thanksgiving"),
 }
 for _d in DUPES:

@@ -77,8 +77,8 @@ TG_LIST="https://www.amazon.com/shop/thecareermo0c/list/1V3PYPXNW7SDO?tag="+TAG
 HAL_LIST="https://www.amazon.com/shop/thecareermo0c/list/3FMC6YQXBG4FY?tag="+TAG
 # (slug,title,hol,blurb,image ref,ASINs or None,room index or None, shop override url or None)
 HROOMS=[
- ("christmas-tablescape","The Classic Christmas Tablescape","christmas","Cedar garland down a linen runner, Christmas tree plates, beaded chargers and ruby glassware.","cdn:a460a3e3-1e90-4df1-933e-c47d95b5862c/47d09-7de8-419d-8867-305059399._AC_._SX1200_SCLZZZZZZZ_.png",["B0HGF94N1P","B0GRNM5P7K","B0CH9Z8DXC","B0H5QX71X8","B0GZ5LFN4M","B08LR4GFMX","B0HGR6ZR73","B0H97XDCTN","B0CH6LK53Y"],None,PHOTO+"b2f2eae7-de3a-4576-bd71-03ac34d41b8f?tag="+TAG),
- ("christmas-pillows","The Pottery Barn Inspired Holiday Pillow Stack","christmas","A holly wreath, a red poinsettia and classic tartan plaid. Timeless holiday pillows for less.","img:christmas-pillows",["B0725FZMLQ","B0F2JNT1BV","B07M9ZL1WF","B0HBC6NN18","B0HBC2BM37","B0DDVH9TDC"],None,XMAS_LIST),
+ ("christmas-tablescape","The Classic Christmas Tablescape","christmas","Cedar garland down a linen runner, Christmas tree plates, beaded chargers and ruby glassware.","cdn:a460a3e3-1e90-4df1-933e-c47d95b5862c/47d09-7de8-419d-8867-305059399._AC_._SX1200_SCLZZZZZZZ_.png",["B0HGF94N1P","B0GRNM5P7K","B0CH9Z8DXC","B0H8DMZC1D","B0H5QX71X8","B0GZ5LFN4M","B08LR4GFMX","B0HGR6ZR73","B0H97XDCTN","B0CH6LK53Y","B081CS1RGG"],None,PHOTO+"b2f2eae7-de3a-4576-bd71-03ac34d41b8f?tag="+TAG),
+ ("christmas-pillows","The Pottery Barn Inspired Holiday Pillow Stack","christmas","A holly wreath, a red poinsettia and classic tartan plaid. Timeless holiday pillows for less.","img:christmas-pillows",["B0725FZMLQ","B0F2JNT1BV","B07M9ZL1WF","B0HBC6NN18","B0HBC2BM37","B00DPYCM4A","B0HH8Y296B","B0DDVH9TDC"],None,XMAS_LIST),
  ("thanksgiving-turkey-table","The Vintage Turkey Thanksgiving Table","thanksgiving","Green plaid linens, vintage turkey plates, a glass pumpkin dome and amber glasses.","img:thanksgiving-turkey-table",["B0HK7DWHK5","B0HK76T5C9","B0H1PTKC7M","B0DGD15VMG","B0H83SRTSL","B0FC2CC8HM","B0DH5Y5SVJ","B0DRDNV7HX","B0DZ2N1MHZ","B0DVGT378N","B007A2ZBZU"],None,TG_LIST),
  ("harvest-farmhouse-table","The Harvest Farmhouse Table","thanksgiving","An oak sideboard, glass globe pendants and fall branches. Ready for a crowd.","room:9",None,9,None),
  ("fall-living-room","The Fall Living Room","thanksgiving","Paneled walls, gold frames and warm fall pillows. Cozy from October through Thanksgiving.","room:11",None,11,None),
@@ -143,3 +143,5 @@ P.update({"B0DCMFJJ7D":"Woven rattan tree collar, 28\"","B002MV54B0":"Safavieh n
  "B09BFJ286Y":"Champagne glass ball ornaments, set of 9","B0DJ55WG8F":"Champagne gold glitter ball ornaments, set of 12",
  "B0FP1CFZTK":"Neutral velvet ribbon bows, set of 12","B0CJDQP8CT":"Champagne gold velvet wired ribbon, 2.5\"","B0H7CFDNBS":"Kraft nesting gift boxes with velvet ribbon, set of 5"})
 BIG |= {"B002MV54B0"}
+# Christmas pages: fill gaps so each page matches its storefront photo (Clare, 2026-11-15)
+P.update({"B00DPYCM4A":"Peking Handicraft wreath hook pillow"})

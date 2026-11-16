@@ -244,7 +244,7 @@ DUPES = [
       diff=["Aspen silhouette, slightly slimmer at the top than a spruce","Fewer lights than some premium trees, so add a strand if you like a brighter glow","Other heights are available if 8 ft is too tall"],
       tips=["Fluff every branch tip up and out before you decorate for a fuller look.","Hang large ornaments deep inside, medium ones in the middle and small ones on the tips.","Finish the base with a woven tree collar instead of a skirt."],
       faq=[("What is a dupe for the Pottery Barn Washington Spruce tree?","The Goplus 8 ft pre-lit aspen tree has a similar full, natural shape with warm white lights and two-tone tips."),("How tall a tree do I need?","Leave about 6 to 12 inches between the top of the tree and the ceiling, plus room for a topper."),("How do I make an artificial tree look real?","Fluff every tip, tuck lights deep along the branches and add a few real cedar sprigs or a pine-scented candle nearby.")],
-      also=["B0DCMFJJ7D","B002MV54B0","B0CN8ZL7JS","B0GWZ2R6YN","B0DCMN576S","B09BFJ286Y","B0DJ55WG8F","B0FP1CFZTK","B0CJDQP8CT","B0H7CFDNBS"], room=None),
+      also=["B0DCMFJJ7D","B002MV54B0","B0CN8ZL7JS","B0GWZ2R6YN","B0DCMN576S","B09BFJ286Y","B0DJ55WG8F","B0FP1CFZTK","B0CJDQP8CT","B0H7CFDNBS","B0H5B23V5R","B0H73JDXHS","B0H99B5MYL","B0HFMZQ7J8","B0HJWP67SM","B0H4L1FNVD","B0HGQR31VZ","B0HCV5NBLK","B0H6P97KM1","B0FHJ2XM6K","B0H36TVLG9","B0HKS5M5MP","B0H8X1K7WB","B08JPS1LK8","B0725FZMLQ","B0F2JNT1BV","B07M9ZL1WF","B0HBC6NN18","B0HBC2BM37","B00DPYCM4A","B0HH8Y296B","B0HGF94N1P","B0GRNM5P7K","B0CH9Z8DXC","B0H8DMZC1D","B0H5QX71X8","B0GZ5LFN4M","B08LR4GFMX","B0HGR6ZR73","B0H97XDCTN","B081CS1RGG","B0CH6LK53Y"], room=None),
 ]
 
 # Big category and sub category for the /dupes/ filters (Clare, 2026-11-14).

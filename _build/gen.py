@@ -112,12 +112,13 @@ dupes = []
 _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 for d in DUPES:
     cdn = d["img"].startswith("cdn:")
-    if not cdn and not os.path.exists(os.path.join(_root, "images", d["img"] + ".jpg")):
+    amz = d["img"].startswith("amz:")  # Amazon product picture as the tile cover (Clare, 2026-11-16)
+    if not cdn and not amz and not os.path.exists(os.path.join(_root, "images", d["img"] + ".jpg")):
         continue  # page goes live once its photo is added
     _all = [d["asin"]] + list(d.get("also") or [])
     if d.get("groups"):  # shop list grouped under headings (Clare, 2026-11-15)
         _all = [a for _, g in d["groups"] for a in g]
-    o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=(CDN + d["img"][4:]) if cdn else f"/images/{d['img']}.jpg",
+    o = dict(d); o.update(kind="dupe", url=f"/dupes/{d['slug']}/", img=(CDN + d["img"][4:]) if cdn else (f"https://m.media-amazon.com/images/I/{d['img'][4:]}._SL1000_.jpg" if amz else f"/images/{d['img']}.jpg"),
                           items=items_of(list(dict.fromkeys(_all))), blurb=d["answer"],
                           gitems=[(h, items_of(g)) for h, g in d.get("groups") or []])
     dupes.append(o)

@@ -155,3 +155,7 @@ P.update({"B0DM11F5CT":"Needlepoint personalized stockings, Santa, angel, bear, 
 HROOMS.insert(1, ("christmas-stockings-mantel","The Traditional Needlepoint Stocking Mantel","christmas","Vintage-inspired needlepoint stockings with red velvet cuffs, a lit pine and berry garland, brass candlesticks with red tapers and a velvet bow wreath.","img:christmas-stockings-mantel",
  ["B0DM11F5CT","B009ZX5LLQ","B0HKS5M5MP","B0C2H7XJZ9","B0B6P231V9","B0FBL5S26Z","B0HCNJ3MZN","B0DSW7XDT9","B07W554ZNB","B0CD2367SW","B0F7R3NH3S","B0H6W2G9SL","B0DDXGC2CP"],None,XMAS_LIST))
 P.update({"B0H5B23V5R":"Giant velvet tartan plaid bow tree topper","B09337KL6W":"Champagne mercury glass ornaments, set of 8","B07HNJLRGJ":"Red plaid Christmas stockings, 19 in, set of 3","B09F2Z6PLX":"Tartan plaid cotton napkins, 12 pk","B0HGF94N1P":"Cedar garland, 9 ft","B0H9RWQ9WK":"Real touch cedar garland, 6 ft","B0DCMFJJ7D":"Woven rattan tree collar, 28\""})
+
+# Room scene for the pre-lit tree lives under Holiday recreated rooms, not PB dupes (Clare, 2026-11-16)
+HROOMS.insert(2, ("cream-and-gold-christmas-tree","The Cream and Gold Christmas Tree","christmas","A full pre-lit tree with cream and gold ornaments, gold velvet bows, a woven tree collar and wrapped gifts in a white paneled living room.","img:dupe-prelit-christmas-tree",
+ ["B0HHN5J6SR","B0DCMFJJ7D","B002MV54B0","B0CN8ZL7JS","B0GWZ2R6YN","B0DCMN576S","B09BFJ286Y","B0DJ55WG8F","B0FP1CFZTK","B0CJDQP8CT","B0H7CFDNBS"],None,XMAS_LIST))

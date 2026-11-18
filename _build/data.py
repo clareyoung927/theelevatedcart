@@ -159,3 +159,7 @@ P.update({"B0H5B23V5R":"Giant velvet tartan plaid bow tree topper","B09337KL6W":
 # Room scene for the pre-lit tree lives under Holiday recreated rooms, not PB dupes (Clare, 2026-11-16)
 HROOMS.insert(2, ("cream-and-gold-christmas-tree","The Cream and Gold Christmas Tree","christmas","A full pre-lit tree with cream and gold ornaments, gold velvet bows, a woven tree collar and wrapped gifts in a white paneled living room.","img:dupe-prelit-christmas-tree",
  ["B0HHN5J6SR","B0DCMFJJ7D","B002MV54B0","B0CN8ZL7JS","B0GWZ2R6YN","B0DCMN576S","B09BFJ286Y","B0DJ55WG8F","B0FP1CFZTK","B0CJDQP8CT","B0H7CFDNBS"],None,XMAS_LIST))
+
+# 2026-11-18 Stewart plaid duvet dupe ($111.99)
+P.update({"B0CCBYWQDH":"Red tartan plaid duvet cover set with 2 shams, Full/Queen"})
+BIG |= {"B0CCBYWQDH"}

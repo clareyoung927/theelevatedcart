@@ -480,6 +480,22 @@ _NEW = [
  ("nutcracker-needlepoint-stocking","Stockings","Pottery Barn Needlepoint Stocking","$49.50","B0C2H7XJZ9","Peking Handicraft Nutcracker Stocking","It is a nutcracker needlepoint style stocking with a traditional look.",[("Style","Needlepoint","Nutcracker needlepoint"),("Cuff","Velvet","Cuff detail")],["Needlepoint look with traditional motif","Great with a velvet cuff mantel","Heirloom feel"],["Smaller review count","Check size on the listing"],"Hang it with a brass stocking holder for a classic mantel."),
 ]
 DUPES += [_mk(*t) for t in _NEW]
+
+# Stewart plaid duvet (2026-11-18 daily pin run). Verified live 2026-11-18: $111.99 Full/Queen set, in stock, 4.3 (125).
+IMGID["B0CCBYWQDH"] = "81X4yCwRBrL"
+DUPES.append(dict(slug="pottery-barn-stewart-plaid-duvet-cover-dupe", cat="Christmas", sub="Bedding",
+  pb="Pottery Barn Stewart Plaid Cotton Duvet Cover", pb_price="$169 (Full/Queen duvet cover only; shams $55 each)", checked="November 2026",
+  asin="B0CCBYWQDH", amazon="Levtex Home Spencer Plaid Duvet Cover Set, Full/Queen, with 2 Shams",
+  title="Pottery Barn Stewart Plaid Duvet Cover Dupe on Amazon", img="amz:81X4yCwRBrL",
+  alt="Product photo of the Levtex Home Spencer Plaid red tartan duvet cover and matching shams on a bed against a navy paneled wall",
+  answer="A great Amazon look for less for the Pottery Barn Stewart Plaid Cotton Duvet Cover is the Levtex Home Spencer Plaid duvet cover set. It is a 100% cotton red tartan with green, navy, gold and white lines, it reverses to a white plaid, and the Full/Queen set includes two matching shams.",
+  rows=[("Pattern","Stewart plaid (red, white, green and neutral colors)","Red tartan with green, navy, gold and white lines"),("Reverse side","See Pottery Barn","White plaid with red, green and gold"),("Fabric","100% cotton","100% cotton"),("Closure","Button closure with inside ties","Button closure"),("Full/Queen size","88 x 92 inches","90 x 94 inches"),("Shams","Sold separately","2 standard shams included"),("Price","$169 (Full/Queen cover only)","Check today's price")],
+  same=["Classic red Stewart-style tartan that reads as Christmas plaid","All cotton duvet cover with a button closure","Easy to pair with white sheets and cream throws"],
+  diff=["The plaid scale and line colors are close but not an exact match","It reverses to a white plaid, so the folded-back top looks different","Ties inside are not listed, so check the listing if you need them"],
+  tips=["Fold the top back so a stripe of the white plaid reverse shows.","Keep the sheets and sleeping pillows white so the plaid stays the star.","Add a cream chunky knit throw at the foot of the bed for winter texture."],
+  faq=[("Is there a dupe for the Pottery Barn Stewart Plaid duvet cover?","The Levtex Home Spencer Plaid duvet cover set has a similar red tartan look in 100% cotton and includes two shams."),("Does the Amazon set come with shams?","Yes. The Full/Queen set includes two standard shams. Pottery Barn sells its shams separately."),("Is the Amazon plaid the exact same pattern?","No. It is a similar red tartan look, so compare the colors and scale in the listing photos.")],
+  also=[], room=None))
+DUPE_CATS["pottery-barn-stewart-plaid-duvet-cover-dupe"] = ("Christmas", "Bedding")
 for _d in DUPES:
     if _d["slug"] not in DUPE_CATS and _d.get("sub"): DUPE_CATS[_d["slug"]] = (_d["cat"], _d["sub"])
 

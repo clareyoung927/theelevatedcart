@@ -176,3 +176,16 @@ P.update({"B0CCC2BHKV":"Levtex Spencer red tartan plaid duvet cover set with 2 s
 BIG |= {"B0CCC2BHKV","B0HHMLRN5V"}
 HROOMS.insert(3, ("plaid-christmas-bedroom","The Plaid Christmas Bedroom","christmas","Red tartan plaid bedding, a vintage woody wagon Christmas tree pillow, an evergreen berry wreath and a woven bench at the foot of the bed.","img:plaid-christmas-bedroom",
  ["B0CCC2BHKV","B01M19J42D","B0FK3W2HLW","B0HHMLRN5V","B0HDSNMP4Q","B0G2RDFYBG","B09G74QWZH","B0H8712VTD"],None,PHOTO+"81a5c425-8ef3-4052-94df-6e815c0456ce?tag="+TAG))
+
+# 2026-11-19 Patchwork plaid Christmas bedroom (Clare's storefront photo 96a23e44). Everything tagged in the photo.
+P.update({"B0C9KZ75ZD":"Nautica red and green patchwork plaid quilt set with shams, queen",
+ "B01GJY48JO":"Black Forest Decor bronze deer table lamp",
+ "B07BVFC8WY":"MIULEE green velvet pillow covers, 20 x 20, set of 2",
+ "B0D4J5F3ZT":"Genuine leather lumbar pillow cover",
+ "B0HKN9NMMC":"Merax upholstered platform bed with arched headboard, king",
+ "B0H285VLS8":"Huuger 27 in tall farmhouse nightstand with charging station",
+ "B0G4MWKCGV":"Gertmenian chunky weave area rug, 8 x 10",
+ "B0CSL9X436":"Nestl white pillow shams, set of 2"})
+BIG |= {"B0C9KZ75ZD","B01GJY48JO","B0HKN9NMMC","B0H285VLS8","B0G4MWKCGV"}
+HROOMS.insert(4, ("patchwork-plaid-christmas-bedroom","The Patchwork Plaid Christmas Bedroom","christmas","A red and green patchwork plaid quilt, an arched upholstered headboard, bronze deer lamps and a chunky woven rug for a cozy cabin-style Christmas bedroom.","cdn:b671b505-d8bb-4380-ac72-9d66b1c486a8/59290-9694-46b3-97ad-1c077ec6c._AC_._SX1200_SCLZZZZZZZ_.png",
+ ["B0C9KZ75ZD","B0HKN9NMMC","B01GJY48JO","B0H285VLS8","B0G4MWKCGV","B07BVFC8WY","B0D4J5F3ZT","B0CSL9X436"],None,PHOTO+"96a23e44-a1bc-4276-a978-67d694983cbc?tag="+TAG))

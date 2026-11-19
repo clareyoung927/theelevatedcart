@@ -58,7 +58,7 @@ LOCAL_ALT.update({
 "hostess-gift-ideas-christmas":"Christmas hostess gifts on a marble island: cloth napkins, cocktail napkins, Spode Christmas Tree trivet and servers, tea towels, a marble wine cooler and Lenox ornaments",
 })
 
-HALT = {"patchwork-plaid-christmas-bedroom": "Christmas bedroom with a red, green and cream patchwork plaid quilt on a bed with an arched upholstered headboard, green velvet and leather pillows, bronze deer table lamps on dark wood nightstands, white paneled walls and a chunky woven rug", "plaid-christmas-bedroom": "Traditional Christmas bedroom with a dark wood bed in red and green tartan plaid bedding, matching shams, a cream hooked pillow of a green vintage station wagon carrying Christmas trees, an evergreen wreath with red berries and pinecones above the headboard, a woven wooden bench, a cream knit throw and a ceramic bedside lamp", "tartan-plaid-christmas-tree": "Tartan plaid Christmas tree with a giant red velvet plaid bow topper and long streamers, plaid ball ornaments, red velvet bows, plaid wrapped gifts and a ruffled plaid tree skirt, framed by an archway with needlepoint stockings on a lit fireplace behind"}
+HALT = {"plaid-and-holly-christmas-table": "Overhead view of a Christmas dinner table with red tartan plaid plates on black beaded chargers, white napkins embroidered with holly in silver rings, a linen runner embroidered with holly and berries, a red candle, crystal glasses and bouquets of red peonies on a wood table", "patchwork-plaid-christmas-bedroom": "Christmas bedroom with a red, green and cream patchwork plaid quilt on a bed with an arched upholstered headboard, green velvet and leather pillows, bronze deer table lamps on dark wood nightstands, white paneled walls and a chunky woven rug", "plaid-christmas-bedroom": "Traditional Christmas bedroom with a dark wood bed in red and green tartan plaid bedding, matching shams, a cream hooked pillow of a green vintage station wagon carrying Christmas trees, an evergreen wreath with red berries and pinecones above the headboard, a woven wooden bench, a cream knit throw and a ceramic bedside lamp", "tartan-plaid-christmas-tree": "Tartan plaid Christmas tree with a giant red velvet plaid bow topper and long streamers, plaid ball ornaments, red velvet bows, plaid wrapped gifts and a ruffled plaid tree skirt, framed by an archway with needlepoint stockings on a lit fireplace behind"}
 
 def room_alt(r):  # r = ROOMS tuple
     return f"{r[1].replace('The ', '', 1)} recreated with Amazon finds. {r[3]}"
@@ -87,7 +87,7 @@ for h in HROOMS:
     if h[6] is not None:
         base = ROOMS[h[6]]; items = items_of(base[6]); shop = PHOTO + base[5] + f"?tag={TAG}"; exact = True
     else:
-        items = items_of(h[5]); shop = h[7]; exact = h[0] in ("christmas-tablescape", "tartan-plaid-christmas-tree", "plaid-christmas-bedroom", "patchwork-plaid-christmas-bedroom")
+        items = items_of(h[5]); shop = h[7]; exact = h[0] in ("christmas-tablescape", "tartan-plaid-christmas-tree", "plaid-christmas-bedroom", "patchwork-plaid-christmas-bedroom", "plaid-and-holly-christmas-table")
     alt = alt or HALT.get(h[0])
     if not alt: alt = f"{h[1].replace('The ', '', 1)}. {h[3]}"
     hrooms.append(dict(slug=h[0], title=h[1], hol=h[2], cat={'fourth': '4th of July'}.get(h[2], h[2].capitalize()), blurb=h[3], img=img, alt=alt,

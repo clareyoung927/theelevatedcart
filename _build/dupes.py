@@ -524,6 +524,112 @@ DUPES.append(dict(slug="pottery-barn-malibu-woven-backless-bench-dupe", cat="Bed
   also=[], room=None))
 DUPE_CATS["pottery-barn-malibu-woven-backless-bench-dupe"] = ("Bedroom", "Benches")
 
+# 2026-11-19 batch of 9 dupes Clare sent. PB names and prices checked on potterybarn.com 2026-11-19; Amazon listings live 2026-11-19.
+def _dp(stem, group, sub, pb, pbp, asin, imgid, amazon, title, alt, answer, rows, same, diff, tips, faq):
+    DUPES.append(dict(slug=f"pottery-barn-{stem}-dupe", cat=group, sub=sub, pb=pb, pb_price=pbp, checked="November 2026",
+        asin=asin, amazon=amazon, title=title, img="amz:" + imgid, alt=alt, answer=answer,
+        rows=rows + [("Price", pbp, "Check today's price")], same=same, diff=diff, tips=tips, faq=faq, also=[], room=None))
+    DUPE_CATS[f"pottery-barn-{stem}-dupe"] = (group, sub)
+
+_dp("layton-upholstered-wingback-bed", "Bedroom", "Beds", "Pottery Barn Layton Upholstered Bed", "From $1,299",
+  "B0HM2XP5QV", "71OlZOAiNlL", "YBYZNOI Queen Bed with 54.5 inch Tall Wingback Headboard, Beige Chenille",
+  "Pottery Barn Layton Upholstered Bed Dupe on Amazon",
+  "Product photo of a cream chenille upholstered queen bed with a tall curved wingback headboard and wood legs",
+  "A great Amazon look for less for the Pottery Barn Layton Upholstered Bed is the YBYZNOI queen bed with a 54.5 inch wingback headboard. It has the same tall, softly curved wings, cream upholstery and tapered wood legs.",
+  [("Headboard","Curved wingback","54.5 inch curved wingback"),("Upholstery","Performance fabrics","Ivory chenille"),("Legs","Wood","Solid wood"),("Support","See Pottery Barn","Metal frame with wood slats, no box spring needed")],
+  ["Tall wingback headboard that makes the bed the focal point","Soft cream upholstery that works with any bedding","Warm wood legs"],
+  ["Fewer fabric choices than Pottery Barn","New listing with only a few reviews so far","Assembly required"],
+  ["Hang art centered about 8 to 10 inches above the headboard.","Pair with wood nightstands and matching lamps for symmetry.","Layer a textured throw across the foot of the bed."],
+  [("Is there a dupe for the Pottery Barn Layton bed?","The YBYZNOI wingback bed has a similar tall curved headboard and cream upholstery."),("Do I need a box spring?","No. It has a slat platform."),("Is the Amazon bed the same quality?","It is a similar look at a lower price, so compare the materials on the listing.")])
+
+_dp("banks-extendable-dining-table", "Dining & Kitchen", "Dining Tables", "Pottery Barn Banks Extendable Dining Table (76 to 128 in)", "$2,339 to $2,599",
+  "B0HLX6WYPT", "81jR8MkMG5L", "DM Furniture 76 inch Reclaimed Pine Double Pedestal Dining Table, Weathered Brown",
+  "Pottery Barn Banks Extendable Dining Table Dupe on Amazon",
+  "Product photo of a long weathered brown reclaimed pine dining table with two turned pedestal bases and a stretcher",
+  "A great Amazon look for less for the Pottery Barn Banks Extendable Dining Table is the DM Furniture 76 inch reclaimed pine double pedestal table. It has the same chunky turned pedestals joined by a stretcher and a thick plank top that seats 6 to 8.",
+  [("Base","Two turned pedestals","Two turned baluster pedestals with a stretcher"),("Top","Wood planks","1.5 inch solid aged pine"),("Length","76 inches, extends to 128","76 inches"),("Extends","Yes","No")],
+  ["Turned double pedestal base with a farmhouse feel","Thick plank top with real wood grain","Seats 6 to 8"],
+  ["Does not extend","Weathered brown finish only","Heavy, so plan for two people to assemble"],
+  ["Allow about 36 inches between the table and the wall on every side.","Pair with upholstered or woven chairs to soften the chunky base.","Hang a large pendant or two smaller ones centered over the table."],
+  [("What is a dupe for the Pottery Barn Banks extendable table?","The DM Furniture 76 inch double pedestal table has the same turned pedestals and plank top."),("How many people fit at a 76 inch table?","Six comfortably, and eight with chairs at the ends."),("Does it extend?","No, it is a fixed 76 inch table.")])
+
+_dp("malibu-woven-bench", "Entryway", "Benches", "Pottery Barn Malibu Woven Bench (64 in)", "$999",
+  "B0GND4HKDV", "71uk6GiCLPL", "Bali & pari Ismael Handwoven Seagrass Bench with Mahogany Frame",
+  "Pottery Barn Malibu Woven Bench Dupe on Amazon",
+  "Product photo of a natural wood bench with a handwoven seagrass back and arms and a cream seat cushion",
+  "A great Amazon look for less for the Pottery Barn Malibu Woven Bench is the Bali & pari Ismael bench. It has the same handwoven seagrass back and arms on a mahogany frame, with a cushion on top.",
+  [("Weave","Handwoven seagrass","Handwoven seagrass"),("Frame","Red mahogany","Mahogany wood"),("Back and arms","Yes","Yes"),("Cushion","Sold separately","Included, removable")],
+  ["Raised woven back and arms","Natural mahogany frame","Seats two"],
+  ["Shorter than the 64 inch Malibu","Limited stock when checked","Natural seagrass varies in color"],
+  ["Use it in an entry with a round mirror above.","Add a lumbar pillow at one end.","Tuck a basket underneath for shoes."],
+  [("Is there a dupe for the Pottery Barn Malibu woven bench?","The Bali & pari Ismael bench has a similar seagrass back and arms on a wood frame."),("Does it come with a cushion?","Yes, a removable cushion is included."),("Can it go in a living room?","Yes, it works as extra seating in an entry, living room or at the end of a bed.")])
+
+_dp("remington-iron-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Remington Iron Table Lamp", "$179",
+  "B0DG9SQ8N1", "61mMiWvWhlL", "Safavieh Nysa Black 21 inch Table Lamp",
+  "Pottery Barn Remington Iron Table Lamp Dupe on Amazon",
+  "Product photo of a slim black metal table lamp with a white tapered shade",
+  "A great Amazon look for less for the Pottery Barn Remington Iron Table Lamp is the Safavieh Nysa 21 inch table lamp. It has the same slim black candlestick body and white tapered shade, and the LED bulb is included.",
+  [("Body","Slim black iron","Slim black metal"),("Shade","White tapered","White tapered"),("Height","25 to 32 inches","21 inches"),("Bulb","See Pottery Barn","LED bulb included")],
+  ["Slim black base that works in any room","Tapered white shade","Easy to use in pairs"],
+  ["Shorter than the Remington","Not adjustable","New listing with few reviews"],
+  ["Use a pair on a console or on matching nightstands.","Black bases ground a light, neutral room.","Pick warm white bulbs for a cozy glow."],
+  [("Is there a dupe for the Pottery Barn Remington lamp?","The Safavieh Nysa lamp has a similar slim black body and tapered white shade."),("Is the bulb included?","Yes, an LED bulb is included."),("Where does a slim lamp work best?","On a nightstand, desk or narrow console.")])
+
+_dp("bennett-recycled-glass-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Bennett Recycled Glass Table Lamp", "From $199",
+  "B09G8H629F", "4188Evyd8eL", "Craftmade 86245 Seeded Glass Table Lamp, Satin Brass",
+  "Pottery Barn Bennett Glass Table Lamp Dupe on Amazon",
+  "Product photo of an oval seeded glass table lamp with a drum shade",
+  "A great Amazon look for less for the Pottery Barn Bennett Recycled Glass Table Lamp is the Craftmade 86245 table lamp. It has the same rounded clear glass body with a bubbled texture and a white drum shade.",
+  [("Body","Rounded recycled glass","Oval seeded glass"),("Shade","White drum","White drum"),("Hardware","See Pottery Barn","Satin metal")],
+  ["Rounded clear glass body that feels light and airy","Textured glass that catches the light","Classic white drum shade"],
+  ["The metal finish reads more silver than brass in photos","Bulb not mentioned, so plan to buy one","Few reviews so far"],
+  ["Clear glass lamps keep a small room from feeling crowded.","Use one on a dresser with a stack of books.","Pair with linen or natural textures."],
+  [("Is there a dupe for the Pottery Barn Bennett glass lamp?","The Craftmade 86245 lamp has a similar rounded seeded glass body and drum shade."),("Does it come with a bulb?","Check the listing; plan to add one."),("Where does a glass lamp look best?","Anywhere you want light without visual weight, like a bedroom or entry.")])
+
+_dp("jasia-metal-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Jasia Metal Table Lamp", "$449",
+  "B0D9CKW4CB", "71M9IpaNCgL", "Safavieh Verne Black 24 inch Table Lamp",
+  "Pottery Barn Jasia Metal Table Lamp Dupe on Amazon",
+  "Product photo of a black table lamp with an open organic oval base and a white drum shade",
+  "A great Amazon look for less for the Pottery Barn Jasia Metal Table Lamp is the Safavieh Verne 24 inch table lamp. It has the same sculptural open oval base in black with a white drum shade, and the LED bulb is included.",
+  [("Base","Open organic metal loop","Open oval loop, black"),("Shade","White drum","White drum"),("Height","23 inches","24 inches"),("Bulb","See Pottery Barn","LED bulb included")],
+  ["Sculptural open base that feels like art","Black finish that grounds a neutral room","Simple white drum shade"],
+  ["Only one review so far and it is low, so check recent photos before you buy","Finish is flat black, not the Jasia's darker metal","Smaller footprint"],
+  ["Let it be the statement on a console or side table.","Keep the other accessories nearby simple.","Pair with books and a small plant."],
+  [("Is there a dupe for the Pottery Barn Jasia lamp?","The Safavieh Verne lamp has a similar open oval black base and drum shade."),("Is the bulb included?","Yes, an LED bulb is included."),("Is it a pair?","No, it is sold as a single lamp.")])
+
+_dp("marlo-small-travertine-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Marlo Small Table Lamp (Travertine)", "From $249",
+  "B0HJ7C5NVQ", "71bd-DmkuNL", "Bofea Wabi Sabi Travertine Table Lamp with Linen Shade",
+  "Pottery Barn Marlo Small Travertine Lamp Dupe on Amazon",
+  "Product photo of a travertine stone column table lamp with a tapered linen shade on a wood table",
+  "A great Amazon look for less for the Pottery Barn Marlo Small Table Lamp in travertine is the Bofea travertine table lamp. It has the same solid stone column base and tapered linen shade in a small size.",
+  [("Base","Stone column","Natural travertine column"),("Shade","Tapered empire","Tapered linen"),("Height","19 inches","15.7 inches"),("Light","See Pottery Barn","Push button, 3 color temperatures")],
+  ["Real travertine with natural grain","Tapered linen shade","Small size for nightstands and shelves"],
+  ["A few inches shorter","New listing with few reviews","Natural stone varies from lamp to lamp"],
+  ["Use a pair on nightstands for a calm, warm look.","Set it on a stack of books on a shelf.","Pair with linen, wood and cream tones."],
+  [("Is there a dupe for the Pottery Barn Marlo travertine lamp?","The Bofea travertine lamp has a similar stone column base and tapered linen shade."),("Is it real stone?","Yes, the base is natural travertine."),("Can I change the light color?","Yes, it has three color temperatures.")])
+
+_dp("dalton-recycled-glass-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Dalton Recycled Glass Table Lamp", "$249",
+  "B0FDLCZMGY", "81oYuVNakNL", "Safavieh Anders 22.25 inch Clear and Brass Table Lamp, Set of 2",
+  "Pottery Barn Dalton Glass Table Lamp Dupe on Amazon",
+  "Product photo of two clear glass cylinder table lamps with brass bases and white drum shades",
+  "A great Amazon look for less for the Pottery Barn Dalton Recycled Glass Table Lamp is the Safavieh Anders lamp set. It has the same clear glass cylinder body with brass at the top and base and a white drum shade, and you get two.",
+  [("Body","Clear glass cylinder","Clear glass cylinder"),("Finish","Brass trim","Brass finish"),("Height","25 inches","22.25 inches"),("Quantity","1","Set of 2")],
+  ["Clear glass column with warm brass trim","White drum shade","A matching pair for the price of one"],
+  ["Bulbs not included","A few inches shorter","Assembly required"],
+  ["Place the pair on matching nightstands or at each end of a console.","Brass trim pairs well with wood and cream.","Use warm white bulbs."],
+  [("Is there a dupe for the Pottery Barn Dalton lamp?","The Safavieh Anders set has a similar clear glass cylinder and brass finish."),("Is it a set?","Yes, it comes as a set of 2."),("Are bulbs included?","No, each lamp takes one E26 bulb.")])
+
+_dp("layton-upholstered-dining-chair", "Dining & Kitchen", "Dining Chairs", "Pottery Barn Layton Upholstered Dining Chair", "$279 to $569",
+  "B0H5HY12TK", "819qca622pL", "HNY Beige Linen Upholstered Dining Chairs, Set of 2",
+  "Pottery Barn Layton Dining Chair Dupe on Amazon",
+  "Product photo of two beige linen dining chairs with curved backs and wood legs at a wood dining table",
+  "A great Amazon look for less for the Pottery Barn Layton Upholstered Dining Chair is the HNY beige linen dining chair set. It has the same softly curved upholstered back, armless shape and warm wood legs, and you get two.",
+  [("Back","Curved upholstered","Curved wingback, upholstered"),("Fabric","Performance fabrics","Beige linen-look fabric"),("Legs","Wood","Solid wood, brushed finish"),("Quantity","1","Set of 2")],
+  ["Curved back that hugs you","Beige linen look that works with any table","Warm wood legs"],
+  ["Fewer fabric options","Linen-look fabric shows spills sooner than performance fabric","Assembly required"],
+  ["Pair with a warm wood table for a soft, modern farmhouse look.","Mix with two woven chairs at the ends.","Add a jute rug that extends past the chairs."],
+  [("Is there a dupe for the Pottery Barn Layton dining chair?","The HNY beige linen chairs have a similar curved upholstered back and wood legs."),("How many chairs come in a set?","Two."),("Are they comfortable?","Yes, the slightly tilted back is made for long dinners.")])
+
 # Existing Christmas pages: use the product's own picture, drop the combined shop lists
 for _d in DUPES:
     if _d["cat"] == "Christmas" and _d["asin"] in IMGID:

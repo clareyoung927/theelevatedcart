@@ -189,3 +189,19 @@ P.update({"B0C9KZ75ZD":"Nautica red and green patchwork plaid quilt set with sha
 BIG |= {"B0C9KZ75ZD","B01GJY48JO","B0HKN9NMMC","B0H285VLS8","B0G4MWKCGV"}
 HROOMS.insert(4, ("patchwork-plaid-christmas-bedroom","The Patchwork Plaid Christmas Bedroom","christmas","A red and green patchwork plaid quilt, an arched upholstered headboard, bronze deer lamps and a chunky woven rug for a cozy cabin-style Christmas bedroom.","cdn:b671b505-d8bb-4380-ac72-9d66b1c486a8/59290-9694-46b3-97ad-1c077ec6c._AC_._SX1200_SCLZZZZZZZ_.png",
  ["B0C9KZ75ZD","B0HKN9NMMC","B01GJY48JO","B0H285VLS8","B0G4MWKCGV","B07BVFC8WY","B0D4J5F3ZT","B0CSL9X436"],None,PHOTO+"96a23e44-a1bc-4276-a978-67d694983cbc?tag="+TAG))
+
+# 2026-11-19 Plaid and holly Christmas table (Clare's storefront photo 28096fd0). Everything tagged in the photo.
+P.update({"B0H97KG4J2":"Vintage plaid Christmas ceramic plates, 8 pc",
+ "B07VJK57Q5":"SARO Lifestyle embroidered holly table runner",
+ "B0HLKW6Y55":"Embroidered holly cotton napkins, set of 12",
+ "B01N4A606T":"Faux red peony bouquets",
+ "B00J66V8K0":"DII red and green ribbed Christmas placemats, set of 6",
+ "B0DYWCW8LD":"Black beaded rim charger plates, set of 6",
+ "B0H3ZDDCGM":"Red tartan melamine Christmas dinner plates, set of 6"})
+HROOMS.insert(5, ("plaid-and-holly-christmas-table","The Plaid and Holly Christmas Table","christmas","Red tartan plates on black beaded chargers, embroidered holly napkins and runner, and lush red peonies for a classic Christmas dinner table.","cdn:01f208c1-6e5e-40ee-9bff-3b2d1b388eb2/59e93-65bd-4266-9585-cdf5d85d3._AC_._SX1200_SCLZZZZZZZ_.png",
+ ["B0H97KG4J2","B0H3ZDDCGM","B0DYWCW8LD","B0HLKW6Y55","B07VJK57Q5","B01N4A606T","B00J66V8K0"],None,PHOTO+"28096fd0-0644-4ef4-9a7d-2c6be9766959?tag="+TAG))
+# 2026-11-19 dupe batch
+P.update({"B0HM2XP5QV":"Wingback upholstered queen bed, beige chenille","B0HLX6WYPT":"76 in reclaimed pine double pedestal dining table","B0GND4HKDV":"Handwoven seagrass bench with back and arms",
+ "B0DG9SQ8N1":"Safavieh Nysa black table lamp","B09G8H629F":"Seeded glass table lamp","B0D9CKW4CB":"Safavieh Verne black open oval table lamp",
+ "B0HJ7C5NVQ":"Travertine table lamp with linen shade","B0FDLCZMGY":"Safavieh Anders glass and brass table lamps, set of 2","B0H5HY12TK":"Beige linen curved back dining chairs, set of 2"})
+BIG |= {"B0HM2XP5QV","B0HLX6WYPT","B0GND4HKDV","B0H5HY12TK","B0FDLCZMGY"}

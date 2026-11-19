@@ -535,7 +535,7 @@ _dp("layton-upholstered-wingback-bed", "Bedroom", "Beds", "Pottery Barn Layton U
   "B0HM2XP5QV", "71OlZOAiNlL", "YBYZNOI Queen Bed with 54.5 inch Tall Wingback Headboard, Beige Chenille",
   "Pottery Barn Layton Upholstered Bed Dupe on Amazon",
   "Product photo of a cream chenille upholstered queen bed with a tall curved wingback headboard and wood legs",
-  "A great Amazon look for less for the Pottery Barn Layton Upholstered Bed is the YBYZNOI queen bed with a 54.5 inch wingback headboard. It has the same tall, softly curved wings, cream upholstery and tapered wood legs.",
+  "A great Amazon look for less for the Pottery Barn Layton Upholstered Bed is the YBYZNOI queen bed with a 54.5 inch wingback headboard. It has similarly tall, softly curved wings, cream upholstery and tapered wood legs.",
   [("Headboard","Curved wingback","54.5 inch curved wingback"),("Upholstery","Performance fabrics","Ivory chenille"),("Legs","Wood","Solid wood"),("Support","See Pottery Barn","Metal frame with wood slats, no box spring needed")],
   ["Tall wingback headboard that makes the bed the focal point","Soft cream upholstery that works with any bedding","Warm wood legs"],
   ["Fewer fabric choices than Pottery Barn","New listing with only a few reviews so far","Assembly required"],
@@ -601,7 +601,7 @@ _dp("marlo-small-travertine-table-lamp", "Living Room", "Table Lamps", "Pottery 
   "B0HJ7C5NVQ", "71bd-DmkuNL", "Bofea Wabi Sabi Travertine Table Lamp with Linen Shade",
   "Pottery Barn Marlo Small Travertine Lamp Dupe on Amazon",
   "Product photo of a travertine stone column table lamp with a tapered linen shade on a wood table",
-  "A great Amazon look for less for the Pottery Barn Marlo Small Table Lamp in travertine is the Bofea travertine table lamp. It has the same solid stone column base and tapered linen shade in a small size.",
+  "A great Amazon look for less for the Pottery Barn Marlo Small Table Lamp in travertine is the Bofea travertine table lamp. It has a similar natural stone column base and tapered linen shade in a small size.",
   [("Base","Stone column","Natural travertine column"),("Shade","Tapered empire","Tapered linen"),("Height","19 inches","15.7 inches"),("Light","See Pottery Barn","Push button, 3 color temperatures")],
   ["Real travertine with natural grain","Tapered linen shade","Small size for nightstands and shelves"],
   ["A few inches shorter","New listing with few reviews","Natural stone varies from lamp to lamp"],
@@ -626,9 +626,9 @@ _dp("layton-upholstered-dining-chair", "Dining & Kitchen", "Dining Chairs", "Pot
   "A great Amazon look for less for the Pottery Barn Layton Upholstered Dining Chair is the HNY beige linen dining chair set. It has the same softly curved upholstered back, armless shape and warm wood legs, and you get two.",
   [("Back","Curved upholstered","Curved wingback, upholstered"),("Fabric","Performance fabrics","Beige linen-look fabric"),("Legs","Wood","Solid wood, brushed finish"),("Quantity","1","Set of 2")],
   ["Curved back that hugs you","Beige linen look that works with any table","Warm wood legs"],
-  ["Fewer fabric options","Linen-look fabric shows spills sooner than performance fabric","Assembly required"],
+  ["Fewer fabric options","Linen-look fabric rather than performance fabric, so check the care instructions","Assembly required"],
   ["Pair with a warm wood table for a soft, modern farmhouse look.","Mix with two woven chairs at the ends.","Add a jute rug that extends past the chairs."],
-  [("Is there a dupe for the Pottery Barn Layton dining chair?","The HNY beige linen chairs have a similar curved upholstered back and wood legs."),("How many chairs come in a set?","Two."),("Are they comfortable?","Yes, the slightly tilted back is made for long dinners.")])
+  [("Is there a dupe for the Pottery Barn Layton dining chair?","The HNY beige linen chairs have a similar curved upholstered back and wood legs."),("How many chairs come in a set?","Two."),("What are the chairs made of?","Upholstered seats and backs in a beige linen-look fabric on solid wood legs. Check the listing for seat height and weight limit.")])
 
 # Existing Christmas pages: use the product's own picture, drop the combined shop lists
 for _d in DUPES:

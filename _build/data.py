@@ -163,3 +163,16 @@ HROOMS.insert(2, ("cream-and-gold-christmas-tree","The Cream and Gold Christmas 
 # 2026-11-18 Stewart plaid duvet dupe ($111.99)
 P.update({"B0CCBYWQDH":"Red tartan plaid duvet cover set with 2 shams, Full/Queen"})
 BIG |= {"B0CCBYWQDH"}
+
+# 2026-11-19 Plaid Christmas bedroom (Clare's storefront photo 81a5c425). Everything tagged in the photo, checked live 2026-11-19.
+P.update({"B0CCC2BHKV":"Levtex Spencer red tartan plaid duvet cover set with 2 shams, King",
+ "B01M19J42D":"Peking Handicraft woody wagon Christmas tree hook pillow, 12 x 20",
+ "B0FK3W2HLW":"24 in eucalyptus, berry, pomegranate and pinecone Christmas wreath",
+ "B0HHMLRN5V":"GORELAX 40 in woven seagrass seat wood bench",
+ "B0HDSNMP4Q":"Oatmeal chunky knit throw with fringe, 50 x 67",
+ "B0G2RDFYBG":"25 in vintage white ceramic table lamp",
+ "B09G74QWZH":"Napa Home & Garden Gilda vase, medium",
+ "B0H8712VTD":"Faux pine and red berry stems, 30 pieces"})
+BIG |= {"B0CCC2BHKV","B0HHMLRN5V"}
+HROOMS.insert(3, ("plaid-christmas-bedroom","The Plaid Christmas Bedroom","christmas","Red tartan plaid bedding, a vintage woody wagon Christmas tree pillow, an evergreen berry wreath and a woven bench at the foot of the bed.","img:plaid-christmas-bedroom",
+ ["B0CCC2BHKV","B01M19J42D","B0FK3W2HLW","B0HHMLRN5V","B0HDSNMP4Q","B0G2RDFYBG","B09G74QWZH","B0H8712VTD"],None,PHOTO+"81a5c425-8ef3-4052-94df-6e815c0456ce?tag="+TAG))

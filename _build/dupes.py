@@ -499,6 +499,31 @@ DUPE_CATS["pottery-barn-stewart-plaid-duvet-cover-dupe"] = ("Christmas", "Beddin
 for _d in DUPES:
     if _d["slug"] not in DUPE_CATS and _d.get("sub"): DUPE_CATS[_d["slug"]] = (_d["cat"], _d["sub"])
 
+# 2026-11-19 from the plaid Christmas bedroom photo. PB prices checked on potterybarn.com 2026-11-19; Amazon listings live and in stock 2026-11-19.
+IMGID["B0FK3W2HLW"] = "81Or07tC4bL"
+DUPES.append(_mk("lit-mixed-eucalyptus-pomegranate-wreath", "Garland & Greenery", "Pottery Barn Faux Lit Mixed Eucalyptus & Pomegranate Wreath", "$199 (28 inch wreath)",
+  "B0FK3W2HLW", "wwmira 24 Inch Luxury Christmas Wreath with Eucalyptus, Berries, Pomegranates and Pinecones",
+  "It mixes pine, fir and round eucalyptus with red and gold berries, faux pomegranates and pinecones for the same full, collected look.",
+  [("Greenery","Mixed faux evergreen and eucalyptus","Pine, arborvitae, fir and round eucalyptus"),("Accents","Pomegranates and berries","Pomegranates, red and gold berries, mixed pinecones"),("Size","28 inch","24 inch"),("Lights","Pre-lit","Unlit")],
+  ["Lush mix of evergreen and silvery eucalyptus","Red pomegranates and berries that read as classic Christmas","Works on a front door, over a headboard or above a mantel"],
+  ["Four inches smaller across","Not pre-lit, so add a battery fairy light strand if you want a glow","Rated 4.5 stars, but from a small number of reviews so far"],
+  "Hang it centered over the headboard, about 8 to 12 inches above the top of the bed."))
+DUPE_CATS["pottery-barn-lit-mixed-eucalyptus-pomegranate-wreath-dupe"] = ("Christmas", "Garland & Greenery")
+
+DUPES.append(dict(slug="pottery-barn-malibu-woven-backless-bench-dupe", cat="Bedroom", sub="Benches",
+  pb="Pottery Barn Malibu Woven Backless Bench (52\")", pb_price="$899", checked="November 2026",
+  asin="B0HHMLRN5V", amazon="GORELAX 40 inch Wood Bench with Woven Seagrass Seat",
+  title="Pottery Barn Malibu Woven Bench Dupe on Amazon", img="amz:71xZHfoww3L",
+  alt="Product photo of the GORELAX 40 inch wood bench with a woven seagrass seat",
+  answer="A great Amazon look for less for the Pottery Barn Malibu Woven Backless Bench is the GORELAX 40 inch bench. It has the same hand-woven seagrass seat on a warm wood frame with crossbars, and it works at the foot of a bed, in an entry or at a dining table.",
+  rows=[("Seat","Hand-woven seagrass","Woven seagrass"),("Frame","Red mahogany","Rubber wood with crossbars"),("Width","52 inches","40 inches"),("Seat depth","18 inches","14 inches"),("Weight limit","See Pottery Barn","350 lbs"),("Price","$899","Check today's price")],
+  same=["Natural woven seagrass seat with real texture","Warm wood frame with a simple, straight-leg shape","Backless, so it tucks under a window or at the foot of a bed"],
+  diff=["12 inches narrower, so it suits a queen or full bed best","Shallower seat than the Malibu","New listing with few reviews so far, so check recent photos"],
+  tips=["Center it at the foot of the bed and keep it a few inches narrower than the mattress.","Drape a chunky knit throw over one end for texture.","Pair it with a jute or wool rug that extends past the bench on both sides."],
+  faq=[("Is there a dupe for the Pottery Barn Malibu woven bench?","The GORELAX 40 inch bench has a similar woven seagrass seat and wood frame for a fraction of the $899 price."),("What size bench goes at the foot of a queen bed?","Choose a bench about 40 to 50 inches wide, a little narrower than the 60 inch mattress."),("How do you clean a seagrass seat?","Vacuum it with a brush attachment and spot clean with a barely damp cloth.")],
+  also=[], room=None))
+DUPE_CATS["pottery-barn-malibu-woven-backless-bench-dupe"] = ("Bedroom", "Benches")
+
 # Existing Christmas pages: use the product's own picture, drop the combined shop lists
 for _d in DUPES:
     if _d["cat"] == "Christmas" and _d["asin"] in IMGID:

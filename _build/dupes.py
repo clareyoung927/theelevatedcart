@@ -630,6 +630,85 @@ _dp("layton-upholstered-dining-chair", "Dining & Kitchen", "Dining Chairs", "Pot
   ["Pair with a warm wood table for a soft, modern farmhouse look.","Mix with two woven chairs at the ends.","Add a jute rug that extends past the chairs."],
   [("Is there a dupe for the Pottery Barn Layton dining chair?","The HNY beige linen chairs have a similar curved upholstered back and wood legs."),("How many chairs come in a set?","Two."),("What are the chairs made of?","Upholstered seats and backs in a beige linen-look fabric on solid wood legs. Check the listing for seat height and weight limit.")])
 
+# 2026-11-20 from the patchwork plaid Christmas bedroom shoppable photo (Christmas category). PB prices checked on potterybarn.com 2026-11-20;
+# Amazon items live with current prices on the storefront post 2026-11-20. White Nestl shams skipped (no close Pottery Barn match).
+_dp("classic-patchwork-plaid-quilt", "Christmas", "Bedding", "Pottery Barn Classic Patchwork Plaid Quilt", "$199 to $249",
+  "B0C9KZ75ZD", "515Lua8Kw8L", "Nautica Red and Green Patchwork Plaid Quilt Set with Shams, Queen",
+  "Pottery Barn Classic Patchwork Plaid Quilt Dupe on Amazon",
+  "Product photo of a red, green and cream patchwork plaid quilt with matching shams on a bed",
+  "A great Amazon look for less for the Pottery Barn Classic Patchwork Plaid Quilt is the Nautica patchwork plaid quilt set. It pieces red, green and cream tartan squares into the same cozy Christmas patchwork, and the queen set includes matching shams.",
+  [("Pattern","Red, green and cream patchwork plaid","Red, green and cream patchwork plaid"),("Style","Quilted","Lightweight quilted"),("Shams","Sold separately","Included"),("Care","See Pottery Barn","Machine washable")],
+  ["Patchwork of red and green tartans that reads instantly as Christmas","Quilted texture that layers well over white sheets","Works on a wood or upholstered bed"],
+  ["The plaid squares are arranged differently, so it is not an exact match","Lighter weight, so add a throw on cold nights","Shams come in the set rather than sold one by one"],
+  ["Layer green velvet and leather pillows in front of the shams.","Fold a red throw across the foot of the bed for depth.","Keep the sheets white so the plaid stays the star."],
+  [("Is there a dupe for the Pottery Barn Classic Patchwork Plaid Quilt?","The Nautica patchwork plaid quilt set has a similar red, green and cream patchwork look and includes shams."),("Does the Amazon quilt come with shams?","Yes, the set includes coordinating shams."),("Can I wash it at home?","Yes, it is machine washable. Check the care label first.")])
+
+_dp("everywhere-velvet-pillow-cover-green", "Christmas", "Pillows", "Pottery Barn Everywhere Velvet Pillow Cover", "$39.50 to $49.50 each",
+  "B07BVFC8WY", "41HYpPR32PL", "MIULEE Green Velvet Pillow Covers, 20 x 20 inch, Set of 2",
+  "Pottery Barn Everywhere Velvet Pillow Cover Dupe on Amazon",
+  "Product photo of two deep green velvet square pillow covers",
+  "A great Amazon look for less for the Pottery Barn Everywhere Velvet Pillow Cover is the MIULEE velvet pillow cover set in army green. You get two soft 20 inch velvet covers in a deep evergreen for less than the price of one.",
+  [("Fabric","Velvet","Soft velvet"),("Color","Many colors","Army green"),("Size","Several sizes","20 x 20 inch"),("Quantity","1","Set of 2")],
+  ["Deep green velvet that glows in lamplight","Simple solid cover that mixes with plaid","Hidden zipper so inserts swap easily"],
+  ["Inserts not included","Fewer color and size choices","Velvet sheen can look slightly different in person"],
+  ["Pair two green velvet pillows with one leather lumbar in front.","Mix with a red plaid quilt for a classic Christmas bed.","Use 22 inch inserts in 20 inch covers for a full, plump look."],
+  [("Is there a dupe for the Pottery Barn Everywhere Velvet pillow?","The MIULEE green velvet covers have the same solid velvet look and come as a pair."),("Are inserts included?","No, these are covers only."),("What size insert should I use?","A 20 or 22 inch down-alternative insert.")])
+
+_dp("pieced-leather-lumbar-pillow-cover", "Christmas", "Pillows", "Pottery Barn Pieced Leather Pillow Cover (lumbar)", "$179.50 to $199.50",
+  "B0D4J5F3ZT", "31EEdQ3MGiL", "SBL South Beach Leather Genuine Leather Lumbar Pillow Cover, Brown, 12 x 20 inch",
+  "Pottery Barn Pieced Leather Lumbar Pillow Dupe on Amazon",
+  "Product photo of a brown genuine leather lumbar pillow cover",
+  "A great Amazon look for less for the Pottery Barn Pieced Leather Pillow Cover in the lumbar size is the SBL genuine leather lumbar cover in brown. It is real leather in a warm cognac brown that adds the same rich texture in front of plaid bedding.",
+  [("Material","Leather","Genuine leather"),("Color","Brown tones","Brown"),("Size","Lumbar","12 x 20 inch"),("Construction","Pieced panels","Smooth panel")],
+  ["Real leather that softens and ages with use","Warm brown that pairs with red and green plaid","Lumbar shape for the front of a bed or sofa"],
+  ["Smoother front without Pottery Barn's pieced seams","Smaller 12 x 20 size","Insert not included"],
+  ["Center it in front of two velvet pillows on the bed.","Repeat the brown with a wood nightstand or lamp base.","Use a down-alternative insert so it keeps its shape."],
+  [("Is there a dupe for the Pottery Barn leather lumbar pillow?","The SBL genuine leather lumbar cover has a similar warm brown leather look for much less."),("Is it real leather?","Yes, it is genuine leather."),("What insert size do I need?","A 12 x 20 inch lumbar insert.")])
+
+_dp("figural-stag-table-lamp", "Christmas", "Bedroom", "Pottery Barn Figural Stag Table Lamp (27\")", "$299 to $309",
+  "B01GJY48JO", "51wTnPaa3YL", "Black Forest Decor Bronze Deer Table Lamp, 24.75 inch",
+  "Pottery Barn Figural Stag Table Lamp Dupe on Amazon",
+  "Product photo of a bronze deer sculpture table lamp with a tapered shade",
+  "A great Amazon look for less for the Pottery Barn Figural Stag Table Lamp is the Black Forest Decor bronze deer table lamp. It has a sculpted deer base in a bronze finish that brings the same lodge-meets-Christmas feel to a nightstand.",
+  [("Base","Brass-look standing stag","Bronze deer sculpture"),("Shade","Drum shade","Tapered shade"),("Height","27 inches","24.75 inches"),("Size","See Pottery Barn","15.25 W x 11 D inches")],
+  ["Sculpted deer base that works as a conversation piece","Warm metallic finish","Nightstand or console size"],
+  ["Bronze finish rather than brass","Tapered shade instead of a drum shade","A little shorter"],
+  ["Use a matching pair on both nightstands for a symmetrical bedroom.","Add a small vase of red berries or roses beside it.","Use a warm white bulb for a cozy evening glow."],
+  [("Is there a dupe for the Pottery Barn stag table lamp?","The Black Forest Decor bronze deer lamp has a similar sculpted deer base for less."),("How tall is the Amazon lamp?","24.75 inches tall."),("Is it only for Christmas?","No. The deer base works year round in a lodge or traditional room.")])
+
+_dp("vintners-upholstered-bed", "Christmas", "Bedroom", "Pottery Barn Vintners Upholstered Bed", "$2,099 to $2,299",
+  "B0HKN9NMMC", "41IuA-6ECJL", "Merax King Upholstered Platform Bed with Curved Linen Headboard and Footboard",
+  "Pottery Barn Vintners Upholstered Bed Dupe on Amazon",
+  "Product photo of a king platform bed with a curved linen upholstered headboard framed in wood and a matching footboard",
+  "A great Amazon look for less for the Pottery Barn Vintners Upholstered Bed is the Merax king upholstered platform bed. It has the same arched, wood-framed headboard with a soft linen panel inside, plus a matching footboard.",
+  [("Headboard","Arched wood frame, upholstered panel","Curved wood frame, linen upholstered panel"),("Footboard","See Pottery Barn","Yes, upholstered"),("Frame","Wood","Solid pine"),("Support","See Pottery Barn","Wood slats, no box spring needed")],
+  ["Arched headboard with exposed wood trim around a soft panel","Neutral linen that works with any bedding","Traditional shape that feels collected"],
+  ["Check the wood tone on the listing, since it differs from Pottery Barn's finishes","Fewer sizes and fabric choices","Assembly required"],
+  ["Hang a wreath or art centered 8 to 12 inches above the headboard.","Flank it with matching nightstands and lamps.","Layer a patchwork quilt and a throw at the foot for winter."],
+  [("Is there a dupe for the Pottery Barn Vintners bed?","The Merax upholstered platform bed has a similar arched wood-framed headboard with a linen panel."),("Do I need a box spring?","No, it has a wood slat platform."),("Is it the same quality as Pottery Barn?","It is a similar look at a much lower price, so compare materials on the listing.")])
+
+_dp("chris-loves-julia-modern-traditional-nightstand", "Christmas", "Bedroom", "Pottery Barn Chris Loves Julia Modern Traditional Nightstand (28\")", "$599",
+  "B0H285VLS8", "41t+RC34jBL", "Huuger 27 inch Tall Farmhouse Nightstand with Charging Station",
+  "Pottery Barn Chris Loves Julia Nightstand Dupe on Amazon",
+  "Product photo of a walnut brown three-drawer nightstand with round brass knobs and rounded corner legs",
+  "A great Amazon look for less for the Pottery Barn Chris Loves Julia Modern Traditional Nightstand is the Huuger 27 inch nightstand. It has the same warm brown wood, round brass knobs and softly rounded legs, plus a hidden charging station.",
+  [("Finish","Dark brown wood","Walnut brown"),("Drawers","2","3"),("Hardware","Round brass knobs","Round brass knobs"),("Size","28 inches","27 inches tall, 27.6 inches wide"),("Extras","None","Hidden charging station with USB-C")],
+  ["Warm brown wood with brass knobs","Traditional rounded legs","Nightstand height that lines up with most beds"],
+  ["Three drawers instead of two","Engineered wood, so check materials on the listing","Assembly required"],
+  ["Pair two with matching lamps for a balanced bedroom.","Top with a lamp, a small stack of books and something living.","Keep the top styled with three items or fewer."],
+  [("Is there a dupe for the Pottery Barn Chris Loves Julia nightstand?","The Huuger 27 inch nightstand has a similar brown finish, brass knobs and rounded legs."),("Does it have a charger?","Yes, a hidden charging station with a USB-C port."),("How tall should a nightstand be?","Within a few inches of the top of your mattress.")])
+
+_dp("chunky-wool-jute-rug", "Christmas", "Bedroom", "Pottery Barn Chunky Wool Jute Rug (8 x 10)", "$899 (8 x 10)",
+  "B0G4MWKCGV", "510fpYoU39L", "Gertmenian Comfy Weave Area Rug, 8 x 10",
+  "Pottery Barn Chunky Wool Jute Rug Dupe on Amazon",
+  "Product photo of a neutral chunky woven area rug",
+  "A great Amazon look for less for the Pottery Barn Chunky Wool Jute Rug is the Gertmenian Comfy Weave 8 x 10 rug. It has the same chunky, textured weave in a soft neutral, and it is non-shedding and stain resistant.",
+  [("Weave","Chunky hand-loomed","Chunky textured weave"),("Material","Wool and jute","Synthetic, soft underfoot"),("Size","8 x 10 (and more)","8 x 10"),("Care","See Pottery Barn","Non-shedding, stain resistant")],
+  ["Chunky woven texture that grounds a bedroom","Neutral color that works with any season","Large 8 x 10 size for under a bed"],
+  ["Not wool and jute, so it feels softer but less natural","Fewer sizes","Check the color on the listing, since neutrals vary on screen"],
+  ["Place it so about 24 inches show on each side of a king bed.","Start the rug a few inches in front of the nightstands.","Add a rug pad to keep it flat and in place."],
+  [("Is there a dupe for the Pottery Barn Chunky Wool Jute Rug?","The Gertmenian Comfy Weave rug has a similar chunky textured look in an 8 x 10."),("Does it shed?","It is listed as non-shedding."),("What size rug goes under a king bed?","An 8 x 10 or 9 x 12, so the rug extends past both sides.")])
+
 # Existing Christmas pages: use the product's own picture, drop the combined shop lists
 for _d in DUPES:
     if _d["cat"] == "Christmas" and _d["asin"] in IMGID:

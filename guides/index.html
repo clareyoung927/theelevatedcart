@@ -42,7 +42,7 @@
 <script>
 document.querySelectorAll('.dchips').forEach(function(top){var gid=top.dataset.grid,g=document.getElementById(gid),cur='All',sub='All';
 var subs=document.querySelectorAll('.dsub[data-grid="'+gid+'"]');
-function show(){g.querySelectorAll('.tile').forEach(function(t){t.hidden=!((cur==='All'||t.dataset.cat===cur)&&(sub==='All'||t.dataset.sub===sub))});
+function show(){g.querySelectorAll('.tile').forEach(function(t){var ps=(t.dataset.cs||(t.dataset.cat+'::'+t.dataset.sub)).split(';;').map(function(p){return p.split('::')});t.hidden=!ps.some(function(p){return (cur==='All'||p[0]===cur)&&(sub==='All'||p[1]===sub)})});
 subs.forEach(function(d){d.hidden=d.dataset.g!==cur;d.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.s===sub)})});
 top.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)})}
 top.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;sub='All';show();history.replaceState(null,'',cur==='All'?location.pathname:'#'+encodeURIComponent(cur))});

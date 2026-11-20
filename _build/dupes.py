@@ -718,3 +718,21 @@ for _d in DUPES:
 
 for _d in DUPES:
     _d["cat"], _d["sub"] = DUPE_CATS.get(_d["slug"], (_d["cat"], _d["cat"]))
+
+# Clare, 2026-11-20: furniture from the plaid bedroom belongs on the regular dupes page, not Christmas.
+for _s, _cs in {"pottery-barn-vintners-upholstered-bed-dupe": ("Bedroom", "Beds"),
+                "pottery-barn-chris-loves-julia-modern-traditional-nightstand-dupe": ("Bedroom", "Nightstands"),
+                "pottery-barn-chunky-wool-jute-rug-dupe": ("Living Room", "Rugs"),
+                "pottery-barn-figural-stag-table-lamp-dupe": ("Christmas", "Lighting")}.items():
+    for _d in DUPES:
+        if _d["slug"] == _s: _d["cat"], _d["sub"] = _cs
+
+# Dupes that show under Christmas AND a regular category (Clare, 2026-11-20). Primary (cat, sub) stays as set above.
+DUPE_ALSO = {
+    "pottery-barn-pieced-leather-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-everywhere-velvet-pillow-cover-green-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-figural-stag-table-lamp-dupe": [("Living Room", "Table Lamps")],
+    "pottery-barn-chambers-cordless-table-lamp-dupe": [("Living Room", "Table Lamps")],
+}
+for _d in DUPES:
+    _d["cs"] = [(_d["cat"], _d["sub"])] + DUPE_ALSO.get(_d["slug"], [])

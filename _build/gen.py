@@ -261,7 +261,7 @@ def hero(o):
 def label(o):
     return {"room": f"Recreated room · {o['cat']}", "hroom": f"Holiday · {o['cat']}", "guide": o.get("sub", o["cat"]), "dupe": f"Pottery Barn dupe · {o.get('sub', o['cat'])}"}[o["kind"]]
 def tile(o, h="h3"):
-    return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"{(' data-sub="' + E(o["sub"]) + '"') if o.get("sub") else ""}><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
+    return f'<a class="tile" href="{o["url"]}" data-cat="{E(o["cat"])}"{(' data-sub="' + E(o["sub"]) + '"') if o.get("sub") else ""}{(' data-cs="' + E(";;".join(c + "::" + x for c, x in o["cs"])) + '"') if o.get("cs") else ""}><img src="{E(o["img"])}" alt="{E(o["alt"])}" loading="lazy"><div class="tile-txt"><div class="eyebrow">{E(label(o))}</div><{h}>{E(o["title"])}</{h}></div></a>'
 def grid(items, gid="", rooms_cls=True):
     return f'<div class="grid" id="{gid}">' + "".join(tile(o) for o in items) + "</div>"
 def chips(cats, gid):
@@ -371,17 +371,18 @@ for r in rooms:
 # ---------- category filters ----------
 def dchips(ds, gid="g-dupes", groups_order=None):
     order = groups_order or DUPE_GROUPS
-    groups = [g for g in order if any(d["cat"] == g for d in ds)]
+    pairs = [p for d in ds for p in (d.get("cs") or [(d["cat"], d.get("sub", d["cat"]))])]
+    groups = [g for g in order if any(c == g for c, _ in pairs)]
     top = f'<div class="dchips" data-grid="{gid}">' + '<button class="chip on" data-c="All">All</button>' + "".join(f'<button class="chip" data-c="{E(g)}">{E(g)}</button>' for g in groups) + "</div>"
     subs = ""
     for g in groups:
-        ss = sorted({d["sub"] for d in ds if d["cat"] == g})
+        ss = sorted({x for c, x in pairs if c == g})
         subs += f'<div class="dsub" data-grid="{gid}" data-g="{E(g)}" hidden><button class="chip on" data-s="All">All {E(g)}</button>' + "".join(f'<button class="chip" data-s="{E(x)}">{E(x)}</button>' for x in ss) + "</div>"
     return top + subs
 DUPE_JS = """<script>
 document.querySelectorAll('.dchips').forEach(function(top){var gid=top.dataset.grid,g=document.getElementById(gid),cur='All',sub='All';
 var subs=document.querySelectorAll('.dsub[data-grid="'+gid+'"]');
-function show(){g.querySelectorAll('.tile').forEach(function(t){t.hidden=!((cur==='All'||t.dataset.cat===cur)&&(sub==='All'||t.dataset.sub===sub))});
+function show(){g.querySelectorAll('.tile').forEach(function(t){var ps=(t.dataset.cs||(t.dataset.cat+'::'+t.dataset.sub)).split(';;').map(function(p){return p.split('::')});t.hidden=!ps.some(function(p){return (cur==='All'||p[0]===cur)&&(sub==='All'||p[1]===sub)})});
 subs.forEach(function(d){d.hidden=d.dataset.g!==cur;d.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.s===sub)})});
 top.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===cur)})}
 top.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.c;sub='All';show();history.replaceState(null,'',cur==='All'?location.pathname:'#'+encodeURIComponent(cur))});

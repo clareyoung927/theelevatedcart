@@ -809,13 +809,6 @@ for _s, _cs in {"pottery-barn-vintners-upholstered-bed-dupe": ("Bedroom", "Beds"
 DUPE_ALSO = {
     "pottery-barn-pieced-leather-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
     "pottery-barn-everywhere-velvet-pillow-cover-green-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-merry-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-bronwyn-tree-embroidered-pillow-cover-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-santa-face-shaped-pillow-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-graphic-snowflake-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-candy-cane-embroidered-pillow-cover-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-holly-wreath-pillow-cover-dupe": [("Living Room", "Pillows")],
-    "pottery-barn-teddy-candy-cane-shaped-pillow-dupe": [("Living Room", "Pillows")],
     "pottery-barn-figural-stag-table-lamp-dupe": [("Living Room", "Table Lamps")],
     "pottery-barn-chambers-cordless-table-lamp-dupe": [("Living Room", "Table Lamps")],
 }

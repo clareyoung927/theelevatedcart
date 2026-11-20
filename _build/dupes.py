@@ -709,6 +709,84 @@ _dp("chunky-wool-jute-rug", "Christmas", "Bedroom", "Pottery Barn Chunky Wool Ju
   ["Place it so about 24 inches show on each side of a king bed.","Start the rug a few inches in front of the nightstands.","Add a rug pad to keep it flat and in place."],
   [("Is there a dupe for the Pottery Barn Chunky Wool Jute Rug?","The Gertmenian Comfy Weave rug has a similar chunky textured look in an 8 x 10."),("Does it shed?","It is listed as non-shedding."),("What size rug goes under a king bed?","An 8 x 10 or 9 x 12, so the rug extends past both sides.")])
 
+# 2026-11-20 batch: 7 Christmas pillow dupes Clare sent. PB names and prices checked on potterybarn.com 2026-11-20; Amazon listings live 2026-11-20.
+_dp("merry-lumbar-pillow-cover", "Christmas", "Pillows", "Pottery Barn Merry Lumbar Pillow Cover", "$49.50",
+  "B0CD7QD4MJ", "71BFUzF3c0L", "Hofdeco Red Velvet Merry Embroidered Lumbar Pillow Cover, 12 x 20 inch",
+  "Pottery Barn Merry Lumbar Pillow Dupe on Amazon",
+  "Product photo of a red velvet lumbar pillow cover with the word merry embroidered in white script",
+  "A great Amazon look for less for the Pottery Barn Merry Lumbar Pillow Cover is the Hofdeco red velvet merry lumbar cover. It has the same Christmas red background with 'merry' stitched across the front in a simple white script.",
+  [("Color","Red","Red"),("Design","'Merry' in white script","'merry' embroidered in white script"),("Fabric","See Pottery Barn","Micro velvet"),("Size","Lumbar","12 x 20 inch"),("Insert","Cover only","Cover only")],
+  ["Classic Christmas red that pops on a cream or white sofa","White hand-script 'merry' across the front","Lumbar shape for the front of a sofa, chair or bed"],
+  ["Soft micro velvet, so it has more sheen than a woven cover","Back is solid red velvet","Insert not included"],
+  ["Set it in front of two larger cream or plaid pillows so the script shows.","Use a 12 x 20 down-alternative insert so it stays full.","Repeat the red with a plaid throw or a bowl of red ornaments nearby."],
+  [("Is there a dupe for the Pottery Barn Merry lumbar pillow?","The Hofdeco red velvet merry lumbar cover has a similar red background and white 'merry' script for less."),("Does it come with an insert?","No, it is a cover only. Use a 12 x 20 inch lumbar insert."),("Can you wash it?","The listing says the velvet cover holds up to machine washing; check the care tag first.")])
+
+_dp("bronwyn-tree-embroidered-pillow-cover", "Christmas", "Pillows", "Pottery Barn Bronwyn Tree Embroidered Pillow Cover", "$79.50",
+  "B0D7ZHTXGT", "712XOqD93AL", "MOCOFO Green Embroidered Christmas Tree Pillow Cover, 18 x 18 inch",
+  "Pottery Barn Bronwyn Tree Pillow Dupe on Amazon",
+  "Product photo of an olive green square pillow cover with a textured snowy white Christmas tree and pom-pom corners",
+  "A great Amazon look for less for the Pottery Barn Bronwyn Tree Embroidered Pillow Cover is the MOCOFO green Christmas tree pillow cover. It pairs a muted olive green background with a textured, snowy white evergreen, the same quiet winter look as the Bronwyn.",
+  [("Background","Olive green","Olive green"),("Design","Embroidered white trees","One textured snowy white tree"),("Trim","Plain","Pom-pom corners"),("Size","See Pottery Barn","18 x 18 inch"),("Insert","Cover only","Cover only")],
+  ["Muted olive green rather than bright Christmas green","Textured white tree that reads as snow covered","Works from Thanksgiving through winter"],
+  ["One large tree instead of Pottery Barn's grouping of trees","Adds pom-poms at the corners","Insert not included"],
+  ["Pair it with a cream boucle or linen pillow for a soft winter palette.","Add a red plaid throw if you want more Christmas color.","Keep it out through January; the snowy tree works all winter."],
+  [("Is there a dupe for the Pottery Barn Bronwyn tree pillow?","The MOCOFO green tree pillow cover has a similar olive background with a snowy white tree for less."),("What size insert does it need?","An 18 x 18 inch insert, or a 20 inch insert for a fuller look."),("Is it only for Christmas?","No. The snowy tree on olive green works all winter.")])
+
+_dp("santa-face-shaped-pillow", "Christmas", "Pillows", "Pottery Barn Santa Face Shaped Pillow", "$69.50",
+  "B0GSTGFMTL", "81JJ62dqMmL", "Tegeme 18 Inch Santa Claus Face Shaped Plush Pillow",
+  "Pottery Barn Santa Face Shaped Pillow Dupe on Amazon",
+  "Product photo of a round plush Santa face pillow with a white faux fur beard and a red hat with a pom-pom, on a cream armchair",
+  "A great Amazon look for less for the Pottery Barn Santa Face Shaped Pillow is the Tegeme Santa Claus face pillow. It is the same round, plush Santa shape with a fluffy white beard, a red hat with a fur brim and pom-pom, and a little button nose.",
+  [("Shape","Santa face","Santa face"),("Beard","Faux fur","Plush white faux fur"),("Hat","Red with white trim","Red with white fur brim and pom-pom"),("Size","See Pottery Barn","About 14 x 18 inches"),("Fill","Filled","Filled")],
+  ["Whimsical Santa face that kids love","Soft, huggable faux fur beard","Comes filled and ready to use"],
+  ["Facial details are simpler than Pottery Barn's","Sized at about 14 x 18 inches","Spot clean the faux fur"],
+  ["Set it on an armchair or a kid's bed with a cable knit throw.","Pair it with plain cream pillows so Santa is the star.","Store it in a bag so the fur stays fluffy for next year."],
+  [("Is there a dupe for the Pottery Barn Santa face pillow?","The Tegeme Santa face pillow has a similar round plush Santa shape with a faux fur beard."),("Does it come filled?","Yes, it is a filled pillow."),("How big is it?","About 14 x 18 inches.")])
+
+_dp("graphic-snowflake-lumbar-pillow-cover", "Christmas", "Pillows", "Pottery Barn Graphic Snowflake Lumbar Pillow Cover", "$79.50",
+  "B0HQX7X17K", "710RsifGYML", "Sarang Group Red Embroidered Snowflake Lumbar Pillow Covers, 14 x 24 inch, Set of 2",
+  "Pottery Barn Graphic Snowflake Lumbar Pillow Dupe on Amazon",
+  "Product photo of a red lumbar pillow cover with large embroidered snowflakes in tan, gray, white and green",
+  "A great Amazon look for less for the Pottery Barn Graphic Snowflake Lumbar Pillow Cover is the Sarang Group red snowflake lumbar set. It has the same rich red lumbar with large embroidered snowflakes across the front, and you get two covers.",
+  [("Background","Red","Crimson red"),("Design","White graphic snowflakes","Embroidered snowflakes in tan, gray, white and green"),("Size","Lumbar","14 x 24 inch"),("Quantity","1 cover","Set of 2 covers"),("Insert","Cover only","Cover only")],
+  ["Red lumbar with a bold snowflake pattern","Embroidered texture you can see from across the room","Lumbar shape for a bed or sofa"],
+  ["Snowflakes mix tan, gray and green instead of all white","Cotton blend fabric","Sold as a set of 2, inserts not included"],
+  ["Use one on the bed and one on the sofa so the room feels connected.","Pair it with white or oatmeal bedding to let the red stand out.","Use a 14 x 24 insert so the snowflakes stay smooth."],
+  [("Is there a dupe for the Pottery Barn snowflake lumbar pillow?","The Sarang Group red snowflake lumbar covers have a similar red lumbar with large embroidered snowflakes."),("How many covers come in the set?","Two covers, inserts not included."),("What size are they?","14 x 24 inches.")])
+
+_dp("candy-cane-embroidered-pillow-cover", "Christmas", "Pillows", "Pottery Barn Candy Cane Embroidered Pillow Cover", "$79.50",
+  "B0FHP2GZFB", "81KSdYoqlmL", "LUOYEHK Embroidered Candy Cane Christmas Pillow Covers, 18 x 18 inch, Set of 2",
+  "Pottery Barn Candy Cane Embroidered Pillow Dupe on Amazon",
+  "Product photo of two cream pillow covers embroidered with crossed red and white candy canes, holly leaves and red berries",
+  "A great Amazon look for less for the Pottery Barn Candy Cane Embroidered Pillow Cover is the LUOYEHK candy cane pillow cover set. It has the same crossed red and white striped candy canes with green holly on a cream background, and it comes as a set of 2.",
+  [("Background","Cream","Cream"),("Design","Crossed candy canes with greenery","Crossed candy canes, striped bow, holly and berries"),("Size","See Pottery Barn","18 x 18 inch"),("Quantity","1 cover","Set of 2 covers"),("Insert","Cover only","Cover only")],
+  ["Crossed red and white candy canes on a cream background","Textured embroidery with green holly","Cheerful, classic Christmas look"],
+  ["Adds a striped bow and red berries","Soft velvet back","Sold as a set of 2, inserts not included"],
+  ["Pair one with a red plaid pillow on each end of the sofa.","Use them in a kid's room or on a reading chair.","Repeat the red and white with a striped throw or ribbon nearby."],
+  [("Is there a dupe for the Pottery Barn candy cane pillow?","The LUOYEHK candy cane pillow covers have a similar crossed candy cane design on cream."),("How many come in the set?","Two covers, inserts not included."),("What size insert do they need?","An 18 x 18 inch insert.")])
+
+_dp("holly-wreath-pillow-cover", "Christmas", "Pillows", "Pottery Barn Holly Wreath Pillow Cover", "$89.50",
+  "B0H6QCJMKK", "81JOng3FWGL", "Lumina Garden Embroidered Red Bow Wreath Christmas Pillow Cover, 18 x 18 inch",
+  "Pottery Barn Holly Wreath Pillow Dupe on Amazon",
+  "Product photo of a cream linen-look pillow cover embroidered with a green pine wreath wrapped in red ribbon with a bow on top",
+  "A great Amazon look for less for the Pottery Barn Holly Wreath Pillow Cover is the Lumina Garden embroidered bow wreath cover. It has the same natural cream background with a densely embroidered green wreath, finished with a red ribbon and bow.",
+  [("Background","Natural linen look","Beige linen-look blend"),("Design","Embroidered evergreen wreath","Embroidered pine wreath with red ribbon and bow"),("Size","See Pottery Barn","18 x 18 inch"),("Insert","Cover only","Cover only")],
+  ["Embroidered green wreath centered on a natural background","Traditional look that comes out every year","Pairs easily with plaid and velvet pillows"],
+  ["Red ribbon and bow instead of berries","Polyester linen blend","Insert not included"],
+  ["Put the wreath pillow in front of a larger plaid or solid pillow.","Mix one pattern, one texture and one solid in each stack.","Repeat the red ribbon with velvet bows on the tree or mantel."],
+  [("Is there a dupe for the Pottery Barn Holly Wreath pillow?","The Lumina Garden bow wreath cover has a similar embroidered green wreath on a natural background."),("Is the insert included?","No, it is a cover for an 18 x 18 inch insert."),("How many Christmas pillows should go on a sofa?","Three to five on a standard sofa.")])
+
+_dp("teddy-candy-cane-shaped-pillow", "Christmas", "Pillows", "Pottery Barn Cozy Teddy Faux Fur Candy Cane Shaped Pillow", "$59.50",
+  "B0CMT4V6SJ", "51BrnNTfXlL", "XIAIJIA Plush Candy Cane Shaped Christmas Pillow, 21 x 9 inch",
+  "Pottery Barn Candy Cane Shaped Pillow Dupe on Amazon",
+  "Product photo of a red and white striped plush candy cane shaped pillow",
+  "A great Amazon look for less for the Pottery Barn Cozy Teddy Faux Fur Candy Cane Shaped Pillow is the XIAIJIA plush candy cane pillow. It has the same red and white striped candy cane shape in a soft teddy fleece.",
+  [("Shape","Candy cane","Candy cane"),("Fabric","Teddy faux fur","Teddy fleece"),("Colors","Red and white","Red and white"),("Size","See Pottery Barn","21 x 9 inch"),("Fill","Filled","Filled")],
+  ["Red and white striped candy cane shape","Soft, nubby teddy texture","Comes filled and ready to use"],
+  ["Stripe spacing differs a little","Sized at 21 x 9 inches","Spot clean the fleece"],
+  ["Lean it against square pillows on a kid's bed or armchair.","Pair it with a red ticking stripe or plaid pillow.","Tuck one in a basket by the tree for a playful touch."],
+  [("Is there a dupe for the Pottery Barn candy cane shaped pillow?","The XIAIJIA plush candy cane pillow has the same red and white candy cane shape in teddy fleece."),("Does it come filled?","Yes, it is a filled pillow."),("How big is it?","About 21 x 9 inches.")])
+
 # Existing Christmas pages: use the product's own picture, drop the combined shop lists
 for _d in DUPES:
     if _d["cat"] == "Christmas" and _d["asin"] in IMGID:
@@ -731,6 +809,13 @@ for _s, _cs in {"pottery-barn-vintners-upholstered-bed-dupe": ("Bedroom", "Beds"
 DUPE_ALSO = {
     "pottery-barn-pieced-leather-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
     "pottery-barn-everywhere-velvet-pillow-cover-green-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-merry-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-bronwyn-tree-embroidered-pillow-cover-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-santa-face-shaped-pillow-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-graphic-snowflake-lumbar-pillow-cover-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-candy-cane-embroidered-pillow-cover-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-holly-wreath-pillow-cover-dupe": [("Living Room", "Pillows")],
+    "pottery-barn-teddy-candy-cane-shaped-pillow-dupe": [("Living Room", "Pillows")],
     "pottery-barn-figural-stag-table-lamp-dupe": [("Living Room", "Table Lamps")],
     "pottery-barn-chambers-cordless-table-lamp-dupe": [("Living Room", "Table Lamps")],
 }

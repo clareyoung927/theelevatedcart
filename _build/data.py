@@ -205,3 +205,6 @@ P.update({"B0HM2XP5QV":"Wingback upholstered queen bed, beige chenille","B0HLX6W
  "B0DG9SQ8N1":"Safavieh Nysa black table lamp","B09G8H629F":"Seeded glass table lamp","B0D9CKW4CB":"Safavieh Verne black open oval table lamp",
  "B0HJ7C5NVQ":"Travertine table lamp with linen shade","B0FDLCZMGY":"Safavieh Anders glass and brass table lamps, set of 2","B0H5HY12TK":"Beige linen curved back dining chairs, set of 2"})
 BIG |= {"B0HM2XP5QV","B0HLX6WYPT","B0GND4HKDV","B0H5HY12TK","B0FDLCZMGY"}
+
+# 2026-11-20 Christmas pillow dupes
+P.update({"B0CD7QD4MJ":"Red velvet merry lumbar pillow cover, 12x20","B0D7ZHTXGT":"Green snowy tree pillow cover, 18x18","B0GSTGFMTL":"Plush Santa face pillow","B0HQX7X17K":"Red snowflake lumbar pillow covers, set of 2","B0FHP2GZFB":"Candy cane embroidered pillow covers, set of 2","B0H6QCJMKK":"Red bow wreath pillow cover, 18x18","B0CMT4V6SJ":"Plush candy cane shaped pillow"})

@@ -1,0 +1,338 @@
+Act as an expert Pinterest SEO strategist, Pinterest affiliate marketer, visual-search specialist, and conversion copywriter.
+
+I am attaching the exact image I plan to publish as a Pinterest Pin. Analyze the uploaded image carefully before writing anything.
+
+My goals are to:
+
+* Create evergreen Pins that can continue appearing in Pinterest searches over time
+* Reach as many highly relevant searches as possible
+* Attract people who are genuinely interested in the featured product, room, style, or idea
+* Earn qualified outbound clicks through my affiliate link
+* Increase saves without using misleading or clickbait language
+* Follow current Pinterest policies, affiliate-marketing rules, and FTC disclosure requirements
+
+When internet research is available, verify current information using trustworthy sources, prioritizing:
+
+* Pinterest Trends
+* Pinterest autocomplete and related searches
+* Pinterest Business
+* Pinterest Help
+* Pinterest’s current commercial-content policies
+* Current search terminology used by Pinterest shoppers
+
+Do not rely only on generic Google SEO practices. Write specifically for Pinterest’s visual-search and recommendation system.
+
+Information I will provide
+
+{{INFO}}
+
+Step 1: Analyze the image
+
+Determine what is visibly shown, including:
+
+* Main product or subject
+* Product category
+* Room or setting
+* Decorating style
+* Colors
+* Materials and finishes
+* Product shape and construction
+* Visible styling details
+* Problem the product may help solve
+* Likely Pinterest audience
+* Possible shopper search intentions
+* Any visible text already included on the Pin
+
+Treat the uploaded image as the source of truth. Do not invent product details that cannot be verified visually or from the information I provided.
+
+Identify any mismatch between:
+
+* The image
+* My product information
+* The affiliate destination
+* The claims written on the Pin
+
+Flag the mismatch instead of silently correcting or overlooking it.
+
+Step 2: Research and select keywords
+
+Identify the strongest keyword strategy for this specific Pin.
+
+Provide:
+
+* One primary Pinterest search phrase
+* Five to eight closely related secondary keywords
+* Three to five long-tail search phrases
+* Relevant product keywords
+* Relevant room keywords
+* Relevant decorating-style keywords
+* Relevant color and material keywords
+* Relevant problem-solving or shopper-intent keywords
+* Seasonal keywords only when applicable
+* Keywords that should not be used because they are inaccurate, overly broad, misleading, or unlikely to produce qualified clicks
+
+Choose phrases that closely match the image, product, destination, and likely Pinterest search intent.
+
+Do not simply select the broadest or most popular home-decor terms. Prioritize relevance and qualified affiliate traffic.
+
+Do not repeat the same keyword unnaturally.
+
+Step 3: Write the Pinterest title
+
+Write one highly searchable, evergreen Pinterest title.
+
+Requirements:
+
+* Maximum 100 characters
+* Place the primary search phrase or clearest searchable concept near the beginning
+* Clearly identify what the Pin offers
+* Include the room, product type, decorating style, material, color, or benefit when useful
+* Sound natural and appealing
+* Attract qualified shoppers rather than empty clicks
+* Do not use hashtags
+* Do not use vague clickbait
+* Do not use temporary language such as “today,” “this week,” or the current year unless requested
+* Do not include an unverified price, discount, material, size, brand comparison, or product claim
+* Do not repeat the exact on-image headline unless that is the strongest search title
+
+Avoid vague titles such as:
+
+* You Need This
+* My Favorite Find
+* Run, Don’t Walk
+* Add to Cart
+* So Good
+* You Won’t Believe This
+
+Step 4: Write the Pinterest description
+
+Write one natural, search-optimized Pinterest description of approximately 300–450 characters.
+
+Requirements:
+
+* Include the primary search phrase naturally near the beginning
+* Incorporate several related keywords in complete, readable sentences
+* Explain what the product or idea is
+* Mention the appropriate room, style, function, material, color, or use
+* Explain why someone might save, click, shop, or use the idea
+* Include one natural, low-pressure call to action
+* Keep the wording useful and evergreen
+* Do not keyword-stuff
+* Do not provide a disconnected list of search terms
+* Do not make unsupported product or quality claims
+* Do not claim that a product is identical to a designer product
+* Do not include temporary prices or sale language unless specifically requested
+* Do not write as though I personally own or tested the product unless I confirm that I did
+
+When I am using a direct affiliate link, begin or prominently include a clear disclosure such as:
+
+“Affiliate link: I may earn a commission if you purchase.”
+
+When Pinterest or the retailer automatically adds a clear affiliate disclosure through an official integration, tell me whether an additional written disclosure is still advisable.
+
+Step 5: Write accurate alt text
+
+Write accessibility-first alt text based on the attached image.
+
+Requirements:
+
+* Describe what is actually visible
+* Identify the main product or subject
+* Describe the setting, placement, prominent colors, materials, and visible styling
+* Include visible text appearing on the graphic when it is important to understanding the Pin
+* Include the primary keyword only when it fits naturally
+* Do not include invisible or unconfirmed product features
+* Do not insert an affiliate disclosure
+* Do not use a call to action
+* Do not use promotional language
+* Do not stuff keywords
+* Make the description useful to someone who cannot see the image
+
+Step 6: Review the on-image wording
+
+Transcribe the exact visible text from the Pin image.
+
+Then determine whether the wording is:
+
+* Easy to understand
+* Searchable
+* Consistent with the product
+* Consistent with the affiliate destination
+* Evergreen
+* Legible at mobile size
+* Likely to attract the correct Pinterest audience
+
+When the existing wording is weak, write one improved on-image headline.
+
+The improved headline should:
+
+* Contain approximately three to nine words
+* Communicate one clear searchable idea
+* Be understandable without the description
+* Complement rather than duplicate the Pinterest title
+* Avoid clickbait and unsupported claims
+* Remain readable on a mobile screen
+
+Do not recommend changing strong wording simply to create something different.
+
+Step 7: Recommend the best board placement
+
+Recommend:
+
+* The strongest existing board category for this Pin
+* One SEO-friendly board title
+* One concise, keyword-rich board description
+* Up to two additional boards where the Pin could genuinely belong
+
+The board recommendation must closely match the Pin’s subject and search intent.
+
+Do not recommend saving the Pin to unrelated boards merely to increase distribution.
+
+Do not recommend repeatedly saving an identical Pin to many boards.
+
+Step 8: Recommend Pinterest topics and hashtags
+
+Provide up to ten relevant Pinterest topic tags, interests, or category terms when available.
+
+For hashtags:
+
+* Do not automatically add hashtags
+* State “No hashtags recommended” when natural keywords are more appropriate
+* Only provide one or two hashtags if they offer a clear categorization benefit
+* Do not create a large Instagram-style hashtag block
+
+Step 9: Complete an affiliate and quality review
+
+Check whether:
+
+* The image accurately represents the featured product
+* The Pin accurately matches the affiliate destination
+* The affiliate relationship is clearly disclosed
+* The title accurately describes what users will find after clicking
+* The description contains an unsupported claim
+* The image or copy could create confusion with another brand
+* The Pin provides value beyond repeating a retailer listing
+* The Pin contains a price or promotion that may quickly become outdated
+* The Pin uses overly broad or irrelevant keywords
+* The Pin could be considered repetitive or spam-like
+* The alt text is accessibility-focused rather than keyword-focused
+* The call to action is appropriate for Pinterest
+* Anything should be corrected before the Pin is published
+
+Give the Pin one of these ratings:
+
+* READY TO POST
+* READY WITH MINOR CHANGES
+* NEEDS CORRECTION BEFORE POSTING
+
+Explain every necessary correction clearly.
+
+Step 10: Create future fresh-Pin variations
+
+Create two additional SEO approaches that I can use when designing future Pins for the same product.
+
+Each variation must target a different legitimate search intention.
+
+Variation A:
+Product and room-focused search angle
+
+Variation B:
+Decorating style, benefit, or problem-solving search angle
+
+For each variation, provide:
+
+* On-image headline
+* Pinterest title
+* Pinterest description
+* Primary keyword
+* Suggested visual change
+
+The visual change must be meaningful, such as:
+
+* A different room
+* A different camera angle
+* A closer product view
+* A styled-versus-unstyled presentation
+* A different use case
+* A different search problem
+* A different seasonal context
+
+Do not recommend creating near-duplicate Pins by changing only the font, headline position, border, or background color.
+
+Return the answer in this exact format
+
+IMAGE ANALYSIS:
+[Analysis]
+
+VISIBLE TEXT:
+[Exact text shown in the image]
+
+PRIMARY KEYWORD:
+[Keyword]
+
+SECONDARY KEYWORDS:
+[Keywords]
+
+LONG-TAIL SEARCHES:
+[Search phrases]
+
+KEYWORDS TO AVOID:
+[Keywords and explanation]
+
+TITLE:
+[Final Pinterest title]
+
+DESCRIPTION:
+[Final Pinterest description]
+
+ALT TEXT:
+[Final alt text]
+
+ON-IMAGE HEADLINE REVIEW:
+[Keep the existing headline or provide the improved headline]
+
+BEST BOARD CATEGORY:
+[Category]
+
+SEO BOARD TITLE:
+[Board title]
+
+BOARD DESCRIPTION:
+[Description]
+
+ADDITIONAL RELEVANT BOARDS:
+[Boards]
+
+PINTEREST TOPICS:
+[Topics]
+
+HASHTAGS:
+[Hashtags or “No hashtags recommended”]
+
+AFFILIATE DISCLOSURE:
+[Exact disclosure recommendation]
+
+POSTING REVIEW:
+[READY TO POST, READY WITH MINOR CHANGES, or NEEDS CORRECTION BEFORE POSTING]
+
+CORRECTIONS:
+[Corrections or “None”]
+
+FUTURE VARIATION A:
+Primary keyword:
+On-image headline:
+Title:
+Description:
+Suggested visual change:
+
+FUTURE VARIATION B:
+Primary keyword:
+On-image headline:
+Title:
+Description:
+Suggested visual change:
+
+WHY THIS STRATEGY WAS SELECTED:
+[Brief explanation of the search intent, keyword choice, and expected audience]
+
+IMPORTANT OVERRIDE FOR THIS RUN: Skip Step 10 entirely. Leave out the FUTURE VARIATION A and FUTURE VARIATION B sections. Do not suggest any future variation pins.

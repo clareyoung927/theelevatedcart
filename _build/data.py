@@ -208,3 +208,8 @@ BIG |= {"B0HM2XP5QV","B0HLX6WYPT","B0GND4HKDV","B0H5HY12TK","B0FDLCZMGY"}
 
 # 2026-11-20 Christmas pillow dupes
 P.update({"B0CD7QD4MJ":"Red velvet merry lumbar pillow cover, 12x20","B0D7ZHTXGT":"Green snowy tree pillow cover, 18x18","B0GSTGFMTL":"Plush Santa face pillow","B0HQX7X17K":"Red snowflake lumbar pillow covers, set of 2","B0FHP2GZFB":"Candy cane embroidered pillow covers, set of 2","B0H6QCJMKK":"Red bow wreath pillow cover, 18x18","B0CMT4V6SJ":"Plush candy cane shaped pillow"})
+# 2026-11-23 daily pin run
+P.update({"B0DQX6TCHK":"Montauk solid pine console table, driftwood, 48 in","B0H7BHBVR7":"VASAGLE 63 in console table, honey brown","B0D34R77YW":"Lexicon top-grain leather rolled arm chair, brown",
+          "B0FLXQ538S":"Round solid wood mirror, natural, 24 in","B0F4K2C9ZG":"Christopher Knight Home Solis mango wood round mirror",
+          "B0HC3BCNLB":"Gold metal Christmas bells, set of 3","B0H93YSR3S":"Brushed gold 10 in Christmas bells, 4 pack","B0H4F2QL9N":"Bronze 8 in Christmas bells, set of 2","B0H5R5TFHJ":"10 in gold bell with red velvet bow"})
+BIG |= {"B0DQX6TCHK","B0H7BHBVR7","B0D34R77YW"}

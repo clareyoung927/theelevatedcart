@@ -814,3 +814,53 @@ DUPE_ALSO = {
 }
 for _d in DUPES:
     _d["cs"] = [(_d["cat"], _d["sub"])] + DUPE_ALSO.get(_d["slug"], [])
+
+# 2026-11-23 daily pin run. PB prices checked on potterybarn.com 2026-11-23; Amazon listings live and in stock 2026-11-23.
+_dp("benchwright-console-table", "Entryway", "Cabinets & Consoles", "Pottery Barn Benchwright Console Table (54\")", "$1,399",
+  "B0DQX6TCHK", "81YlgtMLuvL", "Grain Wood Furniture Montauk Solid Wood Console Table, Driftwood, 48 inch",
+  "Pottery Barn Benchwright Console Table Dupe on Amazon",
+  "Product photo of a light driftwood solid pine console table with two drawers with dark cup pulls and two open plank shelves",
+  "A great Amazon look for less for the Pottery Barn Benchwright Console Table is the Montauk solid wood console table in Driftwood. It has the same chunky square legs, two drawers under the top and open plank shelves below, in 100% solid pine.",
+  [("Shape","Two drawers over an open shelf","Two drawers over two open plank shelves"),("Material","Solid and reclaimed wood","100% solid pine"),("Finish","Several rustic finishes","Driftwood (washed light pine)"),("Hardware","Metal pulls","Dark cup pulls"),("Size","54 x 18 x 34 inches","48 x 16 x 32 inches")],
+  ["Chunky square legs and a thick, simple top","Two drawers for keys and mail with open storage below","Solid wood with visible, rustic grain"],
+  ["Six inches narrower and a little lower","Two open shelves below the drawers instead of one","One finish, so check that driftwood suits your floors"],
+  ["Hang art or a mirror about 6 to 10 inches above the top.","Slide two woven baskets onto a shelf to hide shoes and dog leashes.","Anchor it with a lamp on one side and something tall and green on the other."],
+  [("Is there a dupe for the Pottery Barn Benchwright console table?","The Montauk solid wood console table has the same chunky legs, two drawers and open shelves in solid pine."),("How big is the Amazon console?","It is 48 inches wide, 16 inches deep and 32 inches tall."),("Is there a cheaper option?","The VASAGLE 63 inch console in honey brown is a budget pick with three drawers and an open shelf.")])
+DUPES[-1]["groups"] = [("The closest match", ["B0DQX6TCHK"]), ("Budget pick", ["B0H7BHBVR7"])]
+
+_dp("irving-roll-arm-leather-chair", "Living Room", "Accent Chairs", "Pottery Barn Irving Roll Arm Leather Chair", "From $899",
+  "B0D34R77YW", "91snS-53LKL", "Lexicon Top Grain Genuine Leather Chair with Rolled Arms, Brown",
+  "Pottery Barn Irving Leather Chair Dupe on Amazon",
+  "Product photo of a cognac brown top-grain leather club chair with rolled arms, brass nailhead trim and dark wood legs",
+  "A great Amazon look for less for the Pottery Barn Irving Roll Arm Leather Chair is the Lexicon top-grain leather chair. It is real leather with the same rolled arms, nailhead trim and a loose seat cushion on dark tapered legs.",
+  [("Upholstery","Leather","100% top-grain leather"),("Arms","Rolled","Rolled"),("Trim","Nailhead","Nailhead"),("Cushion","Loose seat cushion","Loose seat cushion"),("Size","See Pottery Barn","31.5 W x 35 D x 34 H inches")],
+  ["Real leather, not faux","Classic rolled arms with brass nailhead trim","Compact club chair size that fits a reading corner"],
+  ["Fewer leather colors than Pottery Barn","Legs attach at home","The leather color can vary a little from the photos"],
+  ["Pair it with a small round side table and a swing-arm or brass floor lamp.","Drape a cream knit throw over one arm for winter texture.","Angle it toward the fireplace or a window instead of against the wall."],
+  [("Is there a dupe for the Pottery Barn Irving leather chair?","The Lexicon top-grain leather chair has the same rolled arms, nailhead trim and cognac look in real leather."),("Is the Lexicon chair real leather?","Yes. The listing says 100% top-grain genuine leather."),("How big is it?","About 31.5 inches wide, 35 inches deep and 34 inches tall.")])
+
+_dp("field-wood-round-mirror", "Living Room", "Mirrors", "Pottery Barn Field Wood Round Mirror (36\")", "$299",
+  "B0FLXQ538S", "71CSAhm5dIL", "Round Solid Wood Mirror, 24 inch, Natural",
+  "Pottery Barn Field Wood Round Mirror Dupe on Amazon",
+  "Product photo of a round mirror with a wide natural solid wood frame showing pale pine grain",
+  "A great Amazon look for less for the Pottery Barn Field Wood Round Mirror is this 24 inch round solid wood mirror. It has the same wide, chunky natural wood frame with visible grain at a smaller size.",
+  [("Frame","Wide natural wood","Wide natural solid wood"),("Finish","Natural","Natural pine grain"),("Shape","Round","Round"),("Size","36 inch","24 inch")],
+  ["Wide, chunky natural wood frame","Visible wood grain that looks warm and relaxed","Simple round shape that works in a bath, entry or bedroom"],
+  ["12 inches smaller across, so it suits a powder room or narrow wall","Wood tone can vary from piece to piece","Only a few dozen reviews so far"],
+  ["Hang it so the center sits about 60 inches from the floor.","Over a vanity, keep it a few inches narrower than the sink area.","Flank it with two small sconces for a finished look."],
+  [("Is there a dupe for the Pottery Barn Field Wood mirror?","This 24 inch round solid wood mirror has a similar wide natural wood frame."),("What size is the Amazon mirror?","About 24 inches across, 12 inches smaller than the 36 inch Pottery Barn round."),("Is there another option?","The Christopher Knight Home Solis mango wood round mirror has a thinner, smoother frame.")])
+DUPES[-1]["groups"] = [("The closest match", ["B0FLXQ538S"]), ("A slimmer frame", ["B0F4K2C9ZG"])]
+
+_dp("oversized-bells", "Christmas", "Porch & Door", "Pottery Barn Oversized Bells", "$79.50 to $259",
+  "B0HC3BCNLB", "81gsd5st2HL", "Kasyat Giant Christmas Metal Bells, Gold, Set of 3 (7.9, 5.9 and 4.7 inch)",
+  "Pottery Barn Oversized Bells Dupe on Amazon",
+  "Product photo of three gold metal jingle bells in three sizes with star cutouts and jute rope hangers",
+  "A great Amazon look for less for the Pottery Barn Oversized Bells is the Kasyat set of three giant gold metal bells. They have the same star cutouts, slotted bottoms and jute hangers, in three sizes you can group on a porch or mantel.",
+  [("Finish","Gold or green","Gold"),("Details","Star cutouts and jute rope","Star cutouts and jute rope"),("Sizes","8, 10, 14 and 20 inch, sold individually","7.9, 5.9 and 4.7 inch, set of 3"),("Material","Iron","Metal")],
+  ["Star cutouts and slotted bottoms","Jute rope hangers","Grouped sizes for a styled, collected look"],
+  ["Smaller than the larger Pottery Barn sizes","Gold only, no green","New listing with few reviews so far"],
+  ["Group all three at the base of a porch planter.","Hang them at staggered heights on a wreath or door hook.","Tuck cedar sprigs and pinecones around them on a mantel."],
+  [("Is there a dupe for the Pottery Barn oversized bells?","The Kasyat set of three gold bells has the same star cutouts and jute hangers."),("How big are the Amazon bells?","They come in 7.9, 5.9 and 4.7 inch sizes."),("Are there bigger options?","The Civaner 8 inch bronze bells come as a pair and have a darker, antique finish.")])
+DUPES[-1]["groups"] = [("The closest match", ["B0HC3BCNLB"]), ("Brushed gold, 10 inch", ["B0H93YSR3S"]), ("Antique bronze", ["B0H4F2QL9N"]), ("Single bell with a bow", ["B0H5R5TFHJ"])]
+for _d in DUPES:
+    _d["cs"] = [(_d["cat"], _d["sub"])] + DUPE_ALSO.get(_d["slug"], [])

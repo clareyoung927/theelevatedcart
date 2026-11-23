@@ -299,7 +299,7 @@ DUPES = [
       title="Pottery Barn Mercury Ball Ornament Dupe on Amazon", img="christmas-tree-brown-and-gold",
       alt="Christmas tree decorated with brown velvet ribbon, champagne mercury glass ornaments and tan velvet bows in a woven tree collar",
       answer="A great Amazon look for less for the Pottery Barn Mercury Ball Ornament is the KI Store champagne gold mercury glass ornament set. It has the same aged, mottled mercury glass finish in a soft champagne gold, and it comes as a set of 8.",
-      rows=[("Finish","Mercury glass","Mercury glass, champagne gold"),("Shape","Ball","Ball"),("Quantity","Sold individually","Set of 8"),("Hanging","Ornament loop","Ready to hang"),("Price","$14.50 each","Check today's price")],
+      rows=[("Finish","Mercury glass","Mercury glass, champagne gold"),("Shape","Ball","Mixed: round ball, ribbed teardrop, ribbed finial, diamond-pattern ball"),("Quantity","Sold individually","Set of 8"),("Hanging","Ornament loop","Ready to hang"),("Price","$14.50 each","Check today's price")],
       same=["Aged mercury glass finish that catches the tree lights","Soft metallic tone that pairs with velvet ribbon and cream bows","Classic ball shape that layers well with other sets"],
       diff=["Sold as a set, so you get more per order","Champagne gold rather than Pottery Barn's range of colors","Glass can break, so hang them away from little hands"],
       tips=["Hang the biggest balls deep in the tree first, then fill in with smaller ones.","Mix two metallic tones, like champagne and antique gold, so the tree looks collected.","Add velvet ribbon in a warm brown or tan to ground the shine."],

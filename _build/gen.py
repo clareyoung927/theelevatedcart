@@ -51,6 +51,7 @@ LOCAL_ALT.update({
 "christmas-entryway-table-decor":"Christmas entryway console with a cedar wreath on a round gold mirror, two brass lamps and a white vase of pine branches",
 "kitchen-christmas-decor-ideas":"White kitchen decorated for Christmas with mini wreaths on the cabinets, red striped towels and a pedestal bowl of red ornaments",
 "christmas-tree-brown-and-gold":"Christmas tree decorated with brown velvet ribbon, champagne mercury glass ornaments and tan velvet bows in a woven tree collar",
+"christmas-tree-blue-and-ivory":"Christmas tree decorated with dusty blue velvet bows, blue and ivory floral ribbon, navy, powder blue, ivory and gold ornaments and champagne berry picks in a woven tree collar",
 "christmas-tree-red-and-white":"Christmas tree decorated with red and ivory ball ornaments and red and white striped ribbon",
 "christmas-tree-ribbon-garland":"Christmas tree wrapped in camel velvet and champagne ribbon swags",
 "christmas-table-decor-ideas":"Christmas dinner table with round woven placemats, Christmas tree plates, tartan napkins and a cedar garland runner with brass candlesticks",

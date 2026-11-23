@@ -213,3 +213,5 @@ P.update({"B0DQX6TCHK":"Montauk solid pine console table, driftwood, 48 in","B0H
           "B0FLXQ538S":"Round solid wood mirror, natural, 24 in","B0F4K2C9ZG":"Christopher Knight Home Solis mango wood round mirror",
           "B0HC3BCNLB":"Gold metal Christmas bells, set of 3","B0H93YSR3S":"Brushed gold 10 in Christmas bells, 4 pack","B0H4F2QL9N":"Bronze 8 in Christmas bells, set of 2","B0H5R5TFHJ":"10 in gold bell with red velvet bow"})
 BIG |= {"B0DQX6TCHK","B0H7BHBVR7","B0D34R77YW"}
+
+P.update({"B0FJ1XZ48D":"Dusty blue velvet wired ribbon, 4 in","B0D2Z9SFT8":"Blue and ivory floral wired ribbon","B0DG2VR3WL":"Blue and gold ornament set, 100 pc","B08D69PHQT":"Champagne berry picks, 24 pack"})

@@ -198,8 +198,8 @@ P.update({"B0H97KG4J2":"Vintage plaid Christmas ceramic plates, 8 pc",
  "B00J66V8K0":"DII red and green ribbed Christmas placemats, set of 6",
  "B0DYWCW8LD":"Black beaded rim charger plates, set of 6",
  "B0H3ZDDCGM":"Red tartan melamine Christmas dinner plates, set of 6"})
-HROOMS.insert(5, ("plaid-and-holly-christmas-table","The Plaid and Holly Christmas Table","christmas","Red tartan plates on black beaded chargers, embroidered holly napkins and runner, and lush red peonies for a classic Christmas dinner table.","cdn:01f208c1-6e5e-40ee-9bff-3b2d1b388eb2/59e93-65bd-4266-9585-cdf5d85d3._AC_._SX1200_SCLZZZZZZZ_.png",
- ["B0H97KG4J2","B0H3ZDDCGM","B0DYWCW8LD","B0HLKW6Y55","B07VJK57Q5","B01N4A606T","B00J66V8K0"],None,PHOTO+"28096fd0-0644-4ef4-9a7d-2c6be9766959?tag="+TAG))
+HROOMS.insert(5, ("plaid-and-holly-christmas-table","A Plaid Christmas Table for Under $150","christmas","A red plaid Christmas table for six for under $150: red tartan plates on black beaded chargers, embroidered holly napkins, a holly runner and red peonies. The five key pieces come in under $150 together as of November 2026. Want a splurge? Swap in the vintage ceramic plaid plates.","cdn:01f208c1-6e5e-40ee-9bff-3b2d1b388eb2/59e93-65bd-4266-9585-cdf5d85d3._AC_._SX1200_SCLZZZZZZZ_.png",
+ ["B0H3ZDDCGM","B0DYWCW8LD","B0HLKW6Y55","B07VJK57Q5","B01N4A606T","B0H97KG4J2","B00J66V8K0"],None,PHOTO+"28096fd0-0644-4ef4-9a7d-2c6be9766959?tag="+TAG))
 # 2026-11-19 dupe batch
 P.update({"B0HM2XP5QV":"Wingback upholstered queen bed, beige chenille","B0HLX6WYPT":"76 in reclaimed pine double pedestal dining table","B0GND4HKDV":"Handwoven seagrass bench with back and arms",
  "B0DG9SQ8N1":"Safavieh Nysa black table lamp","B09G8H629F":"Seeded glass table lamp","B0D9CKW4CB":"Safavieh Verne black open oval table lamp",

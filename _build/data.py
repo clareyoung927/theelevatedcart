@@ -215,3 +215,13 @@ P.update({"B0DQX6TCHK":"Montauk solid pine console table, driftwood, 48 in","B0H
 BIG |= {"B0DQX6TCHK","B0H7BHBVR7","B0D34R77YW"}
 
 P.update({"B0FJ1XZ48D":"Dusty blue velvet wired ribbon, 4 in","B0D2Z9SFT8":"Blue and ivory floral wired ribbon","B0DG2VR3WL":"Blue and gold ornament set, 100 pc","B08D69PHQT":"Champagne berry picks, 24 pack"})
+
+# 2026-11-24 growth plan batch: lamp dupes, hostess gifts under $30, $200 Christmas entryway. All verified live and in stock 2026-11-24.
+P.update({"B0FXGCK77F":"Qatiby 18 inch blue gray ceramic table lamp","B09BDGBV43":"Signature Design by Ashley antique white ceramic table lamp",
+ "B0BGLDF1KQ":"TRLIFE plug-in brass swing arm sconces, set of 2","B0FJRH68TG":"Antique brass linen shade wall sconces, set of 2",
+ "B001GI7QZC":"14 inch olive wood cheese board","B07DM95RGT":"Marble and wood appetizer board with knife","B09X9H4H5Z":"Marble and gold cheese knife set",
+ "B099N339G7":"LA JOLIE MUSE Sahara amber scented candle","B0821Y5BS3":"AOZITA 17 oz glass olive oil bottle","B0DYNNJWG1":"Textured ceramic farmhouse vase",
+ "B07M5X6X3F":"Muso Wood acacia salad servers",
+ "B0DQ82R8TL":"47 inch fluted console table with drawers","B0FWRRTYPT":"24 inch gold round wall mirror","B0GSW26S7M":"13.5 inch small ceramic table lamp",
+ "B0FN8BCG3R":"Real touch cedar garland, 6 ft","B0GK6KC6YF":"Rectangular water hyacinth basket"})
+BIG |= {"B0DQ82R8TL"}

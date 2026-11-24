@@ -864,3 +864,48 @@ _dp("oversized-bells", "Christmas", "Porch & Door", "Pottery Barn Oversized Bell
 DUPES[-1]["groups"] = [("The closest match", ["B0HC3BCNLB"]), ("Brushed gold, 10 inch", ["B0H93YSR3S"]), ("Antique bronze", ["B0H4F2QL9N"]), ("Single bell with a bow", ["B0H5R5TFHJ"])]
 for _d in DUPES:
     _d["cs"] = [(_d["cat"], _d["sub"])] + DUPE_ALSO.get(_d["slug"], [])
+
+# 2026-11-24 lamp dupe batch (growth plan move 3: lighting). PB prices and specs checked on potterybarn.com 2026-11-24; Amazon listings live and in stock 2026-11-24.
+_dp("faris-ceramic-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Faris Ceramic Table Lamp", "$249 to $399 (regular price)",
+  "B0FXGCK77F", "71tVZ-AxVsL", "Qatiby 18 inch Farmhouse Ceramic Table Lamp, Blue Gray",
+  "Pottery Barn Faris Ceramic Table Lamp Dupe on Amazon",
+  "Product photo of a rounded blue gray rustic ceramic table lamp with a beige linen shade",
+  "A great Amazon look for less for the Pottery Barn Faris Ceramic Table Lamp is the Qatiby 18 inch farmhouse ceramic lamp in blue gray. It has the same round, urn-shaped ceramic base in a weathered blue gray finish with a light linen shade.",
+  [("Base","Round chalky ceramic","Round handmade ceramic, blue gray"),("Shade","Linen drum","Beige linen"),("Height","16 or 23 inches","18 inches"),("Switch","See Pottery Barn","Rotary switch, E26 bulb")],
+  ["Rounded urn-shaped ceramic base","Weathered blue gray finish with a handmade look","Light linen shade that softens the glow"],
+  ["Comes in one size, 18 inches tall","Shade is more tapered than Pottery Barn's drum","Newer listing with a small number of reviews"],
+  ["Use a pair on a console or dresser for a collected, designer look.","Set it on a stack of coffee table books to add height.","Pair the blue gray with brass, warm wood and cream linen."],
+  [("Is there a dupe for the Pottery Barn Faris lamp?","The Qatiby farmhouse ceramic lamp has a similar round blue gray ceramic base and linen shade."),("How tall is the Amazon lamp?","About 18 inches, between Pottery Barn's two sizes."),("Is the Amazon lamp handmade?","The listing describes a handmade ceramic base, so each one can vary a little.")])
+
+_dp("mccoy-ceramic-globe-table-lamp", "Living Room", "Table Lamps", "Pottery Barn Mccoy Ceramic Globe Table Lamp", "$179 to $299",
+  "B09BDGBV43", "61w5OA5JfRL", "Signature Design by Ashley Ceramic Table Lamp, Antique White",
+  "Pottery Barn Mccoy Ceramic Globe Table Lamp Dupe on Amazon",
+  "Product photo of a round antique white ceramic table lamp with a textured wave pattern and a light drum shade",
+  "A great Amazon look for less for the Pottery Barn Mccoy Ceramic Globe Table Lamp is the Signature Design by Ashley ceramic table lamp in antique white. It has a similar round globe-shaped ceramic base with a light drum shade, sized for nightstands and side tables.",
+  [("Base","Smooth ceramic globe","Round ceramic globe with a raised wave pattern"),("Finish","Blue, white, brown or gray","Antique white"),("Shade","Linen drum","Light hardback drum"),("Height","16 or 24 inches","Small table lamp size, see listing")],
+  ["Round globe ceramic base","Light drum shade","Small size that fits a nightstand or side table"],
+  ["The Ashley base has a raised wave pattern; the Mccoy is smooth","One color only (antique white)","Shade is a little taller in proportion"],
+  ["Use a matching pair on nightstands for symmetry.","Pair the white base with warm wood and brass.","Choose a warm white bulb so the ceramic glows softly."],
+  [("Is there a dupe for the Pottery Barn Mccoy globe lamp?","The Signature Design by Ashley ceramic lamp has a similar round globe base and drum shade."),("Is the Amazon base smooth like the Mccoy?","No. It has a raised wave pattern, so it reads more textured."),("What colors does it come in?","The listing shown here is antique white.")])
+
+_dp("leah-iron-swing-arm-sconce", "Living Room", "Wall Sconces", "Pottery Barn Leah Iron Swing Arm Sconce", "$249 each",
+  "B0BGLDF1KQ", "71eJrQLxJYL", "TRLIFE Plug-In Swing Arm Wall Sconces, Brushed Brass, Set of 2",
+  "Pottery Barn Leah Swing Arm Sconce Dupe on Amazon",
+  "Product photo of two brushed brass swing arm wall sconces with white fabric shades and plug-in cords",
+  "A great Amazon look for less for the Pottery Barn Leah Iron Swing Arm Sconce is the TRLIFE plug-in swing arm sconce set. It has the same square brass wall plate, folding swing arm and tapered fabric shade, and it comes as a set of two that plugs in, with no electrician needed.",
+  [("Arm","Folding swing arm, extends 28 inches","Adjustable folding swing arm"),("Finish","Brass tone iron","Brushed brass metal"),("Shade","10 inch tapered fabric","11.8 inch white fabric"),("Install","Hardwired","Plug-in cord, or hardwire"),("Set","1 sconce","2 sconces, LED bulbs included")],
+  ["Square brass backplate with a folding swing arm","Tapered fabric shade","Classic reading light look beside a bed or chair"],
+  ["Lighter weight metal than Pottery Barn's iron","Visible plug-in cord unless you hardwire it or add a cord cover","Larger shade than the Leah"],
+  ["Mount one on each side of the bed, about 48 to 60 inches from the floor.","Run the cord behind a nightstand or use a paintable cord cover.","Use warm white bulbs for a cozy evening glow."],
+  [("Is there a dupe for the Pottery Barn Leah sconce?","The TRLIFE plug-in swing arm sconces have a similar brass swing arm and tapered fabric shade."),("Do I need an electrician?","No. The Amazon sconces plug in. The Pottery Barn Leah is hardwired."),("How many come in the set?","Two sconces, with LED bulbs included.")])
+
+_dp("holmes-linen-shade-sconce", "Living Room", "Wall Sconces", "Pottery Barn Holmes Linen Shade Sconce", "$99 each",
+  "B0FJRH68TG", "61-i7cndUFL", "Brass Linen Shade Wall Sconces, Antique Brass, Set of 2",
+  "Pottery Barn Holmes Linen Shade Sconce Dupe on Amazon",
+  "Product photo of two antique brass wall sconces with curved arms and beige linen cone shades",
+  "A great Amazon look for less for the Pottery Barn Holmes Linen Shade Sconce is this antique brass linen shade sconce set. It has the same round brass backplate, curved J-shaped arm and tapered linen shade, and you get two for less than one Holmes.",
+  [("Arm","Curved brass arm","Curved antique brass arm"),("Shade","Linen","Beige linen cone"),("Install","Hardwired","Hardwired"),("Set","1 sconce","2 sconces")],
+  ["Round brass backplate with a curved arm","Soft tapered linen shade","Traditional look for hallways, bathrooms and beside a mirror"],
+  ["Antique brass finish is darker than Pottery Barn's","Hardwired, so plan on an electrician","Smaller number of reviews so far"],
+  ["Flank a mirror or a piece of art with a pair at eye level.","Center each sconce about 60 to 66 inches from the floor.","Pick a warm, dimmable bulb for evening light."],
+  [("Is there a dupe for the Pottery Barn Holmes sconce?","This antique brass linen shade sconce set has a similar curved arm and linen shade."),("Do the Amazon sconces plug in?","No. Like the Holmes, they are hardwired."),("How many come in the set?","Two.")])

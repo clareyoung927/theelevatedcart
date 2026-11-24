@@ -96,7 +96,14 @@ for h in HROOMS:
 guides = []
 GUIDE_LIST = {"art-above-sofa": "https://www.amazon.com/shop/thecareermo0c/list/1FS3KE9511B4M?tag=theelevatedcartweb-20"}
 # Guides whose main shop button goes to a storefront idea list instead of the storefront home (Clare, 2026-11-24)
-GUIDE_MAIN = {"hostess-gift-ideas-christmas": ("https://www.amazon.com/shop/thecareermo0c/list/10K48EZKZSWQO?tag=theelevatedcartweb-20", "Shop all my hostess gift picks")}
+_XL = "https://www.amazon.com/shop/thecareermo0c/list/C1TJ6GQOJRLL?tag=theelevatedcartweb-20"  # Christmas idea list
+GUIDE_MAIN = {"hostess-gift-ideas-christmas": ("https://www.amazon.com/shop/thecareermo0c/list/10K48EZKZSWQO?tag=theelevatedcartweb-20", "Shop all my hostess gift picks"),
+  "entryway-drop-zone": ("https://www.amazon.com/shop/thecareermo0c/list/2QWBANF3U2IIO?tag=theelevatedcartweb-20", "Shop my mudroom finds")}
+# No guide-specific storefront list or photo exists for these, so the main button goes to the Christmas idea list instead of the storefront home (Clare, 2026-11-24)
+for _s in ("christmas-coffee-table-decor", "christmas-entryway-table-decor", "christmas-eve-living-room", "christmas-morning-table", "christmas-table-decor-ideas",
+           "christmas-tree-color-ideas", "cocoa-corner", "cozy-christmas-bedroom", "designer-christmas-tree", "gift-wrapping-ideas-that-look-expensive",
+           "kitchen-christmas-decor-ideas", "tree-base-styling", "winter-mantel"):
+    GUIDE_MAIN[_s] = (_XL, "Shop my Christmas finds")
 GUIDE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Holiday"]
 GUIDE_SUB = {"art-above-sofa": "Art & Walls", "rug-size-guide": "Rugs", "coffee-table-formula": "Coffee Tables", "throw-pillow-formula": "Pillows",
              "layered-neutral-bed": "Bedding", "nightstand-styling": "Nightstands", "dining-chandelier-size": "Lighting", "sideboard-styling": "Sideboards & Buffets",

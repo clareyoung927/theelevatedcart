@@ -95,6 +95,8 @@ for h in HROOMS:
                        items=items, shop=shop, exact=exact, url=f"/holiday/{h[0]}/", kind="hroom"))
 guides = []
 GUIDE_LIST = {"art-above-sofa": "https://www.amazon.com/shop/thecareermo0c/list/1FS3KE9511B4M?tag=theelevatedcartweb-20"}
+# Guides whose main shop button goes to a storefront idea list instead of the storefront home (Clare, 2026-11-24)
+GUIDE_MAIN = {"hostess-gift-ideas-christmas": ("https://www.amazon.com/shop/thecareermo0c/list/10K48EZKZSWQO?tag=theelevatedcartweb-20", "Shop all my hostess gift picks")}
 GUIDE_GROUPS = ["Living Room", "Dining & Kitchen", "Bedroom", "Entryway", "Holiday"]
 GUIDE_SUB = {"art-above-sofa": "Art & Walls", "rug-size-guide": "Rugs", "coffee-table-formula": "Coffee Tables", "throw-pillow-formula": "Pillows",
              "layered-neutral-bed": "Bedding", "nightstand-styling": "Nightstands", "dining-chandelier-size": "Lighting", "sideboard-styling": "Sideboards & Buffets",
@@ -409,7 +411,7 @@ for g in guides:
     elif not g["items"]:
         roombox = f'<section class="shop"><div class="eyebrow">Get the look</div><h2 style="font-size:26px;margin:0 0 6px">Shop my holiday picks</h2><p style="font-size:14px;color:var(--soft);margin-bottom:14px">Find my current favorites in my Amazon storefront.</p><a class="btn dark" href="{XMAS_LIST}" {X}>Shop on Amazon</a></section>'
     faqhtml = '<section class="faq"><h2>Frequently asked questions</h2>' + "".join(f"<h3>{E(fq)}</h3><p>{E(fa)}</p>" for fq, fa in faqs) + "</section>"
-    gbuy = buybar(g["room"]["shop"], "Shop this photo", g["items"]) if g["room"] else (buybar(STORE, "Shop on Amazon", g["items"]) if g["items"] else "")
+    gbuy = buybar(g["room"]["shop"], "Shop this photo", g["items"]) if g["room"] else (buybar(GUIDE_MAIN[g["slug"]][0] if g["slug"] in GUIDE_MAIN else STORE, GUIDE_MAIN[g["slug"]][1] if g["slug"] in GUIDE_MAIN else "Shop on Amazon", g["items"]) if g["items"] else "")
     if g["slug"] in GUIDE_LIST and gbuy:
         gbuy = gbuy[:-6] + f'<a class="btn" href="{GUIDE_LIST[g["slug"]]}" {X}>Shop the full list</a></div>'
     pool = [x for x in guides if bool(x["hol"]) == bool(g["hol"])]

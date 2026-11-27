@@ -191,7 +191,7 @@ a.tile{color:inherit}
 import hashlib
 CSSV = hashlib.md5(css.encode()).hexdigest()[:8]
 def head(title, desc, path, img, alt="", otype="website", ld=None):
-    full = title if title.endswith(NAME) else f"{title} | {NAME}"
+    full = title if (title.endswith(NAME) or path in SEO_META) else f"{title} | {NAME}"
     imgabs = img if img.startswith("http") else SITE + img
     lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     return f"""<!DOCTYPE html>
@@ -248,7 +248,26 @@ var v=b.dataset.c;g.querySelectorAll('.tile').forEach(function(t){t.hidden=!(v==
 var h=(location.hash||'').slice(1);if(h){var b=c.querySelector('[data-c="'+h+'"]');if(b)b.click()}});
 </script>"""
 
+# Search-result overrides: Google title and description only (the on-page H1, tiles and schema keep the regular title).
+# Titles here are used exactly as written (no " | The Elevated Cart" added) so they fit in Google's ~60 character limit.
+SEO_META = {
+    "/dupes/pottery-barn-banks-round-pedestal-dining-table-dupe/": (
+        "Pottery Barn Banks Table Dupe: The $2,599 Look on Amazon",
+        "Love the Pottery Barn Banks round pedestal table ($2,599)? This 47 inch reclaimed pine table on Amazon has the same turned pedestal and round plank top and seats four, for a fraction of the price. See the side-by-side."),
+    "/dupes/pottery-barn-fenton-woven-counter-stool-dupe/": (
+        "Pottery Barn Fenton Counter Stool Dupe (Set of 2 on Amazon)",
+        "The Pottery Barn Fenton woven counter stool is $449 each. This Amazon set of 2 has the same woven seagrass back, light wood frame and footrests for far less. See what's the same and what's different."),
+    "/holiday/tartan-plaid-christmas-tree/": (
+        "Tartan Plaid Christmas Tree Ideas: Bows, Topper & Ornaments",
+        "How to decorate a tartan plaid Christmas tree: a giant velvet plaid bow topper, tartan ribbon and bows, plaid ornaments, a ruffled tree skirt and needlepoint stockings. Shop every piece on Amazon."),
+    "/guides/art-above-sofa/": (
+        "How High to Hang Art Above a Sofa or Couch (Exact Inches)",
+        "Hang pictures over a couch so the bottom of the frame is 8 to 10 inches above the sofa back. Plus how wide the art should be, how to space a gallery wall, and the height to use on a wall with no furniture."),
+}
+
 def page(path, active, title, desc, img, body, alt="", otype="website", ld=None, js=""):
+    if path in SEO_META:
+        title, desc = SEO_META[path]
     s = head(title, desc, path, img, alt, otype, ld).replace("{NAV}", nav(active)) + body + FOOT + js + "</body>\n</html>\n"
     sec = next((v for k, v in SECTION_TAGS.items() if path.startswith(k)), None)
     if sec:
